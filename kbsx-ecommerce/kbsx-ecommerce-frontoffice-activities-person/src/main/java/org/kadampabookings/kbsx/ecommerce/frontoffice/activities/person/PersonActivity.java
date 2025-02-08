@@ -68,7 +68,7 @@ final class PersonActivity extends BookingProcessActivity {
         }, loggedInProperty);
         verticalStack.getChildren().setAll(
                 //LayoutUtil.setUnmanagedWhenInvisible(accountTopNote, notLoggedIn),
-                new VBox(Layouts.setUnmanagedWhenInvisible(accountTabs, notLoggedIn)
+                new VBox(Layouts.bindManagedAndVisiblePropertiesTo(notLoggedIn, accountTabs)
                         , accountPane)
                 );
         syncUiFromModel();

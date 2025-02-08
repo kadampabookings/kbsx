@@ -255,7 +255,7 @@ final class OptionTreeNode {
     }
 
     private void bindToVisibleProperty(Node node) {
-        Layouts.setUnmanagedWhenInvisible(node, visibleProperty);
+        Layouts.bindManagedAndVisiblePropertiesTo(visibleProperty, node);
         node.getProperties().put("visiblePropertyOptionTreeNode", this); // used by computeVisibleProperty()
     }
 
@@ -293,7 +293,7 @@ final class OptionTreeNode {
                 optionButtonSelectedProperty = checkBox.selectedProperty();
                 optionButton = checkBox;
                 setUserExplicitSelection(false); // A checkbox selection is always explicit and it is not selected at application
-                Layouts.setUnmanagedWhenInvisible(checkBox);
+                Layouts.bindManagedToVisibleProperty(checkBox);
             }
             if (optionButton != null) {
                 Label promptLabel = option.getPromptLabel();

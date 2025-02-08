@@ -1,5 +1,6 @@
 package org.kadampabookings.kbsx.event.backoffice.activities.options;
 
+import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.stack.ui.controls.dialog.DialogBuilderUtil;
 import javafx.beans.property.Property;
 import javafx.beans.value.ObservableValue;
@@ -71,7 +72,7 @@ final class EditableOptionsActivity extends OptionsActivity {
     @Override
     protected List<Node> createOptionPanelHeaderNodes(Option option, Property<String> i18nTitle) {
         List<Node> list = new ArrayList<>(super.createOptionPanelHeaderNodes(option, i18nTitle));
-        Collections.addAll(list, createHGrowable(), setUnmanagedWhenInvisible(newRemoveButton(() -> showRemoveOptionDialog(option)), editModeProperty));
+        Collections.addAll(list, createHGrowable(), Layouts.bindManagedAndVisiblePropertiesTo(editModeProperty, newRemoveButton(() -> showRemoveOptionDialog(option))));
         return list;
     }
 

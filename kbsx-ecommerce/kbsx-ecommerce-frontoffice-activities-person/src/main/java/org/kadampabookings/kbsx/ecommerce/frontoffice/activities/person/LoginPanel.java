@@ -54,7 +54,7 @@ public final class LoginPanel implements ModalityButtonFactoryMixin {
         gridPane.setPadding(new Insets(20));
         GridPane.setHalignment(hyperLink, HPos.CENTER);
         hyperLink.setOnAction(e -> signInModeProperty.setValue(!signInModeProperty.getValue()));
-        Layouts.setUnmanagedWhenInvisible(passwordField, signInModeProperty);
+        Layouts.bindManagedAndVisiblePropertiesTo(signInModeProperty, passwordField);
         FXProperties.runNowAndOnPropertyChange(signIn ->
                 I18nControls.bindI18nProperties(button, signIn ? "SignIn>>" : "SendPassword>>"), signInModeProperty  // ???
             );
