@@ -1,6 +1,6 @@
 package org.kadampabookings.kbsx.ecommerce.backoffice.activities.statistics;
 
-import dev.webfx.extras.util.control.ControlUtil;
+import dev.webfx.extras.util.control.Controls;
 import dev.webfx.extras.visual.controls.grid.VisualGrid;
 import dev.webfx.stack.orm.dql.DqlClause;
 import dev.webfx.stack.orm.dql.DqlStatement;
@@ -46,7 +46,7 @@ final class EventStatisticsActivity extends EventDependentViewDomainActivity imp
 
         Pane container = ui.buildUi();
 
-        setUpContextMenu(ControlUtil.lookupChild(ui.getGroupMasterSlaveView().getMasterView(), n -> n instanceof VisualGrid), () -> newActionGroup(
+        setUpContextMenu(Controls.lookupChild(ui.getGroupMasterSlaveView().getMasterView(), n -> n instanceof VisualGrid), () -> newActionGroup(
                 newOperationAction(() -> new SendLetterRequest(pm.getSelectedDocument())),
                 newSeparatorActionGroup(
                         newOperationAction(() -> new EditDocumentLineRequest(pm.getSelectedDocumentLine())),

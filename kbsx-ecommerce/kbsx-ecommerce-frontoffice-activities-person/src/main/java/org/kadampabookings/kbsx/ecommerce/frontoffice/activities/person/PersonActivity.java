@@ -3,7 +3,7 @@ package org.kadampabookings.kbsx.ecommerce.frontoffice.activities.person;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.stack.orm.entity.controls.entity.selector.ButtonSelectorParameters;
 import dev.webfx.stack.session.state.client.fx.FXLoggedIn;
-import dev.webfx.extras.util.layout.LayoutUtil;
+import dev.webfx.extras.util.layout.Layouts;
 import javafx.application.Platform;
 import javafx.beans.binding.BooleanExpression;
 import javafx.beans.value.ObservableBooleanValue;
@@ -68,7 +68,7 @@ final class PersonActivity extends BookingProcessActivity {
         }, loggedInProperty);
         verticalStack.getChildren().setAll(
                 //LayoutUtil.setUnmanagedWhenInvisible(accountTopNote, notLoggedIn),
-                new VBox(LayoutUtil.setUnmanagedWhenInvisible(accountTabs, notLoggedIn)
+                new VBox(Layouts.setUnmanagedWhenInvisible(accountTabs, notLoggedIn)
                         , accountPane)
                 );
         syncUiFromModel();

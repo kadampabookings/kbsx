@@ -1,7 +1,7 @@
 package org.kadampabookings.kbsx.ecommerce.client.activity.bookingprocess;
 
 import dev.webfx.extras.util.background.BackgroundFactory;
-import dev.webfx.extras.util.control.ControlUtil;
+import dev.webfx.extras.util.control.Controls;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.platform.util.Strings;
 import javafx.event.ActionEvent;
@@ -42,7 +42,7 @@ public abstract class BookingProcessActivity
         backButton.setOnAction(this::onPreviousButtonPressed);
         nextButton.setOnAction(this::onNextButtonPressed);
 
-        pageContainer = new BorderPane(verticalScrollPane = ControlUtil.createVerticalScrollPaneWithPadding(10, verticalStack = new VBox(10)));
+        pageContainer = new BorderPane(verticalScrollPane = Controls.createVerticalScrollPaneWithPadding(10, verticalStack = new VBox(10)));
         verticalStack.setAlignment(Pos.TOP_CENTER);
     }
 

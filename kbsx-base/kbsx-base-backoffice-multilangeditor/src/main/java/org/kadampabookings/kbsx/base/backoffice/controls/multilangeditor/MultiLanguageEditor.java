@@ -9,7 +9,7 @@ import dev.webfx.stack.orm.entity.EntityStore;
 import dev.webfx.stack.orm.entity.UpdateStore;
 import dev.webfx.stack.i18n.I18n;
 import dev.webfx.stack.ui.controls.button.ButtonFactoryMixin;
-import dev.webfx.extras.util.layout.LayoutUtil;
+import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.extras.webtext.HtmlTextEditor;
 import dev.webfx.platform.util.Objects;
@@ -24,7 +24,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 import static dev.webfx.stack.ui.action.StandardActionKeys.*;
-import static dev.webfx.extras.util.layout.LayoutUtil.setMaxPrefSizeToInfinite;
+import static dev.webfx.extras.util.layout.Layouts.setMaxPrefSizeToInfinite;
 
 /**
  * @author Bruno Salmon
@@ -249,7 +249,7 @@ public final class MultiLanguageEditor {
                 for (Object language : languages)
                     hBox.getChildren().add(languageButtons.get(language));
                 buttonsBar.setLeft(hBox);
-                buttonsBar.setCenter(new HBox(20, LayoutUtil.createHGrowable(), saveButton, revertButton, LayoutUtil.createHGrowable()));
+                buttonsBar.setCenter(new HBox(20, Layouts.createHGrowable(), saveButton, revertButton, Layouts.createHGrowable()));
                 borderPane.setBottom(buttonsBar);
                 // The following code is just a temporary workaround to make CKEditor work in html platform (to be removed once fixed)
                 if (editedEntity != null) {

@@ -1,7 +1,7 @@
 package org.kadampabookings.kbsx.event.frontoffice.activities.options;
 
 import dev.webfx.extras.imagestore.ImageStore;
-import dev.webfx.extras.util.layout.LayoutUtil;
+import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.platform.util.Booleans;
 import dev.webfx.platform.util.Objects;
@@ -178,10 +178,10 @@ final class OptionTreeNode {
         // Adding the checkbox before the already present icon and text
         hBoxChildren.add(0, checkBoxView);
         // Making the button centered by surrounding the children with 2 HGrowables
-        hBoxChildren.add(0, LayoutUtil.createHGrowable()); // One in first position
-        hBoxChildren.add(LayoutUtil.createHGrowable()); // One in last position
+        hBoxChildren.add(0, Layouts.createHGrowable()); // One in first position
+        hBoxChildren.add(Layouts.createHGrowable()); // One in last position
         // Setting min width to pref to avoid short button with ellipsis text (the flexbox will rearrange buttons instead)
-        LayoutUtil.setMinWidthToPref(topLevelOptionButton);
+        Layouts.setMinWidthToPref(topLevelOptionButton);
         //LayoutUtil.setMaxSizeToInfinite(topLevelOptionButton);
     }
 
@@ -200,7 +200,7 @@ final class OptionTreeNode {
         if (detailed) {
             createOptionBodyPane();
             if (optionBodyPane != null) {
-                LayoutUtil.setMinWidth(optionBodyPane, 0);
+                Layouts.setMinWidth(optionBodyPane, 0);
                 optionBodyPane.setPadding(new Insets(20));
                 sectionPanel.setCenter(optionBodyPane);
                 bindToVisibleProperty(sectionPanel);
@@ -255,7 +255,7 @@ final class OptionTreeNode {
     }
 
     private void bindToVisibleProperty(Node node) {
-        LayoutUtil.setUnmanagedWhenInvisible(node, visibleProperty);
+        Layouts.setUnmanagedWhenInvisible(node, visibleProperty);
         node.getProperties().put("visiblePropertyOptionTreeNode", this); // used by computeVisibleProperty()
     }
 
@@ -293,7 +293,7 @@ final class OptionTreeNode {
                 optionButtonSelectedProperty = checkBox.selectedProperty();
                 optionButton = checkBox;
                 setUserExplicitSelection(false); // A checkbox selection is always explicit and it is not selected at application
-                LayoutUtil.setUnmanagedWhenInvisible(checkBox);
+                Layouts.setUnmanagedWhenInvisible(checkBox);
             }
             if (optionButton != null) {
                 Label promptLabel = option.getPromptLabel();

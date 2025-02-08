@@ -1,7 +1,7 @@
 package org.kadampabookings.kbsx.ecommerce.frontoffice.activities.contactus;
 
 import dev.webfx.extras.util.background.BackgroundFactory;
-import dev.webfx.extras.util.control.ControlUtil;
+import dev.webfx.extras.util.control.Controls;
 import dev.webfx.platform.console.Console;
 import dev.webfx.platform.uischeduler.UiScheduler;
 import dev.webfx.platform.util.Strings;
@@ -55,7 +55,7 @@ final class ContactUsActivity extends ViewDomainActivityBase
         // Applying the css background of the event if provided and if ui is ready
         UiScheduler.scheduleDeferred(this::applyEventCssBackgroundIfProvided);
 
-        return new BorderPane(ControlUtil.createVerticalScrollPaneWithPadding(10, vBox));
+        return new BorderPane(Controls.createVerticalScrollPaneWithPadding(10, vBox));
     }
 
     private void initValidation() {

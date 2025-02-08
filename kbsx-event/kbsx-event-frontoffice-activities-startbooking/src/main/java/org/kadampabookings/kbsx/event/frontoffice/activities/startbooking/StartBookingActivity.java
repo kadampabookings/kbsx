@@ -2,8 +2,8 @@ package org.kadampabookings.kbsx.event.frontoffice.activities.startbooking;
 
 import dev.webfx.extras.imagestore.ImageStore;
 import dev.webfx.extras.util.animation.Animations;
-import dev.webfx.extras.util.control.ControlUtil;
-import dev.webfx.extras.util.layout.LayoutUtil;
+import dev.webfx.extras.util.control.Controls;
+import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.platform.console.Console;
 import dev.webfx.platform.uischeduler.UiScheduler;
@@ -44,7 +44,7 @@ final class StartBookingActivity extends BookingProcessActivity {
     @Override
     protected void createViewNodes() {
         super.createViewNodes();
-        eventImageViewContainer = LayoutUtil.setMinWidth(new BorderPane(eventImageView = new ImageView()), 0);
+        eventImageViewContainer = Layouts.setMinWidth(new BorderPane(eventImageView = new ImageView()), 0);
         eventTitle = new Label();
         eventTitle.setTextFill(Color.WHITE);
         Button bookButton = newTransparentButton(bookAction);
@@ -64,8 +64,8 @@ final class StartBookingActivity extends BookingProcessActivity {
         flowPane.setAlignment(Pos.CENTER);
         verticalStack.setSpacing(vGap);
         verticalStack.getChildren().setAll(eventImageViewContainer, eventTitle, bookButton, flowPane);
-        GridPane goldLayout = LayoutUtil.createGoldLayout(verticalStack, 1.0, 0, null);
-        pageContainer.setCenter(verticalScrollPane = ControlUtil.createVerticalScrollPane(goldLayout));
+        GridPane goldLayout = Layouts.createGoldLayout(verticalStack, 1.0, 0, null);
+        pageContainer.setCenter(verticalScrollPane = Controls.createVerticalScrollPane(goldLayout));
         goldLayout.minHeightProperty().bind(verticalScrollPane.heightProperty());
     }
 

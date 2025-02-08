@@ -2,8 +2,8 @@ package org.kadampabookings.kbsx.hotel.backoffice.activities.roomsgraphic;
 
 import dev.webfx.extras.panes.FlexPane;
 import dev.webfx.extras.imagestore.ImageStore;
-import dev.webfx.extras.util.control.ControlUtil;
-import dev.webfx.extras.util.layout.LayoutUtil;
+import dev.webfx.extras.util.control.Controls;
+import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.extras.visual.controls.grid.SkinnedVisualGrid;
 import dev.webfx.extras.visual.controls.grid.VisualGrid;
 import dev.webfx.kit.util.properties.FXProperties;
@@ -142,7 +142,7 @@ final class RoomsGraphicActivity extends EventDependentViewDomainActivity implem
             // The site item is represented by a ResourceConfiguration group (having this site and item)
             final ObjectProperty<Entity> siteItemProperty = new SimpleObjectProperty<>();
             final Pane boxesContainer = new FlexPane(10, 10);
-            final Tab siteItemTab = new Tab(null, ControlUtil.createVerticalScrollPane(boxesContainer));
+            final Tab siteItemTab = new Tab(null, Controls.createVerticalScrollPane(boxesContainer));
             final ReactiveObjectsMapper<ResourceConfiguration, Node> siteItemResourceConfigurationsToBoxesMapper;
 
             IndividualSiteItemToTabMapper(Entity siteItem) { // actually a ResourceConfiguration group
@@ -184,7 +184,7 @@ final class RoomsGraphicActivity extends EventDependentViewDomainActivity implem
                 private final ObjectProperty<ResourceConfiguration> siteItemResourceConfigurationProperty = new SimpleObjectProperty<>();
                 private final Label label = new Label();
                 private final VisualGrid peopleGrid = new SkinnedVisualGrid();
-                private final VBox box = new VBox(LayoutUtil.setMaxWidthToInfinite(label), peopleGrid);
+                private final VBox box = new VBox(Layouts.setMaxWidthToInfinite(label), peopleGrid);
                 private final ReactiveVisualMapper<DocumentLine> peopleVisualMapper;
                 private boolean dragBackgroundVisible;
 

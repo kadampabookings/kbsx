@@ -7,7 +7,7 @@ import org.kadampabookings.kbsx.ecommerce.client.businessdata.preselection.Optio
 import org.kadampabookings.kbsx.event.client.controls.sectionpanel.SectionPanelFactory;
 import org.kadampabookings.kbsx.event.client.controls.bookingcalendar.BookingCalendar;
 import org.kadampabookings.kbsx.ecommerce.client.activity.bookingprocess.BookingProcessActivity;
-import dev.webfx.extras.util.layout.LayoutUtil;
+import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.platform.console.Console;
 
 /**
@@ -24,7 +24,7 @@ final class ProgramActivity extends BookingProcessActivity {
         bookingCalendar = new BookingCalendar(false);
         BorderPane calendarSection = SectionPanelFactory.createSectionPanel(ModalityIcons.calendarMonoSvg16JsonUrl, "Timetable");
         calendarSection.centerProperty().bind(bookingCalendar.calendarNodeProperty());
-        verticalStack.getChildren().setAll(calendarSection, LayoutUtil.setMaxWidthToInfinite(backButton));
+        verticalStack.getChildren().setAll(calendarSection, Layouts.setMaxWidthToInfinite(backButton));
         showBookingCalendarIfReady();
     }
 

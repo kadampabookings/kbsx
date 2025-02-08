@@ -8,7 +8,7 @@ import dev.webfx.stack.session.state.client.fx.FXUserPrincipal;
 import dev.webfx.stack.ui.controls.button.ButtonFactory;
 import dev.webfx.stack.ui.controls.dialog.GridPaneBuilder;
 import dev.webfx.extras.util.animation.Animations;
-import dev.webfx.extras.util.layout.LayoutUtil;
+import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.extras.util.scene.SceneUtil;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
@@ -54,11 +54,11 @@ public final class LoginPanel implements ModalityButtonFactoryMixin {
         gridPane.setPadding(new Insets(20));
         GridPane.setHalignment(hyperLink, HPos.CENTER);
         hyperLink.setOnAction(e -> signInModeProperty.setValue(!signInModeProperty.getValue()));
-        LayoutUtil.setUnmanagedWhenInvisible(passwordField, signInModeProperty);
+        Layouts.setUnmanagedWhenInvisible(passwordField, signInModeProperty);
         FXProperties.runNowAndOnPropertyChange(signIn ->
                 I18nControls.bindI18nProperties(button, signIn ? "SignIn>>" : "SendPassword>>"), signInModeProperty  // ???
             );
-        node = LayoutUtil.createGoldLayout(loginWindow);
+        node = Layouts.createGoldLayout(loginWindow);
         initValidation();
         button.setOnAction(event -> {
             if (validationSupport.isValid())

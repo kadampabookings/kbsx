@@ -1,7 +1,7 @@
 package org.kadampabookings.kbsx.ecommerce.frontoffice.activities.payment;
 
-import dev.webfx.extras.util.control.ControlUtil;
-import dev.webfx.extras.util.layout.LayoutUtil;
+import dev.webfx.extras.util.control.Controls;
+import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.extras.webtext.HtmlText;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.platform.console.Console;
@@ -59,9 +59,9 @@ final class PaymentActivity extends CartBasedActivity {
         HtmlText paymentPrompt = new HtmlText();
         I18n.bindI18nTextProperty(paymentPrompt.textProperty(), "PaymentPrompt:");
 
-        BorderPane totalSection = SectionPanelFactory.createSectionPanelWithHeaderNodes(newLabel("TotalAmount:"), LayoutUtil.createHGrowable(), totalLabel = new Label());
+        BorderPane totalSection = SectionPanelFactory.createSectionPanelWithHeaderNodes(newLabel("TotalAmount:"), Layouts.createHGrowable(), totalLabel = new Label());
         VBox vBox = new VBox(20, paymentPrompt, paymentsVBox, totalSection, newLargeGreenButton(makePaymentAction));
-        BorderPane container = new BorderPane(ControlUtil.createVerticalScrollPaneWithPadding(10, vBox));
+        BorderPane container = new BorderPane(Controls.createVerticalScrollPaneWithPadding(10, vBox));
 
         displayDocumentPaymentsIfReady();
 
@@ -138,7 +138,7 @@ final class PaymentActivity extends CartBasedActivity {
         Node getNode() {
             if (node == null) {
                 String title = document.getRef() + " - " + document.getFullName(); // + " - " + I18n.instantTranslate("Booking") + " " + document.getRef() + "   " + I18n.instantTranslate("Fee:") + " " + formatCurrency(document.getPriceNet()) + "   " + I18n.instantTranslate("Deposit:") + " " + formatCurrency(document.getPriceDeposit()) + "   " + I18n.instantTranslate("MinDeposit:") + " " + formatCurrency(document.getPriceMinDeposit());
-                BorderPane bp = SectionPanelFactory.createSectionPanelWithHeaderNodes(new Label(title), LayoutUtil.createHGrowable(), newLabel("Amount"));
+                BorderPane bp = SectionPanelFactory.createSectionPanelWithHeaderNodes(new Label(title), Layouts.createHGrowable(), newLabel("Amount"));
                 hBox = new HBox(20);
                 hBox.setAlignment(Pos.CENTER_LEFT);
                 hBox.setPadding(new Insets(10));
@@ -163,7 +163,7 @@ final class PaymentActivity extends CartBasedActivity {
                 addNode(slider);
                 maxRadioButton = addRadioButton(maxAmount, "payInFull");
                 updateAmount(minAmount, false);
-                addNode(LayoutUtil.createHGrowable());
+                addNode(Layouts.createHGrowable());
                 addNode(amountTextField);
                 bp.setCenter(hBox);
                 node = bp;
@@ -258,7 +258,7 @@ final class PaymentActivity extends CartBasedActivity {
                                 UiScheduler.runInUiThread(() -> {
                                     String innerHtml = generateHtmlForm(gatewayParameters);
                                     //Logger.log(innerHtml);
-                                    HtmlText htmlText = LayoutUtil.setMaxPrefSizeToInfinite(new HtmlText(innerHtml));
+                                    HtmlText htmlText = Layouts.setMaxPrefSizeToInfinite(new HtmlText(innerHtml));
                                     DialogUtil.showModalNodeInGoldLayout(htmlText, (Pane) getNode(), 0.9, 0.8);
                                 });
                             });

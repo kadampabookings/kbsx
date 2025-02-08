@@ -1,6 +1,6 @@
 package org.kadampabookings.kbsx.ecommerce.backoffice.activities.payments;
 
-import dev.webfx.extras.util.control.ControlUtil;
+import dev.webfx.extras.util.control.Controls;
 import dev.webfx.extras.visual.controls.grid.VisualGrid;
 import dev.webfx.stack.orm.dql.DqlStatement;
 import dev.webfx.stack.orm.reactive.mapping.entities_to_visual.ReactiveVisualMapper;
@@ -48,7 +48,7 @@ final class PaymentsActivity extends EventDependentViewDomainActivity implements
         ui.setLeftTopNodes(flatPaymentsCheckBox);
 
         Pane container = ui.buildUi();
-        setUpContextMenu(ControlUtil.lookupChild(container, node -> node instanceof VisualGrid), () -> newActionGroup(
+        setUpContextMenu(Controls.lookupChild(container, node -> node instanceof VisualGrid), () -> newActionGroup(
                 newSeparatorActionGroup(
                         newOperationAction(() -> new EditPaymentRequest(pm.getSelectedPayment())),
                         newOperationAction(() -> new DeletePaymentRequest(pm.getSelectedPayment()))

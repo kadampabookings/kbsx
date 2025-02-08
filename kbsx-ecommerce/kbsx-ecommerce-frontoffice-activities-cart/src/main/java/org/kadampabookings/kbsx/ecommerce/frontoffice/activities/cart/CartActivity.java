@@ -2,8 +2,8 @@ package org.kadampabookings.kbsx.ecommerce.frontoffice.activities.cart;
 
 import dev.webfx.extras.panes.FlexPane;
 import dev.webfx.extras.type.PrimType;
-import dev.webfx.extras.util.control.ControlUtil;
-import dev.webfx.extras.util.layout.LayoutUtil;
+import dev.webfx.extras.util.control.Controls;
+import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.extras.visual.VisualResult;
 import dev.webfx.extras.visual.VisualSelection;
 import dev.webfx.extras.visual.controls.grid.SkinnedVisualGrid;
@@ -88,7 +88,7 @@ final class CartActivity extends CartBasedActivity {
         VisualGrid documentTable = new SkinnedVisualGrid();
         documentTable.setFullHeight(true);
         bookingsPanel.setCenter(documentTable);
-        optionsPanel = SectionPanelFactory.createSectionPanelWithHeaderNodes(bookingLabel = new Label(), LayoutUtil.createHGrowable(), ActionBinder.getAndBindActionIcon(explainStatusAction));
+        optionsPanel = SectionPanelFactory.createSectionPanelWithHeaderNodes(bookingLabel = new Label(), Layouts.createHGrowable(), ActionBinder.getAndBindActionIcon(explainStatusAction));
         bookingOptionsPanel = new BookingOptionsPanel();
         optionsPanel.setCenter(bookingOptionsPanel.getGrid());
         paymentsPanel = SectionPanelFactory.createSectionPanel("YourPayments");
@@ -98,11 +98,11 @@ final class CartActivity extends CartBasedActivity {
 
         FlexPane bookingButtonBar = createFlexButtonBar(modifyBookingAction, cancelBookingAction, contactUsAction);
 
-        optionsPanel.setBottom(LayoutUtil.createPadding(bookingButtonBar, 10));
+        optionsPanel.setBottom(Layouts.createPadding(bookingButtonBar, 10));
 
         bottomButtonBar = createFlexButtonBar(addAnotherBookingAction, showPaymentsAction, makePaymentAction);
 
-        LayoutUtil.setAllUnmanagedWhenInvisible(false, optionsPanel, paymentsPanel, bottomButtonBar);
+        Layouts.setAllUnmanagedWhenInvisible(false, optionsPanel, paymentsPanel, bottomButtonBar);
 
         // Binding the UI with the presentation model for further state changes
         // User inputs: the UI state changes are transferred in the presentation model
@@ -114,7 +114,7 @@ final class CartActivity extends CartBasedActivity {
         // Applying the css background of the event if provided and if ui is ready
         UiScheduler.scheduleDeferred(this::applyEventCssBackgroundIfProvided);
 
-        return new BorderPane(ControlUtil.createVerticalScrollPaneWithPadding(10, new VBox(20, bookingsPanel, optionsPanel, paymentsPanel, bottomButtonBar)));
+        return new BorderPane(Controls.createVerticalScrollPaneWithPadding(10, new VBox(20, bookingsPanel, optionsPanel, paymentsPanel, bottomButtonBar)));
     }
 
     private FlexPane createFlexButtonBar(Action... actions) {
@@ -125,7 +125,7 @@ final class CartActivity extends CartBasedActivity {
     }
 
     private Button createFlexButton(Action action) {
-        return LayoutUtil.setMaxWidthToInfinite(LayoutUtil.setMinWidthToPref(action == makePaymentAction ? newGreenButton(action) : action == addAnotherBookingAction ? newTransparentButton(action) : newButton(action)));
+        return Layouts.setMaxWidthToInfinite(Layouts.setMinWidthToPref(action == makePaymentAction ? newGreenButton(action) : action == addAnotherBookingAction ? newTransparentButton(action) : newButton(action)));
     }
 
     @Override

@@ -2,7 +2,7 @@ package org.kadampabookings.kbsx.event.frontoffice.activities.terms;
 
 //import dev.webfx.extras.cell.collator.grid.GridCollator;
 
-import dev.webfx.extras.util.layout.LayoutUtil;
+import dev.webfx.extras.util.layout.Layouts;
 import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
@@ -29,6 +29,6 @@ final class TermsPresentationViewActivity extends BookingProcessPresentationView
 
     @Override
     protected Node assemblyViewNodes() {
-        return LayoutUtil.createPadding(new VBox(10, LayoutUtil.setVGrowable(termsPanel), LayoutUtil.setMaxWidthToInfinite(backButton)), 10);
+        return Layouts.createPadding(new VBox(10, Layouts.setVGrowable(termsPanel), Layouts.setMaxWidthToInfinite(backButton)), 10);
     }
 }
