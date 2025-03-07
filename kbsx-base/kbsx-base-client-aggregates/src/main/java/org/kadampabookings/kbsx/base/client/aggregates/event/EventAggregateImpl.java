@@ -1,7 +1,7 @@
 package org.kadampabookings.kbsx.base.client.aggregates.event;
 
 import dev.webfx.platform.async.Future;
-import dev.webfx.platform.async.FutureBroadcaster;
+import dev.webfx.platform.async.util.FutureBroadcaster;
 import dev.webfx.platform.util.Numbers;
 import dev.webfx.platform.util.Objects;
 import dev.webfx.platform.util.collection.Collections;

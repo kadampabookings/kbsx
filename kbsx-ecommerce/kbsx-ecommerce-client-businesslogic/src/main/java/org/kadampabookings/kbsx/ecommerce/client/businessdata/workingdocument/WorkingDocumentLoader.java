@@ -1,6 +1,6 @@
 package org.kadampabookings.kbsx.ecommerce.client.businessdata.workingdocument;
 
-import dev.webfx.platform.async.AsyncUtil;
+import dev.webfx.platform.async.util.AsyncUtil;
 import org.kadampabookings.kbsx.base.client.aggregates.cart.CartAggregateImpl;
 import org.kadampabookings.kbsx.base.client.aggregates.event.EventAggregate;
 import one.modality.base.shared.entities.Attendance;
