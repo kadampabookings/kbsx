@@ -8,11 +8,11 @@ module kbsx.backoffice.application.openjfx {
     requires kbsx.backoffice.application;
     requires kbsx.event.backoffice.activities.cloneevent;
     requires kbsx.event.backoffice.activities.cloneevent.routing;
-    requires modality.base.client.util;
     requires modality.ecommerce.document.service.buscall;
     requires modality.ecommerce.document.service.remote;
     requires modality.ecommerce.payment.buscall;
     requires modality.ecommerce.payment.remote;
+    requires webfx.extras.time.format;
     requires webfx.extras.visual.charts.peers.openjfx;
     requires webfx.extras.visual.grid.peers.openjfx;
     requires webfx.extras.webtext.peers.openjfx;

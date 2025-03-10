@@ -1,5 +1,6 @@
 package org.kadampabookings.kbsx.event.backoffice.activities.cloneevent;
 
+import dev.webfx.extras.time.format.LocalizedTime;
 import dev.webfx.stack.routing.uirouter.activity.presentation.view.impl.PresentationViewActivityImpl;
 import dev.webfx.stack.ui.controls.button.ButtonFactoryMixin;
 import dev.webfx.stack.ui.dialog.DialogUtil;
@@ -12,7 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import one.modality.base.client.activity.themes.Theme;
-import one.modality.base.client.util.converters.Converters;
+
+import java.time.format.FormatStyle;
 
 import static javafx.scene.layout.Region.USE_PREF_SIZE;
 
@@ -72,7 +74,7 @@ public class CloneEventPresentationViewActivity
         bp.borderProperty().bind(Theme.dialogBorderProperty());
 
         nameTextField.textProperty().bindBidirectional(pm.nameProperty());
-        dateTextField.textProperty().bindBidirectional(pm.dateProperty(), Converters.dateFormatterStringConverter());
+        dateTextField.textProperty().bindBidirectional(pm.dateProperty(), LocalizedTime.dateStringConverter(FormatStyle.SHORT));
         submitButton.onActionProperty().bind(pm.onSubmitProperty());
 
         stackPane = new StackPane();

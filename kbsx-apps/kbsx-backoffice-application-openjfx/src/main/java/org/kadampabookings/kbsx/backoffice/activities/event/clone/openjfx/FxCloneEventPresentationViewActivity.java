@@ -1,9 +1,11 @@
 package org.kadampabookings.kbsx.backoffice.activities.event.clone.openjfx;
 
+import dev.webfx.extras.time.format.LocalizedTime;
 import javafx.scene.control.DatePicker;
-import one.modality.base.client.util.converters.Converters;
 import org.kadampabookings.kbsx.event.backoffice.activities.cloneevent.CloneEventPresentationModel;
 import org.kadampabookings.kbsx.event.backoffice.activities.cloneevent.CloneEventPresentationViewActivity;
+
+import java.time.format.FormatStyle;
 
 /**
  * @author Bruno Salmon
@@ -18,7 +20,7 @@ final class FxCloneEventPresentationViewActivity extends CloneEventPresentationV
         gp.getChildren().remove(dateTextField);
         gp.add(datePicker, 1, 1);
         datePicker.valueProperty().bindBidirectional(pm.dateProperty());
-        datePicker.setConverter(Converters.dateFormatterStringConverter());
+        datePicker.setConverter(LocalizedTime.dateStringConverter(FormatStyle.SHORT));
     }
 
 }
