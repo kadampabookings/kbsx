@@ -138,10 +138,10 @@ final class FeesActivity extends BookingProcessActivity {
 
     private void displayFeesGroupsNow() {
         int n = feesGroups.length;
-        VisualResultBuilder rsb = VisualResultBuilder.create(n, new VisualColumn[]{
-                VisualColumn.create((value, context) -> renderFeesGroupHeader((Pair<ReadOnlyAstObject, String>) value)),
-                VisualColumn.create((value, context) -> renderFeesGroupBody((VisualResult) value)),
-                VisualColumn.create(null, SpecializedTextType.HTML)});
+        VisualResultBuilder rsb = VisualResultBuilder.create(n,
+            VisualColumn.create((value, context) -> renderFeesGroupHeader((Pair<ReadOnlyAstObject, String>) value)),
+            VisualColumn.create((value, context) -> renderFeesGroupBody((VisualResult) value)),
+            VisualColumn.create(null, SpecializedTextType.HTML));
         ReadOnlyAstObject jsonImage = Json.parseObject(ModalityIcons.priceTagColorSvg16JsonUrl);
         ColumnWidthCumulator[] cumulators = {new ColumnWidthCumulator(), new ColumnWidthCumulator(), new ColumnWidthCumulator()};
         for (int i = 0; i < n; i++) {
