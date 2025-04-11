@@ -4,7 +4,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import one.modality.base.backoffice.controls.masterslave.group.GroupView;
-import one.modality.base.client.entities.util.filters.FilterButtonSelectorFactoryMixin;
+import one.modality.base.client.entities.filters.FilterButtonSelectorFactoryMixin;
 import one.modality.event.client.activity.eventdependent.EventDependentViewDomainActivity;
 import one.modality.base.shared.entities.Document;
 import one.modality.base.shared.entities.DocumentLine;

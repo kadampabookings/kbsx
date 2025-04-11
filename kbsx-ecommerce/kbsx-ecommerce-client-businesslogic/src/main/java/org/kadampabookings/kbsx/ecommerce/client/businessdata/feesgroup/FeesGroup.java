@@ -1,6 +1,6 @@
 package org.kadampabookings.kbsx.ecommerce.client.businessdata.feesgroup;
 
-import one.modality.base.client.entities.util.Labels;
+import one.modality.base.client.entities.Labels;
 import org.kadampabookings.kbsx.ecommerce.client.businessdata.preselection.OptionsPreselection;
 import one.modality.base.shared.entities.Event;
 import one.modality.base.shared.entities.Label;

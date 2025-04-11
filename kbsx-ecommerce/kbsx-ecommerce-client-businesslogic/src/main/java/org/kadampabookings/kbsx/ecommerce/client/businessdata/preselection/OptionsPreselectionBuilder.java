@@ -1,6 +1,6 @@
 package org.kadampabookings.kbsx.ecommerce.client.businessdata.preselection;
 
-import one.modality.base.client.entities.util.Labels;
+import one.modality.base.client.entities.Labels;
 import org.kadampabookings.kbsx.hotel.shared.businessdata.time.DateTimeRange;
 import org.kadampabookings.kbsx.hotel.shared.businessdata.time.DayTimeRange;
 import org.kadampabookings.kbsx.base.client.aggregates.event.EventAggregate;

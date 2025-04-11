@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
-import one.modality.base.client.entities.util.Labels;
+import one.modality.base.client.entities.Labels;
 import org.kadampabookings.kbsx.base.client.icons.ModalityIcons;
 import org.kadampabookings.kbsx.base.shared.entities.Option;
 import org.kadampabookings.kbsx.ecommerce.client.activity.bookingprocess.BookingProcessActivity;

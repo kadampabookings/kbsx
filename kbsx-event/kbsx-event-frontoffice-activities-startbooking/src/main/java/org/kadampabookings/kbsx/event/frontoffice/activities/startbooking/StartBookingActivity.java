@@ -19,7 +19,7 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import one.modality.base.client.entities.util.Labels;
+import one.modality.base.client.entities.Labels;
 import org.kadampabookings.kbsx.base.client.actions.ModalityActions;
 import org.kadampabookings.kbsx.base.shared.entities.Event;
 import org.kadampabookings.kbsx.ecommerce.client.activity.bookingprocess.BookingProcessActivity;

@@ -37,7 +37,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import one.modality.base.client.activity.ModalityButtonFactoryMixin;
-import one.modality.base.client.entities.util.Labels;
+import one.modality.base.client.entities.Labels;
 import one.modality.base.shared.entities.Person;
 import org.kadampabookings.kbsx.base.client.aggregates.event.EventAggregate;
 import org.kadampabookings.kbsx.base.client.icons.ModalityIcons;

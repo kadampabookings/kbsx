@@ -3,7 +3,7 @@ package org.kadampabookings.kbsx.ecommerce.client.businessdata.workingdocument;
 import javafx.beans.property.Property;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
-import one.modality.base.client.entities.util.Labels;
+import one.modality.base.client.entities.Labels;
 import org.kadampabookings.kbsx.ecommerce.client.businesslogic.option.OptionLogic;
 import org.kadampabookings.kbsx.hotel.shared.businessdata.time.DateTimeRange;
 import org.kadampabookings.kbsx.hotel.shared.businessdata.time.DayTimeRange;

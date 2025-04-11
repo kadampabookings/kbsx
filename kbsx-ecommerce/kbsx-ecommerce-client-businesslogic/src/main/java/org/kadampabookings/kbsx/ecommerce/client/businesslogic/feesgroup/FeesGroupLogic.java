@@ -7,7 +7,7 @@ import org.kadampabookings.kbsx.ecommerce.client.businesslogic.option.OptionLogi
 import org.kadampabookings.kbsx.base.shared.entities.DateInfo;
 import org.kadampabookings.kbsx.base.shared.entities.Option;
 import one.modality.base.shared.entities.Site;
-import one.modality.base.client.entities.util.Labels;
+import one.modality.base.client.entities.Labels;
 import dev.webfx.stack.orm.entity.EntityList;
 import dev.webfx.platform.util.collection.Collections;
 

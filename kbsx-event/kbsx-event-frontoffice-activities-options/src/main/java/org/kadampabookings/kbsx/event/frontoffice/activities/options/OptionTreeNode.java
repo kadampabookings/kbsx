@@ -24,7 +24,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import one.modality.base.client.entities.util.Labels;
+import one.modality.base.client.entities.Labels;
 import one.modality.base.shared.entities.Label;
 import org.kadampabookings.kbsx.base.client.icons.ModalityIcons;
 import org.kadampabookings.kbsx.base.shared.entities.Option;
