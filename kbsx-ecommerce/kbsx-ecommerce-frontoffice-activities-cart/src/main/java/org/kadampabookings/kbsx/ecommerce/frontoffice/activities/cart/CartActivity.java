@@ -6,7 +6,6 @@ import dev.webfx.extras.util.control.Controls;
 import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.extras.visual.VisualResult;
 import dev.webfx.extras.visual.VisualSelection;
-import dev.webfx.extras.visual.controls.grid.SkinnedVisualGrid;
 import dev.webfx.extras.visual.controls.grid.VisualGrid;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.platform.async.Future;
@@ -85,7 +84,7 @@ final class CartActivity extends CartBasedActivity {
     @Override
     public Node buildUi() {
         BorderPane bookingsPanel = SectionPanelFactory.createSectionPanel("YourBookings");
-        VisualGrid documentTable = new SkinnedVisualGrid();
+        VisualGrid documentTable = VisualGrid.createVisualGridWithTableSkin();
         documentTable.setFullHeight(true);
         bookingsPanel.setCenter(documentTable);
         optionsPanel = SectionPanelFactory.createSectionPanelWithHeaderNodes(bookingLabel = new Label(), Layouts.createHGrowable(), ActionBinder.getAndBindActionIcon(explainStatusAction));

@@ -4,7 +4,6 @@ import dev.webfx.extras.panes.FlexPane;
 import dev.webfx.extras.imagestore.ImageStore;
 import dev.webfx.extras.util.control.Controls;
 import dev.webfx.extras.util.layout.Layouts;
-import dev.webfx.extras.visual.controls.grid.SkinnedVisualGrid;
 import dev.webfx.extras.visual.controls.grid.VisualGrid;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.platform.ast.ReadOnlyAstArray;
@@ -183,7 +182,7 @@ final class RoomsGraphicActivity extends EventDependentViewDomainActivity implem
 
                 private final ObjectProperty<ResourceConfiguration> siteItemResourceConfigurationProperty = new SimpleObjectProperty<>();
                 private final Label label = new Label();
-                private final VisualGrid peopleGrid = new SkinnedVisualGrid();
+                private final VisualGrid peopleGrid = VisualGrid.createVisualGridWithVerticalSkin();
                 private final VBox box = new VBox(Layouts.setMaxWidthToInfinite(label), peopleGrid);
                 private final ReactiveVisualMapper<DocumentLine> peopleVisualMapper;
                 private boolean dragBackgroundVisible;

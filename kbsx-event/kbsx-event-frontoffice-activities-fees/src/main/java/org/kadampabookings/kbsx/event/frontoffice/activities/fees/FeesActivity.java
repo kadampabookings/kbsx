@@ -8,7 +8,6 @@ import dev.webfx.extras.imagestore.ImageStore;
 import dev.webfx.extras.type.PrimType;
 import dev.webfx.extras.type.SpecializedTextType;
 import dev.webfx.extras.visual.*;
-import dev.webfx.extras.visual.controls.grid.SkinnedVisualGrid;
 import dev.webfx.extras.visual.controls.grid.VisualGrid;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.platform.ast.ReadOnlyAstObject;
@@ -247,7 +246,7 @@ final class FeesActivity extends BookingProcessActivity {
     }
 
     private Node renderFeesGroupBody(VisualResult rs) {
-        VisualGrid visualGrid = new SkinnedVisualGrid(rs); //LayoutUtil.setMinMaxHeightToPref(new DataGrid(rs));
+        VisualGrid visualGrid = VisualGrid.createVisualGridWithTableSkin();
         visualGrid.setFullHeight(true);
         visualGrid.setSelectionMode(SelectionMode.DISABLED);
         return visualGrid;

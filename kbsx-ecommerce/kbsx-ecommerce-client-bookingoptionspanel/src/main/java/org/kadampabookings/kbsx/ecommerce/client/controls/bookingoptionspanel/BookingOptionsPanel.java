@@ -3,7 +3,6 @@ package org.kadampabookings.kbsx.ecommerce.client.controls.bookingoptionspanel;
 import dev.webfx.extras.type.PrimType;
 import dev.webfx.extras.visual.SelectionMode;
 import dev.webfx.extras.visual.VisualResult;
-import dev.webfx.extras.visual.controls.grid.SkinnedVisualGrid;
 import dev.webfx.extras.visual.controls.grid.VisualGrid;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.platform.util.Objects;
@@ -40,7 +39,7 @@ public final class BookingOptionsPanel {
     private EntityList<DocumentLine> lineEntities;
 
     public BookingOptionsPanel() {
-        visualGrid = new SkinnedVisualGrid(); // LayoutUtil.setMinMaxHeightToPref(new DataGrid());
+        visualGrid = VisualGrid.createVisualGridWithTableSkin();
         visualGrid.setHeaderVisible(false);
         visualGrid.setFullHeight(true);
         visualGrid.setSelectionMode(SelectionMode.DISABLED);
