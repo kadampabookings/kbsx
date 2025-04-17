@@ -142,28 +142,28 @@ final class FeesActivity extends BookingProcessActivity {
             VisualColumn.create((value, context) -> renderFeesGroupBody((VisualResult) value)),
             VisualColumn.create(null, SpecializedTextType.HTML));
         ReadOnlyAstObject jsonImage = Json.parseObject(ModalityIcons.priceTagColorSvg16JsonUrl);
-        ColumnWidthCumulator[] cumulators = {new ColumnWidthCumulator(), new ColumnWidthCumulator(), new ColumnWidthCumulator()};
+        ColumnWidthAccumulator[] accumulators = {new ColumnWidthAccumulator(), new ColumnWidthAccumulator(), new ColumnWidthAccumulator()};
         for (int i = 0; i < n; i++) {
             FeesGroup feesGroup = feesGroups[i];
             rsb.setValue(i, 0, new Pair<>(jsonImage, feesGroup.getDisplayName()));
-            rsb.setValue(i, 1, generateFeesGroupVisualResult(feesGroup, this::onBookButtonPressed, cumulators));
-            if (i == n - 1) // Showing the fees bottom text only on the last fees group
+            rsb.setValue(i, 1, generateFeesGroupVisualResult(feesGroup, this::onBookButtonPressed, accumulators));
+            if (i == n - 1) // Showing the fee's bottom text only on the last fees group
                 rsb.setValue(i, 2, feesGroup.getFeesBottomText());
         }
         VisualResult rs = rsb.build();
         rsProperty.setValue(rs);
     }
 
-    private VisualResult generateFeesGroupVisualResult(FeesGroup feesGroup, Consumer<OptionsPreselection> bookHandler, ColumnWidthCumulator[] cumulators) {
+    private VisualResult generateFeesGroupVisualResult(FeesGroup feesGroup, Consumer<OptionsPreselection> bookHandler, ColumnWidthAccumulator[] accumulators) {
         ModalityButtonFactoryMixin buttonFactory = this;
         EventAggregate eventAggregate = this;
         boolean showBadges = Objects.areEquals(eventAggregate.getEvent().getOrganizationId().getPrimaryKey(), 2); // For now only showing badges on KMCF courses
         OptionsPreselection[] optionsPreselections = feesGroup.getOptionsPreselections();
         int optionsCount = optionsPreselections.length;
         boolean singleOption = optionsCount == 1;
-        VisualResultBuilder rsb = VisualResultBuilder.create(optionsCount, VisualColumnBuilder.create(I18n.getI18nText(singleOption ? (feesGroup.isFestival() ? "Festival" : "Course") : "Accommodation"), PrimType.STRING).setCumulator(cumulators[0]).build(),
-                VisualColumnBuilder.create(I18n.getI18nText("Fee"), PrimType.INTEGER).setStyle(VisualStyle.CENTER_STYLE).setCumulator(cumulators[1]).build(),
-                VisualColumnBuilder.create(I18n.getI18nText("Availability")).setStyle(VisualStyle.CENTER_STYLE).setCumulator(cumulators[2])
+        VisualResultBuilder rsb = VisualResultBuilder.create(optionsCount, VisualColumnBuilder.create(I18n.getI18nText(singleOption ? (feesGroup.isFestival() ? "Festival" : "Course") : "Accommodation"), PrimType.STRING).setAccumulator(accumulators[0]).build(),
+                VisualColumnBuilder.create(I18n.getI18nText("Fee"), PrimType.INTEGER).setStyle(VisualStyle.CENTER_STYLE).setAccumulator(accumulators[1]).build(),
+                VisualColumnBuilder.create(I18n.getI18nText("Availability")).setStyle(VisualStyle.CENTER_STYLE).setAccumulator(accumulators[2])
                         .setValueRenderer((p, context) -> {
                             Pair<Object, OptionsPreselection> pair = (Pair<Object, OptionsPreselection>) p;
                             if (pair == null || !eventAggregate.areEventAvailabilitiesLoaded())
