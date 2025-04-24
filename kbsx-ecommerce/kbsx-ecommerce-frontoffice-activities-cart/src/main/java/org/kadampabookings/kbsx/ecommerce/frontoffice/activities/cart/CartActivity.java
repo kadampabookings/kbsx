@@ -51,6 +51,7 @@ import org.kadampabookings.kbsx.event.frontoffice.activities.options.OptionsRout
 import org.kadampabookings.kbsx.event.frontoffice.activities.startbooking.StartBookingRouting;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 import static dev.webfx.stack.orm.domainmodel.formatter.FormatterRegistry.registerFormatter;
 
@@ -252,7 +253,7 @@ final class CartActivity extends CartBasedActivity {
     private int indexOfWorkingDocument(WorkingDocument workingDocument) {
         if (workingDocument == null)
             return -1;
-        return Collections.indexOf(getCartWorkingDocuments(), wd -> Entities.sameId(wd.getDocument(), workingDocument.getDocument()));
+        return Collections.indexOf(getCartWorkingDocuments(), (Predicate<? super WorkingDocument>) wd -> Entities.sameId(wd.getDocument(), workingDocument.getDocument()));
     }
 
     private void disableBookingOptionsButtons(boolean disable) {
