@@ -1,4 +1,3 @@
----
 WELCOME: "Bienvenu"
 Login: "Mon compte"
 Fees: "Tarifs et disponibilités"
@@ -98,7 +97,6 @@ ChangesSubmitSuccessMessage: "Toutes vos modifications ont été appliquées ave
 BookingCancellationSuccessMessage: "Votre inscription a bien été annulée."
 YourBookingCart: "Votre panier inscription"
 YourBookings: "Vos inscription(s)"
-Status: "Status"
 IncompleteStatus: "Incomplet"
 needsDeposit: "des arrhes doivent être versées pour valider cette inscription"
 needsAdditionalDeposit: "un paiement additionnel est requis pour valider cette inscription"

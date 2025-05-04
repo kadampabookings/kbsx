@@ -7,7 +7,7 @@ import dev.webfx.stack.ui.operation.HasOperationCode;
 import dev.webfx.stack.ui.operation.HasOperationExecutor;
 import dev.webfx.stack.orm.entity.Entity;
 import dev.webfx.platform.async.AsyncFunction;
-import one.modality.base.client.i18n.ModalityI18nKeys;
+import one.modality.base.client.i18n.BaseI18nKeys;
 
 public final class DeleteAllocationRuleRequest implements HasOperationCode, HasI18nKey,
         HasOperationExecutor<DeleteAllocationRuleRequest, Void> {
@@ -37,7 +37,7 @@ public final class DeleteAllocationRuleRequest implements HasOperationCode, HasI
 
     @Override
     public Object getI18nKey() {
-        return I18nKeys.appendEllipsis(ModalityI18nKeys.Delete);
+        return I18nKeys.appendEllipsis(BaseI18nKeys.Delete);
     }
 
     @Override
