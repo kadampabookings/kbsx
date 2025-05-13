@@ -17,12 +17,8 @@
 
     <modules>
         <module>kbsx-backoffice-application</module>
-        <module>kbsx-backoffice-application-gluon</module>
-        <module>kbsx-backoffice-application-gwt</module>
         <module>kbsx-backoffice-application-openjfx</module>
         <module>kbsx-frontoffice-application</module>
-        <module>kbsx-frontoffice-application-gluon</module>
-        <module>kbsx-frontoffice-application-gwt</module>
         <module>kbsx-frontoffice-application-openjfx</module>
         <module>kbsx-server-application</module>
         <module>kbsx-server-application-vertx</module>
