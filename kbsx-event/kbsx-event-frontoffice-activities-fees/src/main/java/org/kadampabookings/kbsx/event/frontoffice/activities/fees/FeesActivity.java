@@ -246,7 +246,7 @@ final class FeesActivity extends BookingProcessActivity {
     }
 
     private Node renderFeesGroupBody(VisualResult rs) {
-        VisualGrid visualGrid = VisualGrid.createVisualGridWithTableSkin();
+        VisualGrid visualGrid = VisualGrid.createVisualGridWithTableLayoutSkin();
         visualGrid.setFullHeight(true);
         visualGrid.setSelectionMode(SelectionMode.DISABLED);
         return visualGrid;

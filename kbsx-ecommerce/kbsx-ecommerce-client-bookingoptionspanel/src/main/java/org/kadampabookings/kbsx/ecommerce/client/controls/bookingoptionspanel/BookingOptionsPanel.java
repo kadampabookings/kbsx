@@ -39,7 +39,7 @@ public final class BookingOptionsPanel {
     private EntityList<DocumentLine> lineEntities;
 
     public BookingOptionsPanel() {
-        visualGrid = VisualGrid.createVisualGridWithTableSkin();
+        visualGrid = VisualGrid.createVisualGridWithTableLayoutSkin();
         visualGrid.setHeaderVisible(false);
         visualGrid.setFullHeight(true);
         visualGrid.setSelectionMode(SelectionMode.DISABLED);

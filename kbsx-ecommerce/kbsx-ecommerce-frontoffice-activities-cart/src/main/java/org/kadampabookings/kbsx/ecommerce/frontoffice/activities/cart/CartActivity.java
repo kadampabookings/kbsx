@@ -85,7 +85,7 @@ final class CartActivity extends CartBasedActivity {
     @Override
     public Node buildUi() {
         BorderPane bookingsPanel = SectionPanelFactory.createSectionPanel("YourBookings");
-        VisualGrid documentTable = VisualGrid.createVisualGridWithTableSkin();
+        VisualGrid documentTable = VisualGrid.createVisualGridWithTableLayoutSkin();
         documentTable.setFullHeight(true);
         bookingsPanel.setCenter(documentTable);
         optionsPanel = SectionPanelFactory.createSectionPanelWithHeaderNodes(bookingLabel = new Label(), Layouts.createHGrowable(), ActionBinder.getAndBindActionIcon(explainStatusAction));

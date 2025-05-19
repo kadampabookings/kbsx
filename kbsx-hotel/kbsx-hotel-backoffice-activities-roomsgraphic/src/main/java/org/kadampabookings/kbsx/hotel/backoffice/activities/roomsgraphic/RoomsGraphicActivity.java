@@ -182,7 +182,7 @@ final class RoomsGraphicActivity extends EventDependentViewDomainActivity implem
 
                 private final ObjectProperty<ResourceConfiguration> siteItemResourceConfigurationProperty = new SimpleObjectProperty<>();
                 private final Label label = new Label();
-                private final VisualGrid peopleGrid = VisualGrid.createVisualGridWithVerticalSkin();
+                private final VisualGrid peopleGrid = VisualGrid.createVisualGridWithMonoColumnLayoutSkin();
                 private final VBox box = new VBox(Layouts.setMaxWidthToInfinite(label), peopleGrid);
                 private final ReactiveVisualMapper<DocumentLine> peopleVisualMapper;
                 private boolean dragBackgroundVisible;
