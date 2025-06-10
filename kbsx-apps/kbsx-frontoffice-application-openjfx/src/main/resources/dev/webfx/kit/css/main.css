@@ -846,7 +846,7 @@ so replaced by the following:
 }
 
 .menu-bar {
-    -fx-font-family: "Montserrat";
+    -fx-font-family: "Poppins";
     -webfx-aria-toggle-button-background-color-hover: transparent;
     -webfx-aria-toggle-button-background-color-fired: transparent;
     -webfx-aria-toggle-button-background-color-focused: transparent;
@@ -875,7 +875,7 @@ so replaced by the following:
 }
 
 .main-menu-bar Label.brand {
-    -fx-font-size: 16px;
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-text-fill: -brand-blue-color;
 }
