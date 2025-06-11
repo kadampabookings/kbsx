@@ -6,14 +6,18 @@ module kbsx.frontoffice.application.openjfx {
     requires javafx.media;
     requires javafx.web;
     requires kbsx.frontoffice.application;
+    requires webfx.extras.canvas.blob.openjfx;
     requires webfx.extras.visual.grid.peers.openjfx;
     requires webfx.extras.webtext.peers.openjfx;
     requires webfx.kit.javafxgraphics.openjfx;
     requires webfx.kit.platform.browser.openjfx;
     requires webfx.kit.platform.visibility.openjfx;
     requires webfx.platform.ast.factory.generic;
+    requires webfx.platform.blob.java;
     requires webfx.platform.boot.java;
     requires webfx.platform.console.java;
+    requires webfx.platform.fetch.java;
+    requires webfx.platform.file.java;
     requires webfx.platform.os.java;
     requires webfx.platform.resource.java;
     requires webfx.platform.scheduler.java;
