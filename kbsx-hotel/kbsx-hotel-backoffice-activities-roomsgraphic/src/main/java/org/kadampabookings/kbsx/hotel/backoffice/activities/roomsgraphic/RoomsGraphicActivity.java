@@ -1,11 +1,10 @@
 package org.kadampabookings.kbsx.hotel.backoffice.activities.roomsgraphic;
 
-import dev.webfx.extras.panes.FlexPane;
 import dev.webfx.extras.imagestore.ImageStore;
+import dev.webfx.extras.panes.FlexPane;
 import dev.webfx.extras.util.control.Controls;
 import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.extras.visual.controls.grid.VisualGrid;
-import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.platform.ast.ReadOnlyAstArray;
 import dev.webfx.platform.ast.json.Json;
 import dev.webfx.stack.com.serial.SerialCodecManager;
@@ -30,11 +29,11 @@ import javafx.scene.effect.Effect;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import one.modality.base.client.mainframe.fx.FXMainFrameDialogArea;
 import one.modality.base.backoffice.controls.masterslave.MasterSlaveView;
 import one.modality.base.client.gantt.fx.interstice.FXGanttInterstice;
 import one.modality.base.client.gantt.fx.visibility.FXGanttVisibility;
 import one.modality.base.client.gantt.fx.visibility.GanttVisibility;
+import one.modality.base.client.mainframe.fx.FXMainFrameDialogArea;
 import one.modality.base.client.presentationmodel.HasSelectedDocumentProperty;
 import one.modality.base.shared.entities.Document;
 import one.modality.base.shared.entities.DocumentLine;
@@ -78,7 +77,7 @@ final class RoomsGraphicActivity extends EventDependentViewDomainActivity implem
                 .storeMappedObjectsInto(sitesTabPane.getTabs())
                 .start();
         MasterSlaveView masterSlaveView = new MasterSlaveView(sitesTabPane, MasterSlaveView.createAndBindSlaveViewIfApplicable(this, this).buildUi());
-        masterSlaveView.slaveVisibleProperty().bind(FXProperties.compute(selectedDocumentProperty(), Objects::nonNull));
+        masterSlaveView.slaveVisibleProperty().bind(selectedDocumentProperty().map(Objects::nonNull));
         return masterSlaveView.buildUi();
     }
 

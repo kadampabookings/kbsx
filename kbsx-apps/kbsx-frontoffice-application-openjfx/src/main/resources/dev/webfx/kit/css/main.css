@@ -632,6 +632,26 @@ VisualGrid {
      -webfx-material-focused-line-fill: -webfx-material-invalid-fill;
 }
 
+/*===== webfx-extras-switches-javafx@main.css from webfx-extras-switches =====*/
+
+.root {
+    -webfx-switch-unselected-background-color: lightgray;
+    -webfx-switch-selected-background-color: #23EA00;
+    -webfx-switch-knob-background-color: white;
+}
+
+Switch.webfx-switch {
+    -fx-background-color: -webfx-switch-unselected-background-color;
+    -fx-background-radius: 10px;
+}
+
+Switch.webfx-switch.selected {
+    -fx-background-color: -webfx-switch-selected-background-color;
+}
+
+Switch.webfx-switch Circle.knob {
+    -fx-fill: -webfx-switch-knob-background-color;
+}
 /*===== webfx-extra-player-audio-javafxmedia-javafx@main.css from webfx-extras-player-audio-javafxmedia =====*/
 
 .audio-player {
@@ -690,6 +710,10 @@ ToggleButton.aria-toggle:selected {
 ToggleButton.aria-toggle.fired {
     -fx-background-color: -webfx-aria-toggle-button-background-color-fired;
     -fx-text-fill: -webfx-aria-toggle-button-text-fill-fired;
+}
+
+ToggleButton.aria-toggle SVGPath { /* TODO: check if it's the best place */
+    -fx-fill: -fx-text-fill;
 }
 /*===== webfx-extras-webtext-javafx@main.css from webfx-extras-webtext-peers-openjfx =====*/
 
