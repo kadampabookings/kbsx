@@ -172,7 +172,7 @@ final class OptionTreeNode {
         ImageView checkBoxView = new ImageView();
         checkBoxView.setFitWidth(16d);
         checkBoxView.setFitHeight(16d);
-        checkBoxView.imageProperty().bind(FXProperties.compute(optionButtonSelectedProperty, selected ->
+        checkBoxView.imageProperty().bind(optionButtonSelectedProperty.map(selected ->
             ImageStore.getOrCreateImage(selected ? ModalityIcons.checkedIcon16Url : ModalityIcons.uncheckedIcon16Url)));
         ObservableList<Node> hBoxChildren = ((HBox) topLevelOptionButton.getTop()).getChildren();
         // Adding the checkbox before the already present icon and text

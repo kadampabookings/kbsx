@@ -70,7 +70,7 @@ final class AuthorizationsActivity extends ViewDomainActivityBase implements Mod
                 EntityPropertiesSheet.editEntity(assignmentVisualMapper.getSelectedEntity(), operationsAssignmentColumns, FXMainFrameDialogArea.getDialogArea());
         });
         BorderPane leftPane = new BorderPane();
-        leftPane.centerProperty().bind(FXProperties.compute(rolesCheckBox.selectedProperty(), roles -> roles ? rolesGrid : manageesGrid));
+        leftPane.centerProperty().bind(rolesCheckBox.selectedProperty().map(roles -> roles ? rolesGrid : manageesGrid));
         SplitPane splitPane = new SplitPane(leftPane, assignmentsGrid);
         splitPane.getDividers().get(0).setPosition(0.25);
         BorderPane container = new BorderPane(splitPane);
