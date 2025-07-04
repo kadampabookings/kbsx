@@ -3,7 +3,7 @@ package org.kadampabookings.kbsx.event.client.controls.sectionpanel;
 import dev.webfx.extras.cell.collator.NodeCollatorRegistry;
 import dev.webfx.extras.util.background.BackgroundFactory;
 import dev.webfx.extras.util.border.BorderFactory;
-import dev.webfx.stack.i18n.controls.I18nControls;
+import dev.webfx.extras.i18n.controls.I18nControls;
 import javafx.beans.value.ObservableValue;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
 import org.kadampabookings.kbsx.base.client.icons.ModalityIcons;
 import org.kadampabookings.kbsx.event.client.controls.bookingcalendar.BookingCalendar;
 
-import static dev.webfx.stack.ui.json.JsonImageView.createImageView;
+import static dev.webfx.extras.jsonimage.JsonImageView.createImageView;
 
 /**
  * @author Bruno Salmon

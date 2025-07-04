@@ -1,7 +1,7 @@
 package org.kadampabookings.kbsx.ecommerce.frontoffice.activities.summary;
 
 import dev.webfx.platform.console.Console;
-import dev.webfx.stack.i18n.I18n;
+import dev.webfx.extras.i18n.I18n;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.platform.util.Strings;
 import dev.webfx.stack.orm.entity.controls.entity.selector.ButtonSelectorParameters;
@@ -25,7 +25,7 @@ import org.kadampabookings.kbsx.ecommerce.client.businessdata.workingdocument.Wo
 import org.kadampabookings.kbsx.ecommerce.client.controls.bookingoptionspanel.BookingOptionsPanel;
 import org.kadampabookings.kbsx.ecommerce.frontoffice.activities.cart.base.CartRouting;
 import org.kadampabookings.kbsx.event.client.controls.sectionpanel.SectionPanelFactory;
-import dev.webfx.stack.ui.validation.ValidationSupport;
+import dev.webfx.extras.validation.ValidationSupport;
 import one.modality.base.shared.entities.Cart;
 import org.kadampabookings.kbsx.event.client.controls.bookingcalendar.BookingCalendar;
 

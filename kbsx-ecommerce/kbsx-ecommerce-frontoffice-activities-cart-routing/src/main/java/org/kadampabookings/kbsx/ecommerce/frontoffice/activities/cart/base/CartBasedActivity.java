@@ -8,7 +8,7 @@ import one.modality.base.client.activity.ModalityButtonFactoryMixin;
 import org.kadampabookings.kbsx.base.client.aggregates.cart.CartAggregate;
 import org.kadampabookings.kbsx.base.client.aggregates.event.EventAggregate;
 import dev.webfx.stack.orm.domainmodel.activity.viewdomain.impl.ViewDomainActivityBase;
-import dev.webfx.stack.i18n.I18n;
+import dev.webfx.extras.i18n.I18n;
 import dev.webfx.extras.util.background.BackgroundFactory;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.platform.util.Strings;

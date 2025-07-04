@@ -9,9 +9,9 @@ import org.kadampabookings.kbsx.hotel.shared.businessdata.time.DayTimeRange;
 import org.kadampabookings.kbsx.event.client.businessdata.calendar.CalendarTimeline;
 import org.kadampabookings.kbsx.event.client.controls.calendargraphic.impl.DayColumnBodyBlockViewModel;
 import org.kadampabookings.kbsx.event.client.controls.calendargraphic.impl.DayColumnHeaderViewModel;
-import dev.webfx.stack.ui.dialog.DialogCallback;
-import dev.webfx.stack.ui.dialog.DialogUtil;
-import dev.webfx.stack.ui.controls.dialog.GridPaneBuilder;
+import dev.webfx.extras.util.dialog.DialogCallback;
+import dev.webfx.extras.util.dialog.DialogUtil;
+import dev.webfx.extras.util.dialog.builder.GridPaneBuilder;
 
 import java.util.function.BiConsumer;
 

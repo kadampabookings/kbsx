@@ -11,6 +11,8 @@ module kbsx.ecommerce.backoffice.activities.income {
     requires modality.base.client.util;
     requires modality.base.shared.entities;
     requires modality.event.client.activity.eventdependent;
+    requires webfx.extras.operation;
+    requires webfx.extras.operation.action;
     requires webfx.extras.visual;
     requires webfx.extras.visual.grid;
     requires webfx.platform.windowhistory;
@@ -21,8 +23,6 @@ module kbsx.ecommerce.backoffice.activities.income {
     requires webfx.stack.orm.reactive.visual;
     requires webfx.stack.routing.router.client;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.operation;
-    requires webfx.stack.ui.operation.action;
 
     // Exported packages
     exports org.kadampabookings.kbsx.ecommerce.backoffice.activities.income;

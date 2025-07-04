@@ -1,10 +1,10 @@
 package org.kadampabookings.kbsx.base.client.actions;
 
 import org.kadampabookings.kbsx.base.client.icons.ModalityIcons;
-import dev.webfx.stack.ui.action.Action;
-import dev.webfx.stack.ui.action.ActionBuilder;
-import dev.webfx.stack.ui.action.ActionBuilderRegistry;
-import dev.webfx.stack.ui.action.StandardActionKeys;
+import dev.webfx.extras.action.Action;
+import dev.webfx.extras.action.ActionBuilder;
+import dev.webfx.extras.action.ActionBuilderRegistry;
+import dev.webfx.extras.action.StandardActionKeys;
 
 /**
  * @author Bruno Salmon

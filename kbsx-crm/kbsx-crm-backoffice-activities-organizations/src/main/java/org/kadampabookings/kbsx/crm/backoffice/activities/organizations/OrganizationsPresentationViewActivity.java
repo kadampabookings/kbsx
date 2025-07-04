@@ -1,6 +1,6 @@
 package org.kadampabookings.kbsx.crm.backoffice.activities.organizations;
 
-import dev.webfx.stack.i18n.controls.I18nControls;
+import dev.webfx.extras.i18n.controls.I18nControls;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.BorderPane;

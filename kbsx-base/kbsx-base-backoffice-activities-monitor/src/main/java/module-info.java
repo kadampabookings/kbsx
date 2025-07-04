@@ -7,6 +7,7 @@ module kbsx.base.backoffice.activities.monitor {
     requires javafx.controls;
     requires javafx.graphics;
     requires modality.base.client.activity;
+    requires webfx.extras.operation;
     requires webfx.extras.util.layout;
     requires webfx.extras.visual;
     requires webfx.extras.visual.charts;
@@ -17,7 +18,6 @@ module kbsx.base.backoffice.activities.monitor {
     requires webfx.stack.orm.reactive.visual;
     requires webfx.stack.routing.router.client;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.operation;
 
     // Exported packages
     exports org.kadampabookings.kbsx.base.backoffice.activities.monitor;

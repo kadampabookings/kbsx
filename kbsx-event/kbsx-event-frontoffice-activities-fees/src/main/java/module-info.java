@@ -18,7 +18,10 @@ module kbsx.event.frontoffice.activities.fees {
     requires modality.base.client.util;
     requires modality.base.shared.entities;
     requires webfx.extras.cell;
+    requires webfx.extras.i18n;
+    requires webfx.extras.i18n.controls;
     requires webfx.extras.imagestore;
+    requires webfx.extras.jsonimage;
     requires webfx.extras.type;
     requires webfx.extras.visual;
     requires webfx.extras.visual.grid;
@@ -29,12 +32,9 @@ module kbsx.event.frontoffice.activities.fees {
     requires webfx.platform.uischeduler;
     requires webfx.platform.util;
     requires webfx.platform.windowhistory;
-    requires webfx.stack.i18n;
-    requires webfx.stack.i18n.controls;
     requires webfx.stack.orm.domainmodel.activity;
     requires webfx.stack.orm.entity;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.json;
 
     // Exported packages
     exports org.kadampabookings.kbsx.event.frontoffice.activities.fees;

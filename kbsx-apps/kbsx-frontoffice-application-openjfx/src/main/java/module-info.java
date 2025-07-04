@@ -7,6 +7,7 @@ module kbsx.frontoffice.application.openjfx {
     requires javafx.web;
     requires kbsx.frontoffice.application;
     requires webfx.extras.canvas.blob.openjfx;
+    requires webfx.extras.fxraiser.json;
     requires webfx.extras.visual.grid.peers.openjfx;
     requires webfx.extras.webtext.peers.openjfx;
     requires webfx.kit.javafxgraphics.openjfx;
@@ -43,6 +44,5 @@ module kbsx.frontoffice.application.openjfx {
     requires webfx.stack.orm.dql.submit.interceptor;
     requires webfx.stack.push.client.simple;
     requires webfx.stack.session.client;
-    requires webfx.stack.ui.fxraiser.json;
 
 }

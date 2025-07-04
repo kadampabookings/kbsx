@@ -15,15 +15,15 @@ module kbsx.ecommerce.frontoffice.activities.summary {
     requires modality.base.client.util;
     requires modality.base.shared.entities;
     requires modality.crm.client.personaldetails;
+    requires webfx.extras.i18n;
+    requires webfx.extras.validation;
     requires webfx.kit.util;
     requires webfx.platform.console;
     requires webfx.platform.util;
     requires webfx.platform.windowhistory;
-    requires webfx.stack.i18n;
     requires webfx.stack.orm.domainmodel.activity;
     requires webfx.stack.orm.entity.controls;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.validation;
 
     // Exported packages
     exports org.kadampabookings.kbsx.ecommerce.frontoffice.activities.summary;

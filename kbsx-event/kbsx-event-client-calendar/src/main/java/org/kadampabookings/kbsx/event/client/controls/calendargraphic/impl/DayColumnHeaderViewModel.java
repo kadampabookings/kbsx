@@ -1,7 +1,7 @@
 package org.kadampabookings.kbsx.event.client.controls.calendargraphic.impl;
 
 import dev.webfx.kit.util.properties.FXProperties;
-import dev.webfx.stack.i18n.I18n;
+import dev.webfx.extras.i18n.I18n;
 import javafx.geometry.VPos;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;

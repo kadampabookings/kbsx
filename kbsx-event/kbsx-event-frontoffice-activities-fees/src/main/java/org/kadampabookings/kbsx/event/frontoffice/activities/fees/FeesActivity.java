@@ -19,9 +19,9 @@ import dev.webfx.platform.util.Booleans;
 import dev.webfx.platform.util.Numbers;
 import dev.webfx.platform.util.Objects;
 import dev.webfx.platform.util.tuples.Pair;
-import dev.webfx.stack.i18n.Dictionary;
-import dev.webfx.stack.i18n.I18n;
-import dev.webfx.stack.i18n.controls.I18nControls;
+import dev.webfx.extras.i18n.Dictionary;
+import dev.webfx.extras.i18n.I18n;
+import dev.webfx.extras.i18n.controls.I18nControls;
 import dev.webfx.stack.orm.entity.EntityList;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
@@ -49,7 +49,7 @@ import org.kadampabookings.kbsx.event.frontoffice.activities.options.OptionsRout
 
 import java.util.function.Consumer;
 
-import static dev.webfx.stack.ui.json.JsonImageView.createImageView;
+import static dev.webfx.extras.jsonimage.JsonImageView.createImageView;
 
 /**
  * @author Bruno Salmon
