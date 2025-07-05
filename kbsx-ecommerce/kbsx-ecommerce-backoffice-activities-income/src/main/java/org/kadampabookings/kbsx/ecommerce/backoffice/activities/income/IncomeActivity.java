@@ -10,7 +10,7 @@ import one.modality.base.shared.entities.Document;
 import one.modality.base.shared.entities.DocumentLine;
 import one.modality.base.shared.entities.Filter;
 import dev.webfx.extras.visual.controls.grid.VisualGrid;
-import dev.webfx.stack.ui.operation.action.OperationActionFactoryMixin;
+import dev.webfx.extras.operation.action.OperationActionFactoryMixin;
 import dev.webfx.stack.orm.reactive.mapping.entities_to_visual.ReactiveVisualMapper;
 import dev.webfx.stack.orm.entity.controls.entity.selector.EntityButtonSelector;
 

@@ -13,15 +13,15 @@ module kbsx.event.backoffice.activities.cloneevent {
     requires modality.base.shared.entities;
     requires modality.ecommerce.backoffice.activity.bookings.plugin;
     requires modality.event.client.activity.eventdependent;
+    requires webfx.extras.controlfactory;
     requires webfx.extras.time.format;
+    requires webfx.extras.util.dialog;
     requires webfx.kit.util;
     requires webfx.platform.uischeduler;
     requires webfx.stack.db.submit;
     requires webfx.stack.orm.domainmodel.activity;
     requires webfx.stack.orm.entity;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.controls;
-    requires webfx.stack.ui.dialog;
 
     // Exported packages
     exports org.kadampabookings.kbsx.event.backoffice.activities.cloneevent;

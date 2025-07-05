@@ -17,9 +17,12 @@ module kbsx.ecommerce.frontoffice.activities.cart {
     requires modality.base.client.util;
     requires modality.base.shared.domainmodel;
     requires modality.base.shared.entities;
+    requires webfx.extras.action;
+    requires webfx.extras.i18n;
     requires webfx.extras.panes;
     requires webfx.extras.type;
     requires webfx.extras.util.control;
+    requires webfx.extras.util.dialog;
     requires webfx.extras.util.layout;
     requires webfx.extras.visual;
     requires webfx.extras.visual.grid;
@@ -28,16 +31,12 @@ module kbsx.ecommerce.frontoffice.activities.cart {
     requires webfx.platform.console;
     requires webfx.platform.uischeduler;
     requires webfx.platform.util;
-    requires webfx.stack.i18n;
     requires webfx.stack.orm.domainmodel;
     requires webfx.stack.orm.domainmodel.activity;
     requires webfx.stack.orm.entity;
     requires webfx.stack.orm.expression;
     requires webfx.stack.orm.reactive.visual;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.action;
-    requires webfx.stack.ui.controls;
-    requires webfx.stack.ui.dialog;
 
     // Exported packages
     exports org.kadampabookings.kbsx.ecommerce.frontoffice.activities.cart;

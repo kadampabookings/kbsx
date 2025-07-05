@@ -14,6 +14,8 @@ module kbsx.catering.backoffice.activities.diningareas {
     requires modality.base.client.util;
     requires modality.base.shared.entities;
     requires modality.event.client.activity.eventdependent;
+    requires webfx.extras.operation;
+    requires webfx.extras.operation.action;
     requires webfx.extras.visual;
     requires webfx.extras.visual.grid;
     requires webfx.platform.windowhistory;
@@ -24,8 +26,6 @@ module kbsx.catering.backoffice.activities.diningareas {
     requires webfx.stack.routing.router;
     requires webfx.stack.routing.router.client;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.operation;
-    requires webfx.stack.ui.operation.action;
 
     // Exported packages
     exports org.kadampabookings.kbsx.catering.backoffice.activities.diningareas;

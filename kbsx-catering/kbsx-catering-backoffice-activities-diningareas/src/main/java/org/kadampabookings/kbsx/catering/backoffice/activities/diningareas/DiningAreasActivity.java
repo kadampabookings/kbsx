@@ -17,7 +17,7 @@ import one.modality.base.backoffice.operations.entities.generic.CopySelectionReq
 import one.modality.base.shared.entities.Attendance;
 import one.modality.base.shared.entities.DocumentLine;
 import dev.webfx.extras.visual.controls.grid.VisualGrid;
-import dev.webfx.stack.ui.operation.action.OperationActionFactoryMixin;
+import dev.webfx.extras.operation.action.OperationActionFactoryMixin;
 import dev.webfx.stack.orm.reactive.mapping.entities_to_visual.ReactiveVisualMapper;
 import dev.webfx.stack.orm.entity.Entity;
 

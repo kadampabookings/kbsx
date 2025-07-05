@@ -3,10 +3,10 @@ package org.kadampabookings.kbsx.ecommerce.frontoffice.activities.person;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.stack.authn.AuthenticationRequest;
 import dev.webfx.stack.authn.AuthenticateWithUsernamePasswordCredentials;
-import dev.webfx.stack.i18n.controls.I18nControls;
+import dev.webfx.extras.i18n.controls.I18nControls;
 import dev.webfx.stack.session.state.client.fx.FXUserPrincipal;
-import dev.webfx.stack.ui.controls.button.ButtonFactory;
-import dev.webfx.stack.ui.controls.dialog.GridPaneBuilder;
+import dev.webfx.extras.controlfactory.button.ButtonFactory;
+import dev.webfx.extras.util.dialog.builder.GridPaneBuilder;
 import dev.webfx.extras.util.animation.Animations;
 import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.extras.util.scene.SceneUtil;
@@ -23,7 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import one.modality.base.client.activity.ModalityButtonFactoryMixin;
-import dev.webfx.stack.ui.validation.ValidationSupport;
+import dev.webfx.extras.validation.ValidationSupport;
 import org.kadampabookings.kbsx.event.client.controls.sectionpanel.SectionPanelFactory;
 
 

@@ -17,6 +17,8 @@ module kbsx.ecommerce.backoffice.activities.statistics {
     requires modality.ecommerce.backoffice.operations.document;
     requires modality.ecommerce.backoffice.operations.documentline;
     requires modality.event.client.activity.eventdependent;
+    requires webfx.extras.operation;
+    requires webfx.extras.operation.action;
     requires webfx.extras.type;
     requires webfx.extras.util.control;
     requires webfx.extras.visual;
@@ -34,8 +36,6 @@ module kbsx.ecommerce.backoffice.activities.statistics {
     requires webfx.stack.routing.router;
     requires webfx.stack.routing.router.client;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.operation;
-    requires webfx.stack.ui.operation.action;
 
     // Exported packages
     exports org.kadampabookings.kbsx.ecommerce.backoffice.activities.statistics;

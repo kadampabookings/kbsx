@@ -15,6 +15,7 @@ module kbsx.event.backoffice.activities.options {
     requires kbsx.event.frontoffice.activities.options;
     requires kbsx.hotel.shared.time;
     requires modality.base.shared.entities;
+    requires webfx.extras.util.dialog;
     requires webfx.extras.util.layout;
     requires webfx.extras.visual.grid;
     requires webfx.kit.util;
@@ -24,8 +25,6 @@ module kbsx.event.backoffice.activities.options {
     requires webfx.stack.orm.entity;
     requires webfx.stack.orm.reactive.visual;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.controls;
-    requires webfx.stack.ui.dialog;
 
     // Exported packages
     exports org.kadampabookings.kbsx.event.backoffice.activities.options;

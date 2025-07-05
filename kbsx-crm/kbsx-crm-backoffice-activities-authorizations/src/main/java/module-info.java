@@ -10,6 +10,7 @@ module kbsx.crm.backoffice.activities.authorizations {
     requires modality.base.client.activity;
     requires modality.base.client.mainframe.fx;
     requires modality.base.client.tile;
+    requires webfx.extras.operation;
     requires webfx.extras.visual.grid;
     requires webfx.kit.util;
     requires webfx.platform.windowhistory;
@@ -20,7 +21,6 @@ module kbsx.crm.backoffice.activities.authorizations {
     requires webfx.stack.orm.reactive.visual;
     requires webfx.stack.routing.router.client;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.operation;
 
     // Exported packages
     exports org.kadampabookings.kbsx.crm.backoffice.activities.authorizations;

@@ -1,7 +1,7 @@
 package org.kadampabookings.kbsx.event.backoffice.operations.routes.cloneevent;
 
 import org.kadampabookings.kbsx.event.backoffice.activities.cloneevent.routing.CloneEventRouting;
-import dev.webfx.stack.ui.operation.HasOperationCode;
+import dev.webfx.extras.operation.HasOperationCode;
 import dev.webfx.stack.routing.uirouter.operations.RoutePushRequest;
 import dev.webfx.platform.windowhistory.spi.BrowsingHistory;
 

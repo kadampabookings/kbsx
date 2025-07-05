@@ -10,12 +10,12 @@ module kbsx.ecommerce.client.bookingoptionspanel {
     requires kbsx.hotel.shared.time;
     requires modality.base.client.util;
     requires modality.base.shared.entities;
+    requires webfx.extras.i18n;
     requires webfx.extras.type;
     requires webfx.extras.visual;
     requires webfx.extras.visual.grid;
     requires webfx.kit.util;
     requires webfx.platform.util;
-    requires webfx.stack.i18n;
     requires webfx.stack.orm.domainmodel;
     requires webfx.stack.orm.entity;
     requires webfx.stack.orm.expression;

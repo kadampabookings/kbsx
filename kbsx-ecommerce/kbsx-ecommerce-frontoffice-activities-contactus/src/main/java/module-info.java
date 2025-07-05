@@ -9,8 +9,10 @@ module kbsx.ecommerce.frontoffice.activities.contactus {
     requires modality.base.client.activity;
     requires modality.base.client.util;
     requires modality.base.shared.entities;
+    requires webfx.extras.action;
     requires webfx.extras.util.background;
     requires webfx.extras.util.control;
+    requires webfx.extras.validation;
     requires webfx.platform.console;
     requires webfx.platform.uischeduler;
     requires webfx.platform.util;
@@ -19,8 +21,6 @@ module kbsx.ecommerce.frontoffice.activities.contactus {
     requires webfx.stack.orm.domainmodel.activity;
     requires webfx.stack.orm.entity;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.action;
-    requires webfx.stack.ui.validation;
 
     // Exported packages
     exports org.kadampabookings.kbsx.ecommerce.frontoffice.activities.contactus;

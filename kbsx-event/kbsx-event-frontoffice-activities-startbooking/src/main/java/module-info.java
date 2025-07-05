@@ -14,6 +14,7 @@ module kbsx.event.frontoffice.activities.startbooking {
     requires kbsx.event.frontoffice.activities.terms;
     requires modality.base.client.entities;
     requires modality.base.client.util;
+    requires webfx.extras.action;
     requires webfx.extras.imagestore;
     requires webfx.extras.util.animation;
     requires webfx.extras.util.control;
@@ -24,7 +25,6 @@ module kbsx.event.frontoffice.activities.startbooking {
     requires webfx.platform.windowhistory;
     requires webfx.stack.orm.domainmodel.activity;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.action;
 
     // Exported packages
     exports org.kadampabookings.kbsx.event.frontoffice.activities.startbooking;

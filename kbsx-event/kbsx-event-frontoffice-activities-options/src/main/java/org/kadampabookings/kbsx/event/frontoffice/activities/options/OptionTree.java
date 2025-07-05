@@ -6,7 +6,7 @@ import org.kadampabookings.kbsx.base.shared.entities.Option;
 import org.kadampabookings.kbsx.ecommerce.client.businessdata.workingdocument.WorkingDocument;
 import org.kadampabookings.kbsx.ecommerce.client.businessdata.workingdocument.WorkingDocumentTransaction;
 import one.modality.base.client.util.functions.TranslateFunction;
-import dev.webfx.stack.ui.validation.ValidationSupport;
+import dev.webfx.extras.validation.ValidationSupport;
 import dev.webfx.platform.uischeduler.UiScheduler;
 import dev.webfx.platform.util.collection.Collections;
 

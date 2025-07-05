@@ -11,6 +11,8 @@ module kbsx.crm.backoffice.activities.users {
     requires modality.base.shared.entities;
     requires modality.ecommerce.backoffice.operations.document;
     requires modality.event.client.activity.eventdependent;
+    requires webfx.extras.action;
+    requires webfx.extras.operation;
     requires webfx.extras.visual;
     requires webfx.platform.windowhistory;
     requires webfx.stack.orm.domainmodel.activity;
@@ -22,8 +24,6 @@ module kbsx.crm.backoffice.activities.users {
     requires webfx.stack.routing.router;
     requires webfx.stack.routing.router.client;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.action;
-    requires webfx.stack.ui.operation;
 
     // Exported packages
     exports org.kadampabookings.kbsx.crm.backoffice.activities.users;

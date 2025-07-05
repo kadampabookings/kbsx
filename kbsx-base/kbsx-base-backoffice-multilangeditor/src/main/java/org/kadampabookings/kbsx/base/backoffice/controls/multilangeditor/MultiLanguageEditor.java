@@ -7,8 +7,8 @@ import dev.webfx.stack.orm.domainmodel.DataSourceModel;
 import dev.webfx.stack.orm.entity.Entity;
 import dev.webfx.stack.orm.entity.EntityStore;
 import dev.webfx.stack.orm.entity.UpdateStore;
-import dev.webfx.stack.i18n.I18n;
-import dev.webfx.stack.ui.controls.button.ButtonFactoryMixin;
+import dev.webfx.extras.i18n.I18n;
+import dev.webfx.extras.controlfactory.button.ButtonFactoryMixin;
 import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.extras.webtext.HtmlTextEditor;
@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-import static dev.webfx.stack.ui.action.StandardActionKeys.*;
+import static dev.webfx.extras.action.StandardActionKeys.*;
 import static dev.webfx.extras.util.layout.Layouts.setMaxPrefSizeToInfinite;
 
 /**

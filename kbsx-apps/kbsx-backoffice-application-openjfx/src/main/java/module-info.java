@@ -12,6 +12,7 @@ module kbsx.backoffice.application.openjfx {
     requires modality.ecommerce.document.service.remote;
     requires modality.ecommerce.payment.buscall;
     requires modality.ecommerce.payment.remote;
+    requires webfx.extras.fxraiser.json;
     requires webfx.extras.time.format;
     requires webfx.extras.visual.charts.peers.openjfx;
     requires webfx.extras.visual.grid.peers.openjfx;
@@ -48,7 +49,6 @@ module kbsx.backoffice.application.openjfx {
     requires webfx.stack.push.client.simple;
     requires webfx.stack.routing.uirouter;
     requires webfx.stack.session.client;
-    requires webfx.stack.ui.fxraiser.json;
 
     // Exported packages
     exports org.kadampabookings.kbsx.backoffice.activities.event.clone.openjfx;

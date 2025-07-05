@@ -2,7 +2,7 @@ package org.kadampabookings.kbsx.event.frontoffice.activities.terms;
 
 import org.kadampabookings.kbsx.ecommerce.client.activity.bookingprocess.BookingProcessPresentationLogicActivity;
 import dev.webfx.stack.orm.reactive.mapping.entities_to_visual.ReactiveVisualMapper;
-import dev.webfx.stack.i18n.I18n;
+import dev.webfx.extras.i18n.I18n;
 
 import static dev.webfx.stack.orm.dql.DqlStatement.parse;
 import static dev.webfx.stack.orm.dql.DqlStatement.where;

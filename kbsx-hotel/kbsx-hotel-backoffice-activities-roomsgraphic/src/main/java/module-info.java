@@ -14,7 +14,10 @@ module kbsx.hotel.backoffice.activities.roomsgraphic {
     requires modality.base.shared.entities;
     requires modality.event.client.activity.eventdependent;
     requires modality.hotel.backoffice.operations.resourceconfiguration;
+    requires webfx.extras.action;
     requires webfx.extras.imagestore;
+    requires webfx.extras.operation;
+    requires webfx.extras.operation.action;
     requires webfx.extras.panes;
     requires webfx.extras.util.control;
     requires webfx.extras.util.layout;
@@ -32,9 +35,6 @@ module kbsx.hotel.backoffice.activities.roomsgraphic {
     requires webfx.stack.routing.router;
     requires webfx.stack.routing.router.client;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.action;
-    requires webfx.stack.ui.operation;
-    requires webfx.stack.ui.operation.action;
 
     // Exported packages
     exports org.kadampabookings.kbsx.hotel.backoffice.activities.roomsgraphic;

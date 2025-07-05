@@ -2,8 +2,8 @@ package org.kadampabookings.kbsx.event.backoffice.activities.cloneevent;
 
 import dev.webfx.extras.time.format.LocalizedTime;
 import dev.webfx.stack.routing.uirouter.activity.presentation.view.impl.PresentationViewActivityImpl;
-import dev.webfx.stack.ui.controls.button.ButtonFactoryMixin;
-import dev.webfx.stack.ui.dialog.DialogUtil;
+import dev.webfx.extras.controlfactory.button.ButtonFactoryMixin;
+import dev.webfx.extras.util.dialog.DialogUtil;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Node;

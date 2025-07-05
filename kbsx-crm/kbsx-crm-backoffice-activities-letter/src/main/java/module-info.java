@@ -7,11 +7,11 @@ module kbsx.crm.backoffice.activities.letter {
     requires javafx.graphics;
     requires kbsx.base.backoffice.multilangeditor;
     requires modality.base.client.util;
+    requires webfx.extras.controlfactory;
     requires webfx.kit.util;
     requires webfx.platform.windowhistory;
     requires webfx.stack.orm.domainmodel.activity;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.controls;
 
     // Exported packages
     exports org.kadampabookings.kbsx.crm.backoffice.activities.letter;

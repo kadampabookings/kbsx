@@ -8,6 +8,7 @@ module kbsx.crm.backoffice.activities.letters {
     requires modality.base.client.activity;
     requires modality.base.client.util;
     requires modality.event.client.activity.eventdependent;
+    requires webfx.extras.operation;
     requires webfx.platform.windowhistory;
     requires webfx.stack.orm.domainmodel.activity;
     requires webfx.stack.orm.dql;
@@ -15,7 +16,6 @@ module kbsx.crm.backoffice.activities.letters {
     requires webfx.stack.routing.router;
     requires webfx.stack.routing.router.client;
     requires webfx.stack.routing.uirouter;
-    requires webfx.stack.ui.operation;
 
     // Exported packages
     exports org.kadampabookings.kbsx.crm.backoffice.activities.letters;
