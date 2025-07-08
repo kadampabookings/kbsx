@@ -12,6 +12,7 @@ module kbsx.ecommerce.client.businesslogic {
     requires kbsx.hotel.shared.time;
     requires modality.base.client.entities;
     requires modality.base.shared.entities;
+    requires modality.base.shared.knownitems;
     requires transitive webfx.platform.async;
     requires webfx.platform.util;
     requires webfx.stack.db.query;

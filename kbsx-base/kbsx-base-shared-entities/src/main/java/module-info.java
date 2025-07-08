@@ -5,6 +5,7 @@ module kbsx.base.shared.entities {
     // Direct dependencies modules
     requires kbsx.hotel.shared.time;
     requires modality.base.shared.entities;
+    requires modality.base.shared.knownitems;
     requires webfx.platform.util;
     requires webfx.stack.orm.entity;
 
