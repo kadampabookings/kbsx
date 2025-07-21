@@ -22,7 +22,6 @@ FeesExplanation: "<strong>The above fee is for the whole event including meals a
 TCApplies: "Participation in this event is subject to <a ng-click='onTCLink()'>terms and conditions</a>."
 TermsAndConditions: "Terms and conditions"
 Timetable: "Timetable"
-Teachings: "Teachings"
 Teacher: "Teacher"
 CarSharing: "Map"
 YourOptions: "Your options"

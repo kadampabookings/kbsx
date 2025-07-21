@@ -22,7 +22,6 @@ FeesExplanation: "Pour démarrer votre inscription, cliquez sur l'un des boutons
 TCApplies: "Merci de prendre connaissance de nos <a ng-click='onTCLink()'>conditions générales</a>."
 TermsAndConditions: "Conditions générales"
 Timetable: "L'emploi du temps"
-Teachings: "Les enseignements"
 Teacher: "L'enseignant"
 CarSharing: "Carte"
 YourOptions: "Vos options"

@@ -11,7 +11,7 @@ import org.kadampabookings.kbsx.event.client.businessdata.calendar.Calendar;
 import org.kadampabookings.kbsx.event.client.businessdata.calendar.CalendarTimeline;
 import org.kadampabookings.kbsx.event.client.businessdata.calendar.impl.CalendarImpl;
 import org.kadampabookings.kbsx.event.client.businessdata.calendar.impl.CalendarTimelineImpl;
-import one.modality.base.shared.entities.KnownItemFamily;
+import one.modality.base.shared.knownitems.KnownItemFamily;
 import one.modality.base.shared.entities.Label;
 import org.kadampabookings.kbsx.base.shared.entities.Option;
 import one.modality.base.shared.entities.markers.HasItemFamilyType;
