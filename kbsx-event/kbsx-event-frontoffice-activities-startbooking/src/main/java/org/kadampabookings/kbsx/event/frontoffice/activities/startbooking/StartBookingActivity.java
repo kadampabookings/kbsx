@@ -1,13 +1,12 @@
 package org.kadampabookings.kbsx.event.frontoffice.activities.startbooking;
 
+import dev.webfx.extras.action.Action;
 import dev.webfx.extras.imagestore.ImageStore;
 import dev.webfx.extras.util.animation.Animations;
 import dev.webfx.extras.util.control.Controls;
 import dev.webfx.extras.util.layout.Layouts;
 import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.platform.console.Console;
-import dev.webfx.platform.uischeduler.UiScheduler;
-import dev.webfx.extras.action.Action;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -72,9 +71,10 @@ final class StartBookingActivity extends BookingProcessActivity {
     @Override
     protected Node styleUi(Node uiNode) {
         fadeOut();
-        onEvent().onComplete(ar -> {
-            onEventOptions(); // Anticipating event options loading now (required for options and fees pages)
-            UiScheduler.runInUiThread(() -> {
+        onEvent()
+            .inUiThread()
+            .onComplete(ar -> {
+                onEventOptions(); // Anticipating event options loading now (required for options and fees pages)
                 String imageUrl = null;
                 if (ar.succeeded()) {
                     Event event = ar.result();
@@ -90,14 +90,13 @@ final class StartBookingActivity extends BookingProcessActivity {
                     eventImageView.setPreserveRatio(true);
                     if (image != null)
                         eventImageView.fitWidthProperty().bind(FXProperties.combine(eventImageViewContainer.widthProperty(), image.widthProperty(),
-                                (w1, w2) -> Math.min(w1.doubleValue(), w2.doubleValue())));
+                            (w1, w2) -> Math.min(w1.doubleValue(), w2.doubleValue())));
                     if (image == null || !image.isBackgroundLoading())
                         runFadeInAnimation();
                     else
                         image.heightProperty().addListener(observable -> runFadeInAnimation());
                 }
             });
-        });
         return super.styleUi(uiNode);
     }
 

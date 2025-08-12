@@ -21,7 +21,6 @@ module kbsx.event.frontoffice.activities.startbooking {
     requires webfx.extras.util.layout;
     requires webfx.kit.util;
     requires webfx.platform.console;
-    requires webfx.platform.uischeduler;
     requires webfx.platform.windowhistory;
     requires webfx.stack.orm.domainmodel.activity;
     requires webfx.stack.routing.uirouter;

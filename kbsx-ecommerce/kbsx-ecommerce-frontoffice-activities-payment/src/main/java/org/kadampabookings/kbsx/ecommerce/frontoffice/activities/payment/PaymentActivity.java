@@ -243,26 +243,25 @@ final class PaymentActivity extends CartBasedActivity {
             }
         }
         updateStore.submitChanges()
-                .onFailure(cause -> Console.log("Error submitting payment", cause))
-                .onSuccess(submitBatch -> {
-                    cartAggregate().unload();
-                    Object[] paymentIdParameter = { submitBatch.getArray()[0].getGeneratedKeys()[0] };
-                    loadStore.executeQueryBatch(
-                                    new EntityStoreQuery("select <frontoffice_loadEvent> from GatewayParameter gp where exists(select MoneyTransfer mt where mt=? and (gp.account=mt.toMoneyAccount or gp.account=null and gp.company=mt.toMoneyAccount.gatewayCompany)) order by company", paymentIdParameter, "gatewayParameters"),
-                                    new EntityStoreQuery("select <frontoffice_cart> from MoneyTransfer where id=?", paymentIdParameter, "lastPayment")
-                            )
-                            .onFailure(cause -> Console.log("Error submitting payment", cause))
-                            .onSuccess(entityLists -> {
-                                EntityList<GatewayParameter> gatewayParameters = entityLists[0];
-                                lastPayment = (MoneyTransfer) entityLists[1].get(0);
-                                UiScheduler.runInUiThread(() -> {
-                                    String innerHtml = generateHtmlForm(gatewayParameters);
-                                    //Logger.log(innerHtml);
-                                    HtmlText htmlText = Layouts.setMaxPrefSizeToInfinite(new HtmlText(innerHtml));
-                                    DialogUtil.showModalNodeInGoldLayout(htmlText, (Pane) getNode(), 0.9, 0.8);
-                                });
-                            });
-                });
+            .onFailure(cause -> Console.log("Error submitting payment", cause))
+            .onSuccess(submitBatch -> {
+                cartAggregate().unload();
+                Object[] paymentIdParameter = {submitBatch.getArray()[0].getGeneratedKeys()[0]};
+                loadStore.executeQueryBatch(
+                        new EntityStoreQuery("select <frontoffice_loadEvent> from GatewayParameter gp where exists(select MoneyTransfer mt where mt=? and (gp.account=mt.toMoneyAccount or gp.account=null and gp.company=mt.toMoneyAccount.gatewayCompany)) order by company", paymentIdParameter, "gatewayParameters"),
+                        new EntityStoreQuery("select <frontoffice_cart> from MoneyTransfer where id=?", paymentIdParameter, "lastPayment")
+                    )
+                    .onFailure(cause -> Console.log("Error submitting payment", cause))
+                    .inUiThread()
+                    .onSuccess(entityLists -> {
+                        EntityList<GatewayParameter> gatewayParameters = entityLists[0];
+                        lastPayment = (MoneyTransfer) entityLists[1].get(0);
+                        String innerHtml = generateHtmlForm(gatewayParameters);
+                        //Logger.log(innerHtml);
+                        HtmlText htmlText = Layouts.setMaxPrefSizeToInfinite(new HtmlText(innerHtml));
+                        DialogUtil.showModalNodeInGoldLayout(htmlText, (Pane) getNode(), 0.9, 0.8);
+                    });
+            });
     }
 
     private String paymentUrl;

@@ -1,12 +1,11 @@
 package org.kadampabookings.kbsx.event.backoffice.activities.cloneevent;
 
-import one.modality.base.shared.entities.Event;
-import one.modality.ecommerce.backoffice.activities.bookings.BookingsRouting;
 import dev.webfx.kit.util.properties.FXProperties;
-import org.kadampabookings.kbsx.event.client.activity.eventdependent.EventDependentPresentationLogicActivity;
-import dev.webfx.platform.uischeduler.UiScheduler;
 import dev.webfx.stack.db.submit.SubmitArgument;
 import dev.webfx.stack.db.submit.SubmitService;
+import one.modality.base.shared.entities.Event;
+import one.modality.ecommerce.backoffice.activities.bookings.BookingsRouting;
+import org.kadampabookings.kbsx.event.client.activity.eventdependent.EventDependentPresentationLogicActivity;
 
 import java.time.LocalDate;
 
@@ -40,10 +39,10 @@ public final class CloneEventPresentationLogicActivity extends EventDependentPre
                     .setReturnGeneratedKeys(true)
                     .setDataSourceId(getDataSourceId())
                     .build())
-                    .onSuccess(result ->
-                        UiScheduler.runInUiThread(() ->
-                            new BookingsRouting.RouteToBookingsRequest(result.getGeneratedKeys()[0], getHistory()).execute()
-                    ));
+                .inUiThread()
+                .onSuccess(result ->
+                        new BookingsRouting.RouteToBookingsRequest(result.getGeneratedKeys()[0], getHistory()).execute()
+                    );
         });
     }
 }

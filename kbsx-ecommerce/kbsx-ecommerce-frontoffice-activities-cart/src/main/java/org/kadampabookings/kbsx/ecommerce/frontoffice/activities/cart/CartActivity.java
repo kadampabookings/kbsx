@@ -63,12 +63,12 @@ final class CartActivity extends CartBasedActivity {
     // Instantiating the different actions
     private final WritableAction modifyBookingAction = new WritableAction(newAction("<<Modify", "{url: 'images/svg/mono/pen.svg', width: 16, height: 16}", this::modifyBooking), "*");
     private final WritableAction cancelBookingAction = new WritableAction(newAction("Cancel", "{url: 'images/svg/mono/cancel-red.svg', width: 16, height: 16}", this::cancelBooking), "*");
-    private final WritableAction contactUsAction     = new WritableAction(newAction("ContactUs>>", "{url: 'images/svg/mono/mail.svg', width: 16, height: 16}", this::contactUs), "*");
+    private final WritableAction contactUsAction = new WritableAction(newAction("ContactUs>>", "{url: 'images/svg/mono/mail.svg', width: 16, height: 16}", this::contactUs), "*");
     //private final Action termsAction                 = ModalityActions.newVisitTermsAndConditionsAction(this::readTerms);
-    private final WritableAction showPaymentsAction  = new WritableAction(newAction("YourPayments", this::showPayments), "*");
-    private final Action addAnotherBookingAction     = newAction("<<AddAnotherBooking", "{url: 'images/svg/mono/plus-circle-green.svg', width: 32, height: 32}", this::addAnotherBooking);
-    private final Action makePaymentAction           = newAction("MakePayment>>", "{url: 'images/svg/mono/pay-circle.svg', width: 32, height: 32}", this::makePayment);
-    private final Action explainStatusAction         = newAction(null, "{url: 'images/svg/mono/help-circle-blue.svg', width: 32, height: 32}", this::explainStatus);
+    private final WritableAction showPaymentsAction = new WritableAction(newAction("YourPayments", this::showPayments), "*");
+    private final Action addAnotherBookingAction = newAction("<<AddAnotherBooking", "{url: 'images/svg/mono/plus-circle-green.svg', width: 32, height: 32}", this::addAnotherBooking);
+    private final Action makePaymentAction = newAction("MakePayment>>", "{url: 'images/svg/mono/pay-circle.svg', width: 32, height: 32}", this::makePayment);
+    private final Action explainStatusAction = newAction(null, "{url: 'images/svg/mono/help-circle-blue.svg', width: 32, height: 32}", this::explainStatus);
 
     private final Property<VisualResult> documentVisualResultProperty = new SimpleObjectProperty<>();
     private final Property<VisualResult> paymentVisualResultProperty = new SimpleObjectProperty<>();
@@ -141,10 +141,12 @@ final class CartActivity extends CartBasedActivity {
         FXProperties.runOnPropertyChange(selection -> {
             int selectedRow = selection == null ? -1 : selection.getSelectedRow();
             if (selectedRow != -1) {
-                onCartWorkingDocuments().onComplete(ar -> UiScheduler.runInUiThread(() -> {
-                    setSelectedWorkingDocument(Collections.get(getCartWorkingDocuments(), selectedRow));
-                    displayBookingOptions();
-                }));
+                onCartWorkingDocuments()
+                    .inUiThread()
+                    .onComplete(ar -> {
+                        setSelectedWorkingDocument(Collections.get(getCartWorkingDocuments(), selectedRow));
+                        displayBookingOptions();
+                    });
             }
         }, documentVisualSelectionProperty);
     }
@@ -211,33 +213,33 @@ final class CartActivity extends CartBasedActivity {
 
     private void displayCartDocuments() {
         displayEntities(cartAggregate().getCartDocuments(), "[" +
-                        "{expression: 'ref', prefWidth: null}," +
-                        "'person_name'," +
-                        "{expression: 'formatPrice(price_deposit) + ` / ` + formatPrice(price_net)', label: 'Deposit', textAlign: 'right'}," +
+                                                            "{expression: 'ref', prefWidth: null}," +
+                                                            "'person_name'," +
+                                                            "{expression: 'formatPrice(price_deposit) + ` / ` + formatPrice(price_net)', label: 'Deposit', textAlign: 'right'}," +
 /*
                         "{expression: 'price_net', format: 'priceWithCurrency'}," +
                         "{expression: 'price_deposit', format: 'priceWithCurrency'}," +
                         "{expression: 'price_balance', format: 'priceWithCurrency'}," +
 */
-                        "{expression: 'documentStatus(this)', label: 'Status', textAlign: 'center'}" +
-                        "]"
-                , "Document", documentVisualResultProperty);
+                                                            "{expression: 'documentStatus(this)', label: 'Status', textAlign: 'center'}" +
+                                                            "]"
+            , "Document", documentVisualResultProperty);
     }
 
     private void displayCartPayments() {
         displayEntities(cartAggregate().getCartPayments(), "[" +
-                        "{expression: 'date', format: 'dateTime'}," +
-                        "{expression: 'document.ref', label: 'Booking ref'}," +
-                        "{expression: 'translate(method)', label: 'Method', textAlign: 'center'}," +
-                        "{expression: 'amount', format: 'priceWithCurrency'}," +
-                        "{expression: 'translate(pending ? `PendingStatus` : successful ? `SuccessfulStatus` : `FailedStatus`)', label: 'Status', textAlign: 'center'}" +
-                        "]"
-                , "MoneyTransfer", paymentVisualResultProperty);
+                                                           "{expression: 'date', format: 'dateTime'}," +
+                                                           "{expression: 'document.ref', label: 'Booking ref'}," +
+                                                           "{expression: 'translate(method)', label: 'Method', textAlign: 'center'}," +
+                                                           "{expression: 'amount', format: 'priceWithCurrency'}," +
+                                                           "{expression: 'translate(pending ? `PendingStatus` : successful ? `SuccessfulStatus` : `FailedStatus`)', label: 'Status', textAlign: 'center'}" +
+                                                           "]"
+            , "MoneyTransfer", paymentVisualResultProperty);
     }
 
     private void displayEntities(List<? extends Entity> entities, String columnsDefinition, Object classId, Property<VisualResult> visualResultProperty) {
         visualResultProperty.setValue(EntitiesToVisualResultMapper.mapEntitiesToVisualResult(entities, columnsDefinition
-                , getDataSourceModel().getDomainModel(), classId));
+            , getDataSourceModel().getDomainModel(), classId));
     }
 
     private void displayBookingOptions() {
@@ -310,21 +312,21 @@ final class CartActivity extends CartBasedActivity {
 
     private void cancelBooking() {
         DialogBuilderUtil.showModalNodeInGoldLayout(new GridPaneBuilder()
-                        .addNodeFillingRow(newLabel("BookingCancellation"))
-                        .addNodeFillingRow(newLabel("ConfirmBookingCancellation"))
-                        .addButtons("YesBookingCancellation", dialogCallback -> {
-                                    disableBookingOptionsButtons(true);
-                                    Document selectedDocument = selectedWorkingDocument.getDocument();
-                                    UpdateStore updateStore = UpdateStore.createAbove(selectedDocument.getStore());
-                                    Document updatedDocument = updateStore.updateEntity(selectedDocument);
-                                    updatedDocument.setCancelled(true);
-                                    updateStore.submitChanges().onSuccess(resultBatch -> {
-                                        reloadCart();
-                                        dialogCallback.closeDialog();
-                                    });
-                                },
-                                "NoBookingCancellation", DialogCallback::closeDialog)
-                , (Pane) getNode());
+                .addNodeFillingRow(newLabel("BookingCancellation"))
+                .addNodeFillingRow(newLabel("ConfirmBookingCancellation"))
+                .addButtons("YesBookingCancellation", dialogCallback -> {
+                        disableBookingOptionsButtons(true);
+                        Document selectedDocument = selectedWorkingDocument.getDocument();
+                        UpdateStore updateStore = UpdateStore.createAbove(selectedDocument.getStore());
+                        Document updatedDocument = updateStore.updateEntity(selectedDocument);
+                        updatedDocument.setCancelled(true);
+                        updateStore.submitChanges().onSuccess(resultBatch -> {
+                            reloadCart();
+                            dialogCallback.closeDialog();
+                        });
+                    },
+                    "NoBookingCancellation", DialogCallback::closeDialog)
+            , (Pane) getNode());
     }
 
     private void contactUs() {

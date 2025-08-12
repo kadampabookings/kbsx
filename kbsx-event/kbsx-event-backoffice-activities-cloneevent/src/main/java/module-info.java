@@ -17,7 +17,6 @@ module kbsx.event.backoffice.activities.cloneevent {
     requires webfx.extras.time.format;
     requires webfx.extras.util.dialog;
     requires webfx.kit.util;
-    requires webfx.platform.uischeduler;
     requires webfx.stack.db.submit;
     requires webfx.stack.orm.domainmodel.activity;
     requires webfx.stack.orm.entity;
