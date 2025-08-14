@@ -248,8 +248,8 @@ final class PaymentActivity extends CartBasedActivity {
                 cartAggregate().unload();
                 Object[] paymentIdParameter = {submitBatch.getArray()[0].getGeneratedKeys()[0]};
                 loadStore.executeQueryBatch(
-                        new EntityStoreQuery("select <frontoffice_loadEvent> from GatewayParameter gp where exists(select MoneyTransfer mt where mt=? and (gp.account=mt.toMoneyAccount or gp.account=null and gp.company=mt.toMoneyAccount.gatewayCompany)) order by company", paymentIdParameter, "gatewayParameters"),
-                        new EntityStoreQuery("select <frontoffice_cart> from MoneyTransfer where id=?", paymentIdParameter, "lastPayment")
+                        new EntityStoreQuery("select <frontoffice_loadEvent> from GatewayParameter gp where exists(select MoneyTransfer mt where mt=? and (gp.account=mt.toMoneyAccount or gp.account=null and gp.company=mt.toMoneyAccount.gatewayCompany)) order by company", "gatewayParameters", paymentIdParameter),
+                        new EntityStoreQuery("select <frontoffice_cart> from MoneyTransfer where id=?", "lastPayment", paymentIdParameter)
                     )
                     .onFailure(cause -> Console.log("Error submitting payment", cause))
                     .inUiThread()

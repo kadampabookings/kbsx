@@ -97,7 +97,7 @@ final class EventAggregateImpl implements EventAggregate {
 */
         if (eventFutureBroadcaster == null)
             eventFutureBroadcaster = new FutureBroadcaster<>(
-                store.executeListQuery(EVENTS_LIST_ID, "select <frontend_loadEvent> from Event where id=?", eventId)
+                store.executeQuery("select <frontend_loadEvent> from Event where id=?", eventId)
                 .map(ignored -> getEvent()));
         return eventFutureBroadcaster.newClient();
     }
@@ -115,10 +115,10 @@ final class EventAggregateImpl implements EventAggregate {
             String siteIds = "(select site.id from Option where " + optionCondition + ")";
             String rateCondition = "site.id in " + siteIds + " and (startDate is null or startDate <= site.event.endDate) and (endDate is null or endDate >= site.event.startDate) and (onDate is null or onDate <= now()) and (offDate is null or offDate > now())";
             eventOptionsFutureBroadcaster = new FutureBroadcaster<>(store.executeQueryBatch(
-                      new EntityStoreQuery("select <frontend_loadEvent> from Option where " + optionCondition + " order by ord", parameters, OPTIONS_LIST_ID)
-                    , new EntityStoreQuery("select <frontend_loadEvent> from Site where id in " + siteIds, parameters, SITES_LIST_ID)
-                    , new EntityStoreQuery("select <frontend_loadEvent> from Rate where " + rateCondition, parameters, RATES_LIST_ID)
-                    , new EntityStoreQuery("select <frontend_loadEvent> from DateInfo where event=? order by id", new Object[]{eventId}, DATE_INFOS_LIST_ID)
+                      new EntityStoreQuery("select <frontend_loadEvent> from Option where " + optionCondition + " order by ord", OPTIONS_LIST_ID, parameters)
+                    , new EntityStoreQuery("select <frontend_loadEvent> from Site where id in " + siteIds, SITES_LIST_ID, parameters)
+                    , new EntityStoreQuery("select <frontend_loadEvent> from Rate where " + rateCondition, RATES_LIST_ID, parameters)
+                    , new EntityStoreQuery("select <frontend_loadEvent> from DateInfo where event=? order by id", DATE_INFOS_LIST_ID, new Object[]{eventId})
             ).map(ignored -> getEventOptions()));
         }
         return eventOptionsFutureBroadcaster.newClient();

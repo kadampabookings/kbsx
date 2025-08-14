@@ -32,11 +32,9 @@ import static dev.webfx.extras.util.layout.Layouts.setMaxPrefSizeToInfinite;
 public final class MultiLanguageEditor {
 
     private final static String[] languages = {"en", "de", "es", "fr", "pt"};
-    private final static String entityListId = "loadedEntity";
 
     private final ButtonFactoryMixin buttonFactory; // Also acts as i18n
-    private final Callable entityIdGetter;
-    private final DataSourceModel dataSourceModel;
+    private final Callable<?> entityIdGetter;
     private final EntityStore loadingStore;
     private final String loadingSelect;
     private final Function<Object, Object> bodyFieldGetter;
@@ -55,15 +53,14 @@ public final class MultiLanguageEditor {
         entityUpdates.put(entity.getId(), new EditedEntity(entity));
     }
 
-    public MultiLanguageEditor(ButtonFactoryMixin buttonFactory, Callable entityIdGetter, DataSourceModel dataSourceModel, Function<Object, Object> bodyFieldGetter, Function<Object, Object> subjectFieldGetter, String domainClassIdOrLoadingSelect) {
+    public MultiLanguageEditor(ButtonFactoryMixin buttonFactory, Callable<?> entityIdGetter, DataSourceModel dataSourceModel, Function<Object, Object> bodyFieldGetter, Function<Object, Object> subjectFieldGetter, String domainClassIdOrLoadingSelect) {
         this(buttonFactory, entityIdGetter, EntityStore.create(dataSourceModel), bodyFieldGetter, subjectFieldGetter, domainClassIdOrLoadingSelect);
     }
 
-    public MultiLanguageEditor(ButtonFactoryMixin buttonFactory, Callable entityIdGetter, EntityStore loadingStore, Function<Object, Object> bodyFieldGetter, Function<Object, Object> subjectFieldGetter, String domainClassIdOrLoadingSelect) {
+    public MultiLanguageEditor(ButtonFactoryMixin buttonFactory, Callable<?> entityIdGetter, EntityStore loadingStore, Function<Object, Object> bodyFieldGetter, Function<Object, Object> subjectFieldGetter, String domainClassIdOrLoadingSelect) {
         this.buttonFactory = buttonFactory;
         this.entityIdGetter = entityIdGetter;
         this.loadingStore = loadingStore;
-        this.dataSourceModel = loadingStore.getDataSourceModel();
         this.bodyFieldGetter = bodyFieldGetter;
         this.subjectFieldGetter = subjectFieldGetter;
         StringBuilder sb = domainClassIdOrLoadingSelect == null || domainClassIdOrLoadingSelect.startsWith("select ") ? null : new StringBuilder("select ");
@@ -106,13 +103,13 @@ public final class MultiLanguageEditor {
         if (entityUpdates.containsKey(entityId))
             monoLanguageEditor.setEditedEntity(entityUpdates.get(entityId));
         else if (loadingSelect != null)
-            loadingStore.executeListQuery(entityListId, loadingSelect, entityId)
-                    .onSuccess(entities -> {
-                        Entity entity = entities.get(0);
-                        EditedEntity editedEntity = new EditedEntity(entity);
-                        entityUpdates.put(entityId, editedEntity);
-                        monoLanguageEditor.setEditedEntity(editedEntity);
-                    });
+            loadingStore.executeQuery(loadingSelect, entityId)
+                .onSuccess(entities -> {
+                    Entity entity = entities.get(0);
+                    EditedEntity editedEntity = new EditedEntity(entity);
+                    entityUpdates.put(entityId, editedEntity);
+                    monoLanguageEditor.setEditedEntity(editedEntity);
+                });
     }
 
     private MonoLanguageEditor getCurrentMonoLanguageEditor() {
@@ -148,7 +145,7 @@ public final class MultiLanguageEditor {
     private final class MonoLanguageEditor {
         private final TextField subjectTextField = new TextField();
         private final HtmlTextEditor editor = new HtmlTextEditor();
-        private final Button saveButton =   buttonFactory.newButton(closeCallback != null ? OK_ACTION_KEY     : SAVE_ACTION_KEY ,  this::save);
+        private final Button saveButton = buttonFactory.newButton(closeCallback != null ? OK_ACTION_KEY : SAVE_ACTION_KEY, this::save);
         private final Button revertButton = buttonFactory.newButton(closeCallback != null ? CANCEL_ACTION_KEY : REVERT_ACTION_KEY, this::revert);
         private final Object subjectField;
         private final Object bodyField;
@@ -179,7 +176,7 @@ public final class MultiLanguageEditor {
 
         String format(String editorText) {
             if (editorText != null) {
-                editorText = Strings.replaceAll(editorText,"\n", "");
+                editorText = Strings.replaceAll(editorText, "\n", "");
                 if (editorText.startsWith("<p>") && editorText.indexOf("</p>") == editorText.length() - 4)
                     editorText = editorText.substring(3, editorText.length() - 4);
             }
@@ -221,10 +218,10 @@ public final class MultiLanguageEditor {
         void save() {
             if (editedEntity != null)
                 editedEntity.updateStore.submitChanges()
-                        .onSuccess(result -> {
-                            updateButtonsDisable();
-                            callCloseCallback(true);
-                        });
+                    .onSuccess(result -> {
+                        updateButtonsDisable();
+                        callCloseCallback(true);
+                    });
         }
 
         void callCloseCallback(boolean saved) {
@@ -251,7 +248,7 @@ public final class MultiLanguageEditor {
                 buttonsBar.setLeft(hBox);
                 buttonsBar.setCenter(new HBox(20, Layouts.createHGrowable(), saveButton, revertButton, Layouts.createHGrowable()));
                 borderPane.setBottom(buttonsBar);
-                // The following code is just a temporary workaround to make CKEditor work in html platform (to be removed once fixed)
+                // The following code is just a temporary workaround to make CKEditor work on the web platform (to be removed once fixed)
                 if (editedEntity != null) {
                     editor.resize(1, 1);
                     editor.requestLayout();

@@ -26,7 +26,6 @@ import java.util.function.Predicate;
 public interface EventAggregate extends HasDataSourceModel {
 
     // Entity lists ids used to store event options
-    Object EVENTS_LIST_ID = "events";
     Object OPTIONS_LIST_ID = "options";
     Object SITES_LIST_ID = "sites";
     Object RATES_LIST_ID = "rates";

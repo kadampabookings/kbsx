@@ -27,8 +27,8 @@ public final class WorkingDocumentLoader {
     public static Future<WorkingDocument> load(EventAggregate eventAggregate, Object documentPk) {
         EntityStore store = EntityStore.createAbove(eventAggregate.getEventStore());
         Future<EntityList[]> queryBatchFuture = store.executeQueryBatch(
-              new EntityStoreQuery(CartAggregateImpl.DOCUMENT_LINE_LOAD_QUERY, new Object[]{documentPk})
-            , new EntityStoreQuery(CartAggregateImpl.ATTENDANCE_LOAD_QUERY   , new Object[]{documentPk})
+              new EntityStoreQuery(CartAggregateImpl.DOCUMENT_LINE_LOAD_QUERY, documentPk)
+            , new EntityStoreQuery(CartAggregateImpl.ATTENDANCE_LOAD_QUERY   , documentPk)
         );
         return AsyncUtil.allOf(eventAggregate.onEventOptions(), queryBatchFuture).map(v -> {
             EntityList[] entityLists = queryBatchFuture.result();
