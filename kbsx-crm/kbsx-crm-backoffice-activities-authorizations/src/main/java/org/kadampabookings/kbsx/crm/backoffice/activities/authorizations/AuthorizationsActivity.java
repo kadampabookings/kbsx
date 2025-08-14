@@ -96,7 +96,8 @@ final class AuthorizationsActivity extends ViewDomainActivityBase implements Mod
 
         // Managees
         ReactiveVisualMapper.createPushReactiveChain(this)
-                .always("{class: 'AuthorizationManagement', orderBy: 'id'}")
+                .always( // language=JSON5
+                    "{class: 'AuthorizationManagement', orderBy: 'id'}")
                 // Temporary commented as ModalityUserPrincipal provisioning is not yet done. TODO: uncomment this once provisioning is done.
                 //.ifNotNullOtherwiseEmpty(FXModalityUserPrincipal.modalityUserPrincipalProperty(), principal -> where("manager=?", principal.getUserPersonId()))
                 .setEntityColumns(manageeColumns)
@@ -107,7 +108,8 @@ final class AuthorizationsActivity extends ViewDomainActivityBase implements Mod
 
         // Roles
         ReactiveVisualMapper.createPushReactiveChain(this)
-                .always("{class: 'AuthorizationRole', orderBy: 'id'}")
+                .always( // language=JSON5
+                    "{class: 'AuthorizationRole', orderBy: 'id'}")
                 .setEntityColumns(roleColumns)
                 .visualizeResultInto(rolesGrid)
                 .setSelectedEntityHandler(selectedEntityProperty::setValue)
@@ -115,7 +117,8 @@ final class AuthorizationsActivity extends ViewDomainActivityBase implements Mod
 
         // Authorization assignments
         assignmentVisualMapper = ReactiveVisualMapper.createPushReactiveChain(this)
-                .always("{class: 'AuthorizationAssignment', orderBy: 'id'}")
+                .always( // language=JSON5
+                    "{class: 'AuthorizationAssignment', orderBy: 'id'}")
                 .ifNotNullOtherwise(selectedEntityProperty,
                         entity -> where("AuthorizationManagement".equals(entity.getDomainClass().getName()) ? "management=?" : "management=null and role=?", entity),
                         where("management=null and role=null"))

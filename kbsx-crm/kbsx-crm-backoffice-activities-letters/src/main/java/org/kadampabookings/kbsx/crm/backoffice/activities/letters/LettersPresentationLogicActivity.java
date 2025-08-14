@@ -20,17 +20,16 @@ final class LettersPresentationLogicActivity
     @Override
     protected void startLogic(LettersPresentationModel pm) {
         ReactiveVisualMapper.createReactiveChain(this)
-                .always("{class: 'Letter', where: 'active', orderBy: 'id'}")
+                .always( // language=JSON5
+                    "{class: 'Letter', where: 'active', orderBy: 'id'}")
                 // Condition
                 .ifNotNull(pm.eventIdProperty(), eventId -> where("event=?", eventId))
                 // Search box condition
                 .ifTrimNotEmpty(pm.searchTextProperty(), s -> where("lower(name) like ?", "%" + s.toLowerCase() + "%"))
                 // Limit condition
                 .ifPositive(pm.limitProperty(), l -> limit("?", l))
-                .setEntityColumns("[" +
-                "'name'," +
-                "'type'" +
-                "]")
+                .setEntityColumns( // language=JSON5
+                    "['name','type']")
                 .applyDomainModelRowStyle()
                 .visualizeResultInto(pm.genericVisualResultProperty())
                 .setVisualSelectionProperty(pm.genericVisualSelectionProperty())

@@ -80,13 +80,15 @@ final class DiningAreasActivity extends EventDependentViewDomainActivity impleme
     protected void startLogic() {
         // Setting up the group mapper that build the content displayed in the group view
         leftSittingVisualMapper = ReactiveVisualMapper.<DocumentLine>createReactiveChain(this)
-                .always("{class: 'DocumentLine', alias: 'dl', columns: 'resourceConfiguration,count(1)', where: `!cancelled and item.family.code='meals'`, groupBy: 'resourceConfiguration', orderBy: 'resourceConfiguration..name'}")
+                .always( // language=JSON5
+                    "{class: 'DocumentLine', alias: 'dl', columns: 'resourceConfiguration,count(1)', where: '!cancelled and item.family.code=`meals`', groupBy: 'resourceConfiguration', orderBy: 'resourceConfiguration..name'}")
                 // Applying the event condition
                 .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=?", eventId))
         ;
 
         rightAttendanceVisualMapper = ReactiveVisualMapper.<Attendance>createReactiveChain(this)
-                .always("{class: 'Attendance', alias: 'a', columns: `documentLine.resourceConfiguration,date,count(1)`, where: `present and documentLine.(!cancelled and item.family.code='meals')`, groupBy: 'documentLine.resourceConfiguration,date', orderBy: 'date'}")
+                .always( // language=JSON5
+                    "{class: 'Attendance', alias: 'a', columns: 'documentLine.resourceConfiguration,date,count(1)', where: 'present and documentLine.(!cancelled and item.family.code=`meals`)', groupBy: 'documentLine.resourceConfiguration,date', orderBy: 'date'}")
                 // Applying the event condition
                 .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("documentLine.document.event=?", eventId))
         ;
@@ -95,7 +97,8 @@ final class DiningAreasActivity extends EventDependentViewDomainActivity impleme
         statisticsBuilder = new StatisticsBuilder(leftSittingVisualMapper, rightAttendanceVisualMapper, pm.sittingVisualResultProperty()).start();
 
         rulesVisualMapper = ReactiveVisualMapper.createPushReactiveChain(this)
-                .always("{class: 'AllocationRule', alias: 'ar', columns: '<default>', orderBy: 'ord,id'}")
+                .always( // language=JSON5
+                    "{class: 'AllocationRule', alias: 'ar', columns: '<default>', orderBy: 'ord,id'}")
                 // Applying the event condition
                 .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("event=?", eventId))
                 // Displaying the result into the rules table through the presentation model

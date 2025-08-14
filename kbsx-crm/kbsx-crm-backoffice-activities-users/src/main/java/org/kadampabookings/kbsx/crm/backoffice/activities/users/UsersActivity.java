@@ -90,12 +90,14 @@ final class UsersActivity extends OrganizationDependentViewDomainActivity implem
     protected void startLogic() {
         // Setting up the group mapper that build the content displayed in the group view
         groupVisualMapper = ReactiveVisualMapper.<Person>createGroupReactiveChain(this, pm)
-                .always("{class: 'Person', alias: 'p', orderBy: 'id'}")
+                .always( // language=JSON5
+                    "{class: 'Person', alias: 'p', orderBy: 'id'}")
                 .start();
 
         // Setting up the master mapper that build the content displayed in the master view
         masterVisualMapper = ReactiveVisualMapper.<Person>createMasterPushReactiveChain(this, pm)
-                .always("{class: 'Person', alias: 'p', orderBy: 'lastName,firstName,id'}")
+                .always( // language=JSON5
+                    "{class: 'Person', alias: 'p', orderBy: 'lastName,firstName,id'}")
                 // Applying the user search
                 .ifTrimNotEmpty(pm.searchTextProperty(), s ->
                         s.contains("@") ? where("lower(email) like ?", "%" + s.toLowerCase() + "%")

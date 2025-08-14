@@ -119,13 +119,16 @@ final class EditableOptionsActivity extends OptionsActivity {
             VisualGrid visualGrid = new VisualGrid();
             addOptionDialogPane = new BorderPane(setMaxPrefSizeToInfinite(visualGrid));
             addOptionDialogVisualMapper = ReactiveVisualMapper.<Option>createPushReactiveChain(this)
-                    .always("{class: 'Option', alias: 'o', where: 'parent=null and template', orderBy: 'event.id desc,ord'}")
+                    .always( // language=JSON5
+                        "{class: 'Option', alias: 'o', where: 'parent=null and template', orderBy: 'event.id desc,ord'}")
                     .always(eventIdProperty(), e -> where("event.organization=?", getEvent().getOrganization()))
-                    .setEntityColumns("[" +
-                            "{label: 'Option', expression: 'coalesce(itemFamily.icon,item.family.icon),coalesce(name, item.name)'}," +
-                            "{label: 'Event', expression: 'event.(icon, name + ` ~ ` + dateIntervalFormat(startDate,endDate))'}," +
-                            "{label: 'Event type', expression: 'event.type'}" +
-                            "]")
+                    .setEntityColumns( // language=JSON5
+                        """
+                            [
+                                {label: 'Option', expression: 'coalesce(itemFamily.icon,item.family.icon),coalesce(name, item.name)'},
+                                {label: 'Event', expression: 'event.(icon, name + ` ~ ` + dateIntervalFormat(startDate,endDate))'},
+                                {label: 'Event type', expression: 'event.type'}
+                            ]""")
                     .visualizeResultInto(visualGrid.visualResultProperty())
                     .setVisualSelectionProperty(visualGrid.visualSelectionProperty())
                     .start();

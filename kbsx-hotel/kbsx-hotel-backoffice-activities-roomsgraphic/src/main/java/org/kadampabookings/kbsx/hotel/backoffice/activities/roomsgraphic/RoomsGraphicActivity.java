@@ -70,7 +70,8 @@ final class RoomsGraphicActivity extends EventDependentViewDomainActivity implem
         EventDependentPresentationModel pm = getPresentationModel();
         // Mapping the sites of the current events to tabs
         sitesToTabsMapper = ReactiveObjectsMapper.<Site, Tab>createPushReactiveChain(this)
-                .always("{class: 'Site', alias: 's', fields: 'icon,name', where: `exists(select ResourceConfiguration where resource.site=s and item.family.code='acco')`, orderBy: 'ord,id'}")
+                .always( // language=JSON5
+                    "{class: 'Site', alias: 's', fields: 'icon,name', where: 'exists(select ResourceConfiguration where resource.site=s and item.family.code=`acco`)', orderBy: 'ord,id'}")
                 // Applying the event condition
                 .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("event=?", eventId))
                 .setIndividualEntityToObjectMapperFactory(IndividualSiteToTabMapper::new)
@@ -109,7 +110,8 @@ final class RoomsGraphicActivity extends EventDependentViewDomainActivity implem
             // Mapping the site items to tabs. Each site item will be represented by a ResourceConfiguration group
             // (of this site and one of its possible items)
             siteItemsToTabsMapper = ReactiveObjectsMapper.<Entity, Tab>createPushReactiveChain(RoomsGraphicActivity.this)
-                    .always("{class: 'ResourceConfiguration', fields: 'item.icon,item.name,resource.site', groupBy: 'item', orderBy: 'item.ord,item.id'}")
+                    .always( // language=JSON5
+                        "{class: 'ResourceConfiguration', fields: 'item.icon,item.name,resource.site', groupBy: 'item', orderBy: 'item.ord,item.id'}")
                     .ifNotNullOtherwiseEmpty(siteProperty, s -> where("resource.site=? and item.family.code=?", s, ITEM_FAMILY_CODE))
                     .setActiveParent(sitesToTabsMapper)
                     .bindActivePropertyTo(siteTab.selectedProperty())
@@ -151,7 +153,8 @@ final class RoomsGraphicActivity extends EventDependentViewDomainActivity implem
                 // member of the site item ResourceConfiguration group (so all having the same site and item).
                 siteItemResourceConfigurationsToBoxesMapper = ReactiveObjectsMapper.<ResourceConfiguration, Node>create(ReactiveEntitiesMapper.createPushReactiveChain(RoomsGraphicActivity.this))
                         .setActiveParent(siteItemsToTabsMapper)
-                        .always("{class: 'ResourceConfiguration', fields: 'name,online,max,comment', orderBy: 'name'}")
+                        .always( // language=JSON5
+                            "{class: 'ResourceConfiguration', fields: 'name,online,max,comment', orderBy: 'name'}")
                         .ifNotNullOtherwiseEmpty(siteItemProperty, rc -> where("resource.site=? and item=?", rc.evaluate("resource.site"), rc.evaluate("item")))
                         .bindActivePropertyTo(siteItemTab.selectedProperty())
                         .setIndividualEntityToObjectMapperFactory(IndividualSiteItemResourceConfigurationToBoxMapper::new)
@@ -201,7 +204,8 @@ final class RoomsGraphicActivity extends EventDependentViewDomainActivity implem
                     // Each person (row in the grid) is represented by a DocumentLine allocated to that site item resource configuration
                     peopleVisualMapper = ReactiveVisualMapper.<DocumentLine>createPushReactiveChain(RoomsGraphicActivity.this)
                             .setActiveParent(siteItemResourceConfigurationsToBoxesMapper)
-                            .always("{class: 'DocumentLine', columns: 'document.<ident>', where: `!cancelled`, orderBy: 'id'}")
+                            .always( // language=JSON5
+                                "{class: 'DocumentLine', columns: 'document.<ident>', where: '!cancelled', orderBy: 'id'}")
                             .ifNotNullOtherwiseEmpty(siteItemResourceConfigurationProperty, rc -> where("resourceConfiguration=?", rc))
                             // Setting the aggregate scope TODO Can this be automatically set by the Dql query push interceptor (or QueryInfo.getQueryScope())?
                             .setAggregateScope(siteItemResourceConfigurationProperty, rc -> AggregateScope.builder().addAggregate("ResourceConfiguration", rc.getPrimaryKey()).build())

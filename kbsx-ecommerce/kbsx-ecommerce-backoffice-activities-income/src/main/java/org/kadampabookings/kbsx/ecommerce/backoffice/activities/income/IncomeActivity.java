@@ -62,7 +62,8 @@ final class IncomeActivity extends EventDependentViewDomainActivity implements
     @Override
     protected void startLogic() {
         totalVisualMapper = ReactiveVisualMapper.<Document>createReactiveChain(this)
-                .always("{class: 'Document', alias: 'd'}")
+                .always( // language=JSON5
+                    "{class: 'Document', alias: 'd'}")
                 // Applying the event condition
                 .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("event=?", eventId))
                 .always("{columns: `null as Totals,sum(price_deposit) as Deposit,sum(price_net) as Invoiced,sum(price_minDeposit) as MinDeposit,sum(price_nonRefundable) as NonRefundable,sum(price_balance) as Balance,count(1) as Bookings,sum(price_balance!=0 ? 1 : 0) as Unreconciled`, groupBy: `event`}")
@@ -70,7 +71,8 @@ final class IncomeActivity extends EventDependentViewDomainActivity implements
                 .start();
 
         breakdownVisualMapper = ReactiveVisualMapper.<DocumentLine>createGroupReactiveChain(this, pm)
-                .always("{class: 'DocumentLine', alias: 'dl'}")
+                .always( // language=JSON5
+                    "{class: 'DocumentLine', alias: 'dl'}")
                 // Applying the event condition
                 .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=?", eventId))
                 .start();

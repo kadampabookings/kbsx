@@ -76,7 +76,8 @@ final class PaymentsActivity extends EventDependentViewDomainActivity implements
     protected void startLogic() {
         // Setting up the group mapper that build the content displayed in the group view
         groupVisualMapper = ReactiveVisualMapper.<MoneyTransfer>createGroupReactiveChain(this, pm)
-                .always("{class: 'MoneyTransfer', alias: 'mt', where: '!receiptsTransfer', orderBy: 'date desc,parent nulls first,id'}")
+                .always( // language=JSON5
+                    "{class: 'MoneyTransfer', alias: 'mt', where: '!receiptsTransfer', orderBy: 'date desc,parent nulls first,id'}")
                 // Applying the event condition
                 .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=?", eventId))
                 .ifFalse(pm.flatPaymentsProperty(), where("parent=null"))
@@ -85,8 +86,10 @@ final class PaymentsActivity extends EventDependentViewDomainActivity implements
 
         // Setting up the master mapper that build the content displayed in the master view
         masterVisualMapper = ReactiveVisualMapper.<MoneyTransfer>createMasterPushReactiveChain(this, pm)
-                .always("{class: 'MoneyTransfer', alias: 'mt', where: '!receiptsTransfer', orderBy: 'date desc,parent nulls first,id'}")
-                .always("{columns: 'date,document,transactionRef,status,comment,amount,methodIcon,pending,successful'}")
+                .always( // language=JSON5
+                    "{class: 'MoneyTransfer', alias: 'mt', where: '!receiptsTransfer', orderBy: 'date desc,parent nulls first,id'}")
+                .always( // language=JSON5
+                    "{columns: 'date,document,transactionRef,status,comment,amount,methodIcon,pending,successful'}")
                 // Applying the event condition
                 .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document..event=? or document is null and exists(select MoneyTransfer where parent=mt and document.event=?)", eventId, eventId))
                 // Applying the flat mode
@@ -101,8 +104,10 @@ final class PaymentsActivity extends EventDependentViewDomainActivity implements
                 .start();
 
         slaveVisualMapper = ReactiveVisualMapper.<MoneyTransfer>createSlavePushReactiveChain(this, pm)
-                .always("{class: 'MoneyTransfer', alias: 'mt', orderBy: 'date desc,parent nulls first,id'}")
-                .always("{columns: 'date,document,transactionRef,status,comment,amount,methodIcon,pending,successful'}")
+                .always( // language=JSON5
+                    "{class: 'MoneyTransfer', alias: 'mt', orderBy: 'date desc,parent nulls first,id'}")
+                .always( // language=JSON5
+                    "{columns: 'date,document,transactionRef,status,comment,amount,methodIcon,pending,successful'}")
                 // Applying the selection condition
                 .ifNotNullOtherwiseEmpty(pm.selectedPaymentProperty(), mt -> where("parent=?", mt))
                 // Applying the flat mode

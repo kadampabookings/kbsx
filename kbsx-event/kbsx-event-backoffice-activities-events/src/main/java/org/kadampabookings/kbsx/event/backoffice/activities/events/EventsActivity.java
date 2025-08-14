@@ -46,19 +46,20 @@ final class EventsActivity extends ViewDomainActivityBase
     @Override
     protected void startLogic() {
         ReactiveVisualMapper.createPushReactiveChain(this)
-                .always("{class: 'Event', alias: 'e', fields2: '(select count(1) from Document where !cancelled and event=e) as bookingsCount', where: 'active', orderBy: 'startDate desc,id desc'}")
+                .always( // language=JSON5
+                    "{class: 'Event', alias: 'e', fields2: '(select count(1) from Document where !cancelled and event=e) as bookingsCount', where: 'active', orderBy: 'startDate desc,id desc'}")
                 // Search box condition
                 .ifTrimNotEmpty(pm.searchTextProperty(), s -> where("lower(name) like ?", "%" + s.toLowerCase() + "%"))
                 .ifNotNull(pm.organizationIdProperty(), o -> where("organization=?", o))
                 // Limit condition
                 .ifPositive(pm.limitProperty(), l -> limit("?", l))
-                .setEntityColumns("[" +
-                        //"{label: 'Image', expression: 'image(`images/calendar.svg`)'}," +
-                        //"{label: 'Event', expression: 'icon, name + ` ~ ` + dateIntervalFormat(startDate,endDate) + ` (` + bookingsCount + `)`'}" +
-                        "{label: 'Event', expression: 'icon, name + ` ~ ` + dateIntervalFormat(startDate,endDate)`'}," +
-                        "'type'," +
-                        "{role: 'background', expression: 'type.background'}" +
-                        "]")
+                .setEntityColumns( // language=JSON5
+                    """
+                        [
+                            {label: 'Event', expression: 'icon, name + ` ~ ` + dateIntervalFormat(startDate,endDate)`'},
+                            'type',
+                            {role: 'background', expression: 'type.background'}
+                        ]""")
                 .visualizeResultInto(pm.genericVisualResultProperty())
                 .setVisualSelectionProperty(pm.genericVisualSelectionProperty())
                 .setSelectedEntityHandler(event -> new BookingsRouting.RouteToBookingsRequest(event, getHistory()).execute())

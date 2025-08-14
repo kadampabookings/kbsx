@@ -212,28 +212,27 @@ final class CartActivity extends CartBasedActivity {
     }
 
     private void displayCartDocuments() {
-        displayEntities(cartAggregate().getCartDocuments(), "[" +
-                                                            "{expression: 'ref', prefWidth: null}," +
-                                                            "'person_name'," +
-                                                            "{expression: 'formatPrice(price_deposit) + ` / ` + formatPrice(price_net)', label: 'Deposit', textAlign: 'right'}," +
-/*
-                        "{expression: 'price_net', format: 'priceWithCurrency'}," +
-                        "{expression: 'price_deposit', format: 'priceWithCurrency'}," +
-                        "{expression: 'price_balance', format: 'priceWithCurrency'}," +
-*/
-                                                            "{expression: 'documentStatus(this)', label: 'Status', textAlign: 'center'}" +
-                                                            "]"
+        displayEntities(cartAggregate().getCartDocuments(), // language=JSON5
+                """
+                    [
+                        {expression: 'ref', prefWidth: null},
+                        'person_name',
+                        {expression: 'formatPrice(price_deposit) + ` / ` + formatPrice(price_net)', label: 'Deposit', textAlign: 'right'},
+                        {expression: 'documentStatus(this)', label: 'Status', textAlign: 'center'}
+                    ]"""
             , "Document", documentVisualResultProperty);
     }
 
     private void displayCartPayments() {
-        displayEntities(cartAggregate().getCartPayments(), "[" +
-                                                           "{expression: 'date', format: 'dateTime'}," +
-                                                           "{expression: 'document.ref', label: 'Booking ref'}," +
-                                                           "{expression: 'translate(method)', label: 'Method', textAlign: 'center'}," +
-                                                           "{expression: 'amount', format: 'priceWithCurrency'}," +
-                                                           "{expression: 'translate(pending ? `PendingStatus` : successful ? `SuccessfulStatus` : `FailedStatus`)', label: 'Status', textAlign: 'center'}" +
-                                                           "]"
+        displayEntities(cartAggregate().getCartPayments(), // language=JSON5
+                """
+                    [
+                        {expression: 'date', format: 'dateTime'},
+                        {expression: 'document.ref', label: 'Booking ref'},
+                        {expression: 'translate(method)', label: 'Method', textAlign: 'center'},
+                        {expression: 'amount', format: 'priceWithCurrency'},
+                        {expression: 'translate(pending ? `PendingStatus` : successful ? `SuccessfulStatus` : `FailedStatus`)', label: 'Status', textAlign: 'center'}
+                    ]"""
             , "MoneyTransfer", paymentVisualResultProperty);
     }
 

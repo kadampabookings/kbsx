@@ -18,7 +18,8 @@ final class MonitorPresentationLogicActivity
     @Override
     protected void startLogic(MonitorPresentationModel pm) {
         ReactiveEntitiesMapper<Entity> metricsMapper = ReactiveEntitiesMapper.createPushReactiveChain(this)
-                .always("{class: 'Metrics', orderBy: 'date desc', limit: '500'}");
+                .always( // language=JSON5
+                    "{class: 'Metrics', orderBy: 'date desc', limit: '500'}");
 
         ReactiveVisualMapper.create(metricsMapper)
                 .setEntityColumns("['0 + id','memoryUsed','memoryTotal']")

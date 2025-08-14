@@ -24,16 +24,19 @@ final class OrganizationsPresentationLogicActivity
     @Override
     protected void startLogic(OrganizationsPresentationModel pm) {
         ReactiveVisualMapper.createPushReactiveChain(this)
-                .always("{class: 'Organization', alias: 'o', where: '!closed and name!=`ISC`', orderBy: 'name'}")
+                .always( // language=JSON5
+                    "{class: 'Organization', alias: 'o', where: '!closed and name!=`ISC`', orderBy: 'name'}")
                 // Search box condition
                 .ifTrimNotEmpty(pm.searchTextProperty(), s -> where("lower(name) like ?", "%" + s.toLowerCase() + "%"))
                 .ifTrue(pm.withEventsProperty(), "{where: 'exists(select Event where organization=o)', orderBy: 'id'}")
                 // Limit condition
                 .ifPositive(pm.limitProperty(), l -> limit("?", l))
-                .setEntityColumns("[" +
-                        "{label: 'Centre', expression: '[icon, name + ` (` + type.code + `)`]'}," +
-                        "{label: 'Country', expression: '[country.icon, country.(name + ` (` + continent.name + `)`)]'}" +
-                        "]")
+                .setEntityColumns( // language=JSON5
+                    """
+                        [
+                        {label: 'Centre', expression: '[icon, name + ` (` + type.code + `)`]'},
+                        {label: 'Country', expression: '[country.icon, country.(name + ` (` + continent.name + `)`)]'}
+                        ]""")
                 .applyDomainModelRowStyle()
                 .visualizeResultInto(pm.genericVisualResultProperty())
                 .setVisualSelectionProperty(pm.genericVisualSelectionProperty())

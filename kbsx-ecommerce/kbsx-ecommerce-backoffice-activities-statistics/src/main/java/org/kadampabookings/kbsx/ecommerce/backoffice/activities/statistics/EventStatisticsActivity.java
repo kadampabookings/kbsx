@@ -88,13 +88,15 @@ final class EventStatisticsActivity extends EventDependentViewDomainActivity imp
     protected void startLogic() {
         // Setting up the left group filter for the left content displayed in the group view
         leftGroupVisualMapper = ReactiveVisualMapper.<DocumentLine>createGroupReactiveChain(this, pm)
-                .always("{class: 'DocumentLine', alias: 'dl'}")
+                .always( // language=JSON5
+                    "{class: 'DocumentLine', alias: 'dl'}")
                 // Applying the event condition
                 .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=?", eventId))
         ;
 
         rightAttendanceVisualMapper = ReactiveVisualMapper.<Attendance>createReactiveChain(this)
-                .always("{class: 'Attendance', alias: 'a', where: 'present', orderBy: 'date'}")
+                .always( // language=JSON5
+                    "{class: 'Attendance', alias: 'a', where: 'present', orderBy: 'date'}")
                 .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("documentLine.document.event=?", eventId))
                 // Applying the condition and group selected by the user
                 .ifNotNullOtherwiseEmpty(pm.conditionDqlStatementProperty(), conditionDqlStatement -> {
@@ -117,9 +119,11 @@ final class EventStatisticsActivity extends EventDependentViewDomainActivity imp
 
         // Setting up the master filter for the content displayed in the master view
         masterVisualMapper = ReactiveVisualMapper.<DocumentLine>createMasterReactiveChain(this, pm)
-                .always("{class: 'DocumentLine', alias: 'dl', orderBy: 'document.ref,item.family.ord,site..ord,item.ord'}")
+                .always( // language=JSON5
+                    "{class: 'DocumentLine', alias: 'dl', orderBy: 'document.ref,item.family.ord,site..ord,item.ord'}")
                 // Always loading the fields required for viewing the booking details
-                .always("{fields: `document.(" + BookingDetailsPanel.REQUIRED_FIELDS + ")`}")
+                .always( // language=JSON5
+                    "{fields: 'document.(" + BookingDetailsPanel.REQUIRED_FIELDS + ")'}")
                 // Applying the event condition
                 .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=?", eventId))
                 .applyDomainModelRowStyle() // Colorizing the rows

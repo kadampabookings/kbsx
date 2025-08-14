@@ -20,9 +20,11 @@ final class TermsPresentationLogicActivity
     @Override
     protected void startLogic(TermsPresentationModel pm) {
         ReactiveVisualMapper.createReactiveChain(this)
-                .always("{class: 'Letter', where: 'type.terms', limit: '1'}")
+                .always( // language=JSON5
+                    "{class: 'Letter', where: 'type.terms', limit: '1'}")
                 .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), id -> where("event=?", id))
-                .always(I18n.languageProperty(), lang -> parse("{columns: '[`html(" + lang + ")`]'}"))
+                .always(I18n.languageProperty(), lang -> parse(  // language=JSON5
+                    "{columns: '[`html(" + lang + ")`]'}"))
                 .visualizeResultInto(pm.termsLetterVisualResultProperty())
                 .start();
     }
