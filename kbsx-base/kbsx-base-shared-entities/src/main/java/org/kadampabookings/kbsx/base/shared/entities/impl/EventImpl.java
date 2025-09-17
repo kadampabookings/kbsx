@@ -8,10 +8,13 @@ import dev.webfx.stack.orm.entity.impl.EntityFactoryProviderImpl;
 import org.kadampabookings.kbsx.base.shared.entities.Event;
 import org.kadampabookings.kbsx.hotel.shared.businessdata.time.DateTimeRange;
 
+import java.time.Clock;
+import java.time.ZoneId;
+
 /**
  * @author Bruno Salmon
  */
-public  final class EventImpl extends DynamicEntity implements Event {
+public final class EventImpl extends DynamicEntity implements Event {
 
     public EventImpl(EntityId id, EntityStore store) {
         super(id, store);
@@ -39,6 +42,17 @@ public  final class EventImpl extends DynamicEntity implements Event {
         if (parsedMaxDateTimeRange == null)
             parsedMaxDateTimeRange = DateTimeRange.parse(getMaxDateTimeRange());
         return parsedMaxDateTimeRange;
+    }
+
+    // Not used in KBSX
+    @Override
+    public ZoneId getEventZoneId() {
+        return null;
+    }
+
+    @Override
+    public Clock getEventClock() {
+        return null;
     }
 
     public static final class ProvidedFactory extends EntityFactoryProviderImpl<one.modality.base.shared.entities.Event> {
