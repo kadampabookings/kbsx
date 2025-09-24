@@ -938,6 +938,15 @@ Text, Label, Button, TextField {
     -fx-max-width: 20px;
     -fx-alignment: center-left;
 }
+/*===== modality-event-mediaview-javafx@main.css from modality-event-client-mediaview =====*/
+
+.root {
+    -modality-media-button-circle-background: -brand-main-color;
+}
+
+.media-button {
+    -fx-fill: -modality-media-button-circle-background;
+}
 /*===== modality-frontoffice-mainframe-javafx@main.css from modality-base-frontoffice-mainframe-activity =====*/
 
 .main-frame {
