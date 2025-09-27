@@ -8,7 +8,7 @@ import javafx.scene.Node;
 import one.modality.base.client.activity.ModalityButtonFactoryMixin;
 import one.modality.base.client.activity.table.GenericTable;
 import one.modality.crm.backoffice.organization.fx.FXOrganizationId;
-import one.modality.ecommerce.backoffice.activities.bookings.BookingsRouting;
+import one.modality.booking.backoffice.activities.bookings.BookingsRouting;
 import one.modality.event.backoffice.events.pm.EventsPresentationModel;
 
 import static dev.webfx.stack.orm.dql.DqlStatement.limit;

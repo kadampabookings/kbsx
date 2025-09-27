@@ -6,8 +6,8 @@ module kbsx.event.backoffice.activities.events {
     requires javafx.graphics;
     requires modality.base.client.activity;
     requires modality.base.client.util;
+    requires modality.booking.backoffice.activity.bookings.plugin;
     requires modality.crm.backoffice.organization.fx;
-    requires modality.ecommerce.backoffice.activity.bookings.plugin;
     requires modality.event.backoffice.events.pm;
     requires webfx.extras.operation;
     requires webfx.platform.windowhistory;

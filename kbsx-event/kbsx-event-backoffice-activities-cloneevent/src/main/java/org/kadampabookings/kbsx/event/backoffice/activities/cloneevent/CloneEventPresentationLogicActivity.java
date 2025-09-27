@@ -4,7 +4,7 @@ import dev.webfx.kit.util.properties.FXProperties;
 import dev.webfx.stack.db.submit.SubmitArgument;
 import dev.webfx.stack.db.submit.SubmitService;
 import one.modality.base.shared.entities.Event;
-import one.modality.ecommerce.backoffice.activities.bookings.BookingsRouting;
+import one.modality.booking.backoffice.activities.bookings.BookingsRouting;
 import org.kadampabookings.kbsx.event.client.activity.eventdependent.EventDependentPresentationLogicActivity;
 
 import java.time.LocalDate;

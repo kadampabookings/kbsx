@@ -11,7 +11,7 @@ module kbsx.event.backoffice.activities.cloneevent {
     requires kbsx.event.client.activity.eventdependent;
     requires modality.base.client.activity;
     requires modality.base.shared.entities;
-    requires modality.ecommerce.backoffice.activity.bookings.plugin;
+    requires modality.booking.backoffice.activity.bookings.plugin;
     requires modality.event.client.activity.eventdependent;
     requires webfx.extras.controlfactory;
     requires webfx.extras.time.format;
