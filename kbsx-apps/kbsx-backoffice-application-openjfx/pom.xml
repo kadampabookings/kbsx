@@ -45,7 +45,7 @@
 
         <dependency>
             <groupId>one.modality</groupId>
-            <artifactId>modality-base-client-navigationarrows-java-plugin</artifactId>
+            <artifactId>modality-base-client-navigationarrows-openjfx-plugin</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>runtime</scope>
         </dependency>
@@ -142,7 +142,7 @@
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-platform-blob-java</artifactId>
+            <artifactId>webfx-platform-blob-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
@@ -166,43 +166,43 @@
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-platform-fetch-java</artifactId>
+            <artifactId>webfx-platform-fetch-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-platform-os-java</artifactId>
+            <artifactId>webfx-platform-os-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-platform-resource-java</artifactId>
+            <artifactId>webfx-platform-resource-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-platform-scheduler-java</artifactId>
+            <artifactId>webfx-platform-scheduler-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-platform-shutdown-java</artifactId>
+            <artifactId>webfx-platform-shutdown-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-platform-storage-java</artifactId>
+            <artifactId>webfx-platform-storage-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-platform-storagelocation-java</artifactId>
+            <artifactId>webfx-platform-storagelocation-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
@@ -215,19 +215,19 @@
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-platform-useragent-java-client</artifactId>
+            <artifactId>webfx-platform-useragent-jre-client</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-platform-windowhistory-java</artifactId>
+            <artifactId>webfx-platform-windowhistory-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-platform-windowlocation-java</artifactId>
+            <artifactId>webfx-platform-windowlocation-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
@@ -257,13 +257,13 @@
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-stack-com-bus-json-client-websocket-java</artifactId>
+            <artifactId>webfx-stack-com-bus-json-client-websocket-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-stack-com-websocket-java</artifactId>
+            <artifactId>webfx-stack-com-websocket-jre</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
@@ -287,7 +287,7 @@
 
         <dependency>
             <groupId>dev.webfx</groupId>
-            <artifactId>webfx-stack-db-querysubmit-java-jdbc</artifactId>
+            <artifactId>webfx-stack-db-querysubmit-jre-jdbc</artifactId>
             <version>0.1.0-SNAPSHOT</version>
         </dependency>
 
