@@ -1,6 +1,24 @@
 /* @font-face rules listed first, otherwise they are ignored (OpenJFX bug) */
 
 @font-face {
+    font-family: 'Vollkorn SC';
+    font-weight: bold;
+    src: url('webfx-css:fonts/vollkornsc/VollkornSC-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Vollkorn SC';
+    font-style: normal;
+    src: url('webfx-css:fonts/vollkornsc/VollkornSC-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Vollkorn SC';
+    font-weight: 600; /* semi-bold */
+    src: url('webfx-css:fonts/vollkornsc/VollkornSC-SemiBold.ttf');
+}
+
+@font-face {
     font-family: 'Roboto';
     font-weight: bold;
     src: url('webfx-css:fonts/roboto/Roboto-Bold.ttf');
@@ -47,24 +65,6 @@
     font-weight: bold;
     font-style: italic;
     src: url('webfx-css:fonts/montserrat/Montserrat-BoldItalic.ttf');
-}
-
-@font-face {
-    font-family: 'Vollkorn SC';
-    font-weight: bold;
-    src: url('webfx-css:fonts/vollkornsc/VollkornSC-Bold.ttf');
-}
-
-@font-face {
-    font-family: 'Vollkorn SC';
-    font-style: normal;
-    src: url('webfx-css:fonts/vollkornsc/VollkornSC-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'Vollkorn SC';
-    font-weight: 600; /* semi-bold */
-    src: url('webfx-css:fonts/vollkornsc/VollkornSC-SemiBold.ttf');
 }
 
 @font-face {
@@ -850,10 +850,6 @@ HtmlText, HtmlTextEditor {
     -brand-main-color: -brand-orange-color;
     -brand-main-background-color: -brand-orange-color;
 }
-/*===== modality-client-css-import-font-roboto-javafx@main.css from modality-base-client-css =====*/
-
-/*===== modality-client-css-import-font-monserrat-javafx@main.css from modality-base-client-css =====*/
-
 /*===== modality-client-css-import-font-vollkornsc-javafx@main.css from modality-base-client-css =====*/
 
 /*===== modality-client-css-javafx@main.css from modality-base-client-css =====*/
@@ -891,190 +887,12 @@ Text, Label, Button, TextField {
     -fx-font-weight: bolder;
 }
 
+/*===== modality-client-css-import-font-roboto-javafx@main.css from modality-base-client-css =====*/
+
+/*===== modality-client-css-import-font-monserrat-javafx@main.css from modality-base-client-css =====*/
+
 /*===== modality-client-css-import-font-poppins-javafx@main.css from modality-base-client-css =====*/
 
-/*===== modality-event-backoffice-activity-medias-plugin-javafx@main.css from modality-base-client-i18n =====*/
-
-.translation-button {
-    -fx-background-color: transparent;
-    -fx-border-color: #ccc;
-    -fx-border-radius: 3;
-    -fx-padding: 2 6 2 6;
-}
-
-.translation-pane {
-    -fx-background-color: #f0f0f0;
-    -fx-background-radius: 5;
-}
-
-.strikethrough LabeledText {
-    -fx-strikethrough: true;
-}
-
-
-/* Error message box styling */
-.error-message-box {
-    -fx-background-color: #fee;
-    -fx-border-color: #fcc;
-    -fx-border-width: 1px;
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
-    -fx-padding: 10px 15px 10px 15px;
-    -fx-alignment: center-left;
-    -fx-spacing: 8px;
-    -fx-max-width: infinity;
-}
-
-/* Error message text styling */
-.error-message-text {
-    -fx-wrap-text: true;
-}
-
-/* Error icon styling */
-.error-icon {
-    -fx-font-size: 14px;
-    -fx-min-width: 20px;
-    -fx-pref-width: 20px;
-    -fx-max-width: 20px;
-    -fx-alignment: center-left;
-}
-/*===== modality-event-mediaview-javafx@main.css from modality-event-client-mediaview =====*/
-
-.root {
-    -modality-media-button-circle-background: -brand-main-color;
-}
-
-.media-button {
-    -fx-fill: -modality-media-button-circle-background;
-}
-/*===== modality-frontoffice-mainframe-javafx@main.css from modality-base-frontoffice-mainframe-activity =====*/
-
-.main-frame {
-    -fx-background-color: white;
-}
-
-/* Actually not working in JavaFX
-.main-frame.keyboard-navigation-off {
-    -fx-border-style-focus: none;
-}
-so replaced by the following:
-*/
-
-.main-frame.keyboard-navigation-off :focused {
-    -fx-border-style: none;
-}
-
-/* Actually not working in JavaFX
-.main-frame.keyboard-navigation-on {
-    -fx-border-style-focus: dashed;
-}
-so replaced by the following:
-*/
-
-.main-frame.keyboard-navigation-on :focused {
-    -fx-border-style: dashed;
-    -fx-border-width: 1px;
-    -fx-border-color: -brand-blue-color;
-}
-
-.main-menu-bar ToggleButton, .user-menu-bar ToggleButton {
-    -fx-border-radius: 5px;
-}
-
-/* Actually not working in JavaFX
-.main-frame.keyboard-navigation-off .lang-menu-bar {
-    -fx-border-style-focus: solid;
-}
-so replaced by the following:
-*/
-
-.main-frame.keyboard-navigation-off .lang-menu-bar :focused {
-    -fx-border-style: solid;
-}
-
-.menu-bar {
-    -fx-font-family: "Poppins";
-    -webfx-aria-toggle-button-background-color-hover: transparent;
-    -webfx-aria-toggle-button-background-color-fired: transparent;
-    -webfx-aria-toggle-button-background-color-focused: transparent;
-    -webfx-aria-toggle-button-text-fill-fired: -brand-blue-color;
-}
-
-.menu-bar ToggleButton {
-    -fx-background-color: transparent; /* removes old-style button gradient */
-}
-
-.main-menu-bar ToggleButton {
-    -fx-text-fill: black;
-}
-
-.main-menu-bar ToggleButton.fired, .user-menu-bar ToggleButton.fired {
-    -fx-font-weight: bold;
-}
-
-.main-menu-bar ToggleButton.fired SVGPath, .user-menu-bar ToggleButton.fired SVGPath {
-    -fx-fill: -webfx-aria-toggle-button-text-fill-fired;
-}
-
-.user-menu-bar Label, .user-menu-bar ToggleButton {
-    -fx-font-size: 12px;
-    -fx-text-fill: #838788;
-}
-
-.main-menu-bar Label.brand {
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-fill: -brand-blue-color;
-}
-
-.main-menu-bar Label.brand SVGPath {
-    -fx-fill: -brand-blue-color;
-}
-
-.lang-menu-bar ToggleButton {
-    -fx-border-color: #0096D6;
-    -fx-border-width: 1px 1px 1px 0;
-}
-
-.lang-menu-bar ToggleButton.first-child {
-    -fx-border-width: 1px;
-    -fx-border-radius: 10px 0px 0px 10px;
-    -fx-background-radius: 10px 0px 0px 10px;
-}
-
-.lang-menu-bar ToggleButton.last-child {
-    -fx-border-radius:  0px 10px 10px 0px;
-    -fx-background-radius:  0px 10px 10px 0px;
-}
-
-.lang-menu-bar ToggleButton:selected {
-    -fx-background-color: #F0F0F0;
-}
-
-.lang-menu-bar ToggleButton.fired {
-    -fx-background-color: #0096D6;
-    -fx-text-fill: white;
-}
-
-CollapsePane.menu-bar.non-mobile {
-    -fx-background-color: white;
-    -fx-border-width: 0 0 1px 0 ;
-    -fx-border-color: lightgray;
-}
-
-CollapsePane.menu-bar.lang-menu-bar {
-    -fx-border-width: 0;
-}
-/*===== modality-base-front-office-javafx@main.css from modality-base-frontoffice-application =====*/
-
-.root {
-    /* We don't show the vertical grid lines in the front office (ex: AudioLibraryActivity or VideoStreamingActivity) */
-    -webfx-visualgrid-col-border-color: transparent;
-
-    /* Overriding the default focused & fired background colors for aria toggle buttons with bootstrap and brand colors */
-    -webfx-aria-toggle-button-background-color-focused: -bootstrap-grey1;
-    -webfx-aria-toggle-button-background-color-fired: -brand-blue-color;
-}
 /*===== modality-client-bootstrap-javafx@main.css from modality-base-client-bootstrap =====*/
 
 /* Bootstrap style */
@@ -1179,4 +997,456 @@ CollapsePane.menu-bar.lang-menu-bar {
     -fx-fill: black;
     -fx-background-color: -bootstrap-grey1;
     -fx-border-color: black;
+}
+/*===== modality-event-backoffice-activity-medias-plugin-javafx@main.css from modality-base-client-i18n =====*/
+
+.translation-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 3;
+    -fx-padding: 2 6 2 6;
+}
+
+.translation-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 5;
+}
+
+.strikethrough LabeledText {
+    -fx-strikethrough: true;
+}
+
+
+/* Error message box styling */
+.error-message-box {
+    -fx-background-color: #fee;
+    -fx-border-color: #fcc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 10px 15px 10px 15px;
+    -fx-alignment: center-left;
+    -fx-spacing: 8px;
+    -fx-max-width: infinity;
+}
+
+/* Error message text styling */
+.error-message-text {
+    -fx-wrap-text: true;
+}
+
+/* Error icon styling */
+.error-icon {
+    -fx-font-size: 14px;
+    -fx-min-width: 20px;
+    -fx-pref-width: 20px;
+    -fx-max-width: 20px;
+    -fx-alignment: center-left;
+}
+/*===== modality-frontoffice-bookingelements-javafx@main.css from modality-booking-frontoffice-bookingelements =====*/
+
+.booking-elements {
+    -fx-font-family: "Poppins";
+}
+
+.booking-elements.booking-form {
+    -fx-font-size: 15px;
+}
+
+.personal-details-container {
+    -fx-font-size: 15px;
+}
+
+.person-to-book-button, .person-to-book-dialog {
+    -fx-background-color: -brand-blue-color;
+    -fx-border-style: none;
+    -fx-text-fill: white;
+}
+
+.person-to-book-button Text, .person-to-book-dialog Text {
+    -fx-fill: white;
+}
+
+.person-to-book-button SVGPath {
+    -fx-fill: transparent;
+    -fx-stroke: white;
+}
+
+.person-to-book-dialog {
+    -webfx-visualgrid-selection-color: #6aabd5;
+}
+
+.webfx-button-selector-dialog {
+    -fx-font-family: "Poppins", sans-serif;
+    -fx-font-size: 18px;
+}
+
+.booking-elements .navigation-bar {
+    -fx-font-weight: bold;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+}
+
+.booking-elements .navigation-bar .title {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+}
+
+.booking-elements .navigation-bar ToggleButton {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.booking-elements .navigation-bar ToggleButton:disabled {
+    -fx-text-fill: transparent;
+}
+
+.booking-elements .back-button {
+    -fx-text-fill: -bootstrap-grey5;
+}
+
+.booking-elements .next-button {
+    -fx-text-fill: white;
+}
+
+.booking-elements .back-button SVGPath, .booking-elements .next-button SVGPath {
+    -fx-fill: transparent; /* for the chevron icon */
+}
+
+.booking-elements .price-bar {
+    -fx-background-color: #F4F4F4;
+    -fx-font-weight: bold;
+}
+
+.booking-elements .badge { /* badges don't look vertically centered with Poppins font on the web version */
+    -fx-font-family: "Montserrat", sans-serif;
+}
+
+.booking-elements .wording-label {
+    -fx-line-spacing: 5px; // --fx-line-height: 1.6;
+}
+
+.booking-elements .option-label {
+    -fx-font-weight: bold;
+}
+
+.booking-elements .option-label-secondary {
+    -fx-font-weight: 600;
+}
+
+.booking-elements .period-label {
+    -fx-text-fill: #838788;
+}
+
+.booking-elements .price-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #838788;
+}
+
+.booking-elements .sub-price-label {
+    -fx-text-fill: #838788;
+}
+
+.booking-elements .price-textfield {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-border-style: none;
+}
+
+.booking-elements .text-area {
+    -fx-border-color: black;
+    -fx-border-radius: 19px;
+    -fx-background-radius: 19px;
+}
+/*===== modality-frontoffice-order-javafx@main.css from modality-ecommerce-frontoffice-order =====*/
+
+
+.order-card {
+    -fx-background-color: white;
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0, 0, 2);
+}
+
+.order-header {
+    -fx-border-color: #eee;
+    -fx-border-width: 0 0 1px 0;
+}
+
+.order-status {
+    -fx-background-radius: 18px;
+    -fx-font-size: 14px;
+    -fx-font-weight: 800;
+}
+
+.status-incomplete {
+    -fx-background-color: #ffebee;
+    -fx-text-fill: #c62828;
+}
+
+.status-progress {
+    -fx-background-color: #e3f2fd;
+    -fx-text-fill: #1976d2;
+}
+
+.status-confirmed {
+    -fx-background-color: #e8f5e8;
+    -fx-text-fill: #2e7d32;
+}
+
+.status-complete {
+    -fx-background-color: #e8f5e8;
+    -fx-text-fill: #2e7d32;
+}
+
+.status-cancelled {
+    -fx-background-color: #ffebee;
+    -fx-text-fill: #c62828;
+}
+
+.order-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: 600;
+    -fx-text-fill: #333;
+    }
+
+
+.order-id {
+    -fx-font-size: 14px;
+    -fx-text-fill: #666;
+}
+
+.booker-name {
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+}
+
+.semi-bold {
+    -fx-font-weight: 700
+}
+
+.order-price {
+    -fx-font-size: 18px;
+    -fx-font-weight: 700;
+    -fx-text-fill: #333;
+}
+
+.order-dates {
+    -fx-font-size: 14px;
+    -fx-text-fill: #666;
+}
+
+.detail-item {
+    -fx-border-color: #f0f0f0;
+    -fx-border-width: 0 0 1px 0;
+    -fx-font-size: 14px;
+}
+
+.detail-item:last-child {
+    -fx-border-width: 0;
+}
+
+.detail-label {
+    -fx-font-weight: 700;
+}
+
+.detail-value {
+    -fx-font-size: 15px;
+}
+
+.detail-subitem {
+    -fx-font-size: 14px;
+}
+
+.detail-subitem-label {
+    -fx-text-fill: #666;
+}
+
+.payment-row {
+    -fx-font-size: 14px;
+    -fx-text-fill: black;
+}
+
+.payment-remaining {
+    -fx-font-weight: 700;
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+    -fx-border-color: #eee;
+    -fx-border-width: 1px 0 0 0;
+}
+
+.thank-you-message {
+    -fx-font-size: 16px;
+    -fx-text-fill: #666;
+}
+
+
+
+
+
+/*===== modality-event-frontoffice-medias-javafx@main.css from modality-event-frontoffice-medias =====*/
+
+.notice-icon {
+    -fx-background-color: #FF6D00;
+    -fx-background-radius: 45;
+}
+
+.notice-label {
+     -fx-font-size: 40px;
+     -fx-text-fill: #FFFFFF;
+     -fx-font-weight: bold;
+}
+
+.balance-box {
+    -fx-background-color: #f9fafb;
+    -fx-border-color: #e5e7eb;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+/*===== modality-event-mediaview-javafx@main.css from modality-event-client-mediaview =====*/
+
+.root {
+    -modality-media-button-circle-background: -brand-main-color;
+}
+
+.media-button {
+    -fx-fill: -modality-media-button-circle-background;
+}
+/*===== modality-frontoffice-mainframe-javafx@main.css from modality-base-frontoffice-mainframe-activity =====*/
+
+.main-frame {
+    -fx-background-color: white;
+}
+
+/* Actually not working in JavaFX
+.main-frame.keyboard-navigation-off {
+    -fx-border-style-focus: none;
+}
+so replaced by the following:
+*/
+
+.main-frame.keyboard-navigation-off :focused {
+    -fx-border-style: none;
+}
+
+/* Actually not working in JavaFX
+.main-frame.keyboard-navigation-on {
+    -fx-border-style-focus: dashed;
+}
+so replaced by the following:
+*/
+
+.main-frame.keyboard-navigation-on :focused {
+    -fx-border-style: dashed;
+    -fx-border-width: 1px;
+    -fx-border-color: -brand-blue-color;
+}
+
+.main-menu-bar ToggleButton, .user-menu-bar ToggleButton {
+    -fx-border-radius: 5px;
+}
+
+/* Actually not working in JavaFX
+.main-frame.keyboard-navigation-off .lang-menu-bar {
+    -fx-border-style-focus: solid;
+}
+so replaced by the following:
+*/
+
+.main-frame.keyboard-navigation-off .lang-menu-bar :focused {
+    -fx-border-style: solid;
+}
+
+.menu-bar {
+    -fx-font-family: "Poppins";
+    -webfx-aria-toggle-button-background-color-hover: transparent;
+    -webfx-aria-toggle-button-background-color-fired: transparent;
+    -webfx-aria-toggle-button-background-color-focused: transparent;
+    -webfx-aria-toggle-button-text-fill-fired: -brand-blue-color;
+}
+
+.menu-bar ToggleButton {
+    -fx-background-color: transparent; /* removes old-style button gradient */
+}
+
+.main-menu-bar ToggleButton {
+    -fx-text-fill: black;
+}
+
+
+/* Highlighting the selected menu items (those with the class "fired") by making them bold (in addition to being colored
+   already with the rule defined in .menu-bar { -webfx-aria-toggle-button-text-fill-fired: -brand-blue-color; }). */
+.main-menu-bar ToggleButton.fired, .user-menu-bar ToggleButton.fired {
+    -fx-font-weight: bold;
+}
+
+/* Applying also the same blue color to the SVG icons used in those selected menu items. This is done by setting their
+   SVG fill and/or stroke, but only if required (some icons have no fill or no stroke). The presence of a fill or a
+   stroke are detected by the class "hasFill" and "hasStroke" set by ModalityFrontOfficeMainFrameActivity due to the
+   absence of [fill] and [stroke] support in JavaFX CSS. */
+.main-menu-bar ToggleButton.fired.hasFill SVGPath, .user-menu-bar ToggleButton.fired.hasFill SVGPath {
+    -fx-fill: -webfx-aria-toggle-button-text-fill-fired;
+}
+
+.main-menu-bar ToggleButton.fired.hasStroke SVGPath, .user-menu-bar ToggleButton.fired.hasStroke SVGPath {
+    -fx-stroke: -webfx-aria-toggle-button-text-fill-fired;
+}
+
+.user-menu-bar Label, .user-menu-bar ToggleButton {
+    -fx-font-size: 12px;
+    -fx-text-fill: #838788;
+}
+
+.main-menu-bar Label.brand {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -brand-blue-color;
+}
+
+.main-menu-bar Label.brand SVGPath {
+    -fx-fill: -brand-blue-color;
+}
+
+.lang-menu-bar ToggleButton {
+    -fx-border-color: #0096D6;
+    -fx-border-width: 1px 1px 1px 0;
+}
+
+.lang-menu-bar ToggleButton.first-child {
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px 0px 0px 10px;
+    -fx-background-radius: 10px 0px 0px 10px;
+}
+
+.lang-menu-bar ToggleButton.last-child {
+    -fx-border-radius:  0px 10px 10px 0px;
+    -fx-background-radius:  0px 10px 10px 0px;
+}
+
+.lang-menu-bar ToggleButton:selected {
+    -fx-background-color: #F0F0F0;
+}
+
+.lang-menu-bar ToggleButton.fired {
+    -fx-background-color: #0096D6;
+    -fx-text-fill: white;
+}
+
+CollapsePane.menu-bar.non-mobile {
+    -fx-background-color: white;
+    -fx-border-width: 0 0 1px 0 ;
+    -fx-border-color: lightgray;
+}
+
+CollapsePane.menu-bar.lang-menu-bar {
+    -fx-border-width: 0;
+}
+/*===== modality-base-front-office-javafx@main.css from modality-base-frontoffice-application =====*/
+
+.root {
+    /* We don't show the vertical grid lines in the front office (ex: AudioLibraryActivity or VideoStreamingActivity) */
+    -webfx-visualgrid-col-border-color: transparent;
+
+    /* Overriding the default focused & fired background colors for aria toggle buttons with bootstrap and brand colors */
+    -webfx-aria-toggle-button-background-color-focused: -bootstrap-grey1;
+    -webfx-aria-toggle-button-background-color-fired: -brand-blue-color;
 }
