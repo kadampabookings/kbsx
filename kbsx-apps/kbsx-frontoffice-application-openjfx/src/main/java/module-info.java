@@ -6,6 +6,8 @@ module kbsx.frontoffice.application.openjfx {
     requires javafx.media;
     requires javafx.web;
     requires kbsx.frontoffice.application;
+    requires modality.ecommerce.document.service.buscall;
+    requires modality.ecommerce.document.service.remote;
     requires webfx.extras.canvas.blob.openjfx;
     requires webfx.extras.fxraiser.json;
     requires webfx.extras.visual.grid.peers.openjfx;
