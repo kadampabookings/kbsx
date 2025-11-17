@@ -8,11 +8,9 @@ module kbsx.server.application.vertx {
     requires modality.ecommerce.document.service.server;
     requires modality.ecommerce.payment.server;
     requires webfx.platform.ast.factory.vertx;
-    requires webfx.platform.blob.jre;
     requires webfx.platform.boot.vertx;
     requires webfx.platform.console.java;
     requires webfx.platform.fetch.vertx;
-    requires webfx.platform.file.jre;
     requires webfx.platform.resource.jre;
     requires webfx.platform.scheduler.vertx;
     requires webfx.platform.shutdown.jre;
