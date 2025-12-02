@@ -65,7 +65,7 @@ final class EventStatisticsActivity extends EventDependentViewDomainActivity imp
     @Override
     public void onResume() {
         super.onResume();
-        FXGanttVisibility.showEvents();
+        FXGanttVisibility.showAllEvents();
         FXEventSelector.showEventSelector();
     }
 
