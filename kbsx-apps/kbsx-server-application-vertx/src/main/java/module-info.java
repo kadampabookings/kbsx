@@ -7,6 +7,7 @@ module kbsx.server.application.vertx {
     requires kbsx.server.application;
     requires modality.ecommerce.document.service.server;
     requires modality.ecommerce.payment.server;
+    requires modality.ecommerce.policy.service.server;
     requires webfx.platform.ast.factory.vertx;
     requires webfx.platform.boot.vertx;
     requires webfx.platform.console.java;
