@@ -12,6 +12,8 @@ module kbsx.backoffice.application.openjfx {
     requires modality.ecommerce.document.service.remote;
     requires modality.ecommerce.payment.buscall;
     requires modality.ecommerce.payment.remote;
+    requires modality.ecommerce.policy.service.buscall;
+    requires modality.ecommerce.policy.service.remote;
     requires webfx.extras.fxraiser.json;
     requires webfx.extras.time.format;
     requires webfx.extras.visual.charts.peers.openjfx;
