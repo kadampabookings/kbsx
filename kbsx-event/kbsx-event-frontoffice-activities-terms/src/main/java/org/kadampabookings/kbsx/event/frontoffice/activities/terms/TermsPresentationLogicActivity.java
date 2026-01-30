@@ -22,7 +22,7 @@ final class TermsPresentationLogicActivity
         ReactiveVisualMapper.createReactiveChain(this)
                 .always( // language=JSON5
                     "{class: 'Letter', where: 'type.terms', limit: '1'}")
-                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), id -> where("event=?", id))
+                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), id -> where("event=$1", id))
                 .always(I18n.languageProperty(), lang -> parse(  // language=JSON5
                     "{columns: '[`html(" + lang + ")`]'}"))
                 .visualizeResultInto(pm.termsLetterVisualResultProperty())

@@ -20,7 +20,7 @@ public final class ModalityServerUnresponsiveClientSessionCloserJob implements A
         PushServerService.addUnresponsivePushClientListener(disconnectListener = clientRunId ->
                 SubmitService.executeSubmit(SubmitArgument.builder()
                         .setLanguage("DQL")
-                        .setStatement("update SessionConnection set end=now() where process=?")
+                        .setStatement("update SessionConnection set end=now() where process=$1")
                         .setParameters(clientRunId)
                         .setDataSourceId(DataSourceModelService.getDefaultDataSourceId())
                         .build())

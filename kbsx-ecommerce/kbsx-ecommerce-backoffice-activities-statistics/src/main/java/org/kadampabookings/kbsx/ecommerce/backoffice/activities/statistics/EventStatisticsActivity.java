@@ -91,13 +91,13 @@ final class EventStatisticsActivity extends EventDependentViewDomainActivity imp
                 .always( // language=JSON5
                     "{class: 'DocumentLine', alias: 'dl'}")
                 // Applying the event condition
-                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=?", eventId))
+                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=$1", eventId))
         ;
 
         rightAttendanceVisualMapper = ReactiveVisualMapper.<Attendance>createReactiveChain(this)
                 .always( // language=JSON5
                     "{class: 'Attendance', alias: 'a', where: 'present', orderBy: 'date'}")
-                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("documentLine.document.event=?", eventId))
+                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("documentLine.document.event=$1", eventId))
                 // Applying the condition and group selected by the user
                 .ifNotNullOtherwiseEmpty(pm.conditionDqlStatementProperty(), conditionDqlStatement -> {
                     DqlClause where = conditionDqlStatement.getWhere();
@@ -120,12 +120,12 @@ final class EventStatisticsActivity extends EventDependentViewDomainActivity imp
         // Setting up the master filter for the content displayed in the master view
         masterVisualMapper = ReactiveVisualMapper.<DocumentLine>createMasterReactiveChain(this, pm)
                 .always( // language=JSON5
-                    "{class: 'DocumentLine', alias: 'dl', orderBy: 'document.ref,item.family.ord,site..ord,item.ord'}")
+                    "{class: 'DocumentLine', alias: 'dl', orderBy: 'document.ref,item.family.ord,site?.ord,item.ord'}")
                 // Always loading the fields required for viewing the booking details
                 .always( // language=JSON5
                     "{fields: 'document.(" + BookingDetailsPanel.REQUIRED_FIELDS + ")'}")
                 // Applying the event condition
-                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=?", eventId))
+                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=$1", eventId))
                 .applyDomainModelRowStyle() // Colorizing the rows
                 .start();
     }

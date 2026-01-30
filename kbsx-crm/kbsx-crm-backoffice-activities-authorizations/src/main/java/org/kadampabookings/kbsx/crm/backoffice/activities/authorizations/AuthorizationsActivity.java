@@ -120,7 +120,7 @@ final class AuthorizationsActivity extends ViewDomainActivityBase implements Mod
                 .always( // language=JSON5
                     "{class: 'AuthorizationAssignment', orderBy: 'id'}")
                 .ifNotNullOtherwise(selectedEntityProperty,
-                        entity -> where("AuthorizationManagement".equals(entity.getDomainClass().getName()) ? "management=?" : "management=null and role=?", entity),
+                        entity -> where("AuthorizationManagement".equals(entity.getDomainClass().getName()) ? "management=$1" : "management=null and role=$1", entity),
                         where("management=null and role=null"))
                 .ifNotNull(selectedTabProperty, tab -> where(
                         tab == AuthorizationTab.ROLES ?      "management != null and role != null" :

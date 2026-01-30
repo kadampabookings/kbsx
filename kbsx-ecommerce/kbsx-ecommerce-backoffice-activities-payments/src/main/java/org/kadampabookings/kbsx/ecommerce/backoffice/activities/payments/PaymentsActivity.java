@@ -79,7 +79,7 @@ final class PaymentsActivity extends EventDependentViewDomainActivity implements
                 .always( // language=JSON5
                     "{class: 'MoneyTransfer', alias: 'mt', where: '!receiptsTransfer', orderBy: 'date desc,parent nulls first,id'}")
                 // Applying the event condition
-                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=?", eventId))
+                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=$1", eventId))
                 .ifFalse(pm.flatPaymentsProperty(), where("parent=null"))
                 .start()
         ;
@@ -91,14 +91,14 @@ final class PaymentsActivity extends EventDependentViewDomainActivity implements
                 .always( // language=JSON5
                     "{columns: 'date,document,transactionRef,status,comment,amount,methodIcon,pending,successful'}")
                 // Applying the event condition
-                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document..event=? or document is null and exists(select MoneyTransfer where parent=mt and document.event=?)", eventId, eventId))
+                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document?.event=$1 or document is null and exists(select MoneyTransfer where parent=mt and document.event=$1)", eventId))
                 // Applying the flat mode
                 .ifFalse(pm.flatPaymentsProperty(), where("parent=null"))
                 // Applying the user search
                 .ifTrimNotEmpty(pm.searchTextProperty(), s ->
-                        Character.isDigit(s.charAt(0)) ? where("document.ref=?", Integer.parseInt(s))
-                                : s.contains("@") ? where("{lower(document.person_email) like ?", "%" + s.toLowerCase() + "%")
-                                : DqlStatement.where("document.person_abcNames like ?", AbcNames.evaluate(s, true)))
+                        Character.isDigit(s.charAt(0)) ? where("document.ref=$1", Integer.parseInt(s))
+                                : s.contains("@") ? where("{lower(document.person_email) like $1", "%" + s.toLowerCase() + "%")
+                                : DqlStatement.where("document.person_abcNames like $1", AbcNames.evaluate(s, true)))
                 .applyDomainModelRowStyle() // Colorizing the rows
                 .autoSelectSingleRow() // When the result is a singe row, automatically select it
                 .start();
@@ -109,7 +109,7 @@ final class PaymentsActivity extends EventDependentViewDomainActivity implements
                 .always( // language=JSON5
                     "{columns: 'date,document,transactionRef,status,comment,amount,methodIcon,pending,successful'}")
                 // Applying the selection condition
-                .ifNotNullOtherwiseEmpty(pm.selectedPaymentProperty(), mt -> where("parent=?", mt))
+                .ifNotNullOtherwiseEmpty(pm.selectedPaymentProperty(), mt -> where("parent=$1", mt))
                 // Applying the flat mode
                 .ifFalse(pm.flatPaymentsProperty(), where("parent=null"))
                 .applyDomainModelRowStyle() // Colorizing the rows

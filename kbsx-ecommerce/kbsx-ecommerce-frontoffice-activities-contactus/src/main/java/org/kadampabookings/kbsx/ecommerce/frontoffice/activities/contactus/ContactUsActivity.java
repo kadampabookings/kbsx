@@ -62,7 +62,7 @@ final class ContactUsActivity extends ViewDomainActivityBase
         validationSupport.addRequiredInputs(subjectTextField, bodyTextArea);
     }
 
-    private final static String DOCUMENT_LOAD_QUERY = "select <frontoffice_cart>,event.(name,cssClass) from Document where id=?";
+    private final static String DOCUMENT_LOAD_QUERY = "select <frontoffice_cart>,event.(name,cssClass) from Document where id=$1";
     private Document document;
 
     @Override

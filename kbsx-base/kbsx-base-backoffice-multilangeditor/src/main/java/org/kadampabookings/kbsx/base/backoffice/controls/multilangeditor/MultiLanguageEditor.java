@@ -77,7 +77,7 @@ public final class MultiLanguageEditor {
                     sb.append(',').append(subjectFieldGetter.apply(language));
             }
         }
-        this.loadingSelect = sb == null ? domainClassIdOrLoadingSelect : sb.append(" from ").append(domainClassIdOrLoadingSelect).append(" where id=?").toString();
+        this.loadingSelect = sb == null ? domainClassIdOrLoadingSelect : sb.append(" from ").append(domainClassIdOrLoadingSelect).append(" where id=$1").toString();
         toggleGroup.getToggles().setAll(languageButtons.values());
     }
 

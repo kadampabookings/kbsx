@@ -121,7 +121,7 @@ final class EditableOptionsActivity extends OptionsActivity {
             addOptionDialogVisualMapper = ReactiveVisualMapper.<Option>createPushReactiveChain(this)
                     .always( // language=JSON5
                         "{class: 'Option', alias: 'o', where: 'parent=null and template', orderBy: 'event.id desc,ord'}")
-                    .always(eventIdProperty(), e -> where("event.organization=?", getEvent().getOrganization()))
+                    .always(eventIdProperty(), e -> where("event.organization=$1", getEvent().getOrganization()))
                     .setEntityColumns( // language=JSON5
                         """
                             [
@@ -146,7 +146,7 @@ final class EditableOptionsActivity extends OptionsActivity {
         Option selectedOption = addOptionDialogVisualMapper.getSelectedEntity();
         if (selectedOption != null) {
             SubmitService.executeSubmit(SubmitArgument.builder()
-                    .setStatement("select copy_option(null,?::int,?::int,null)")
+                    .setStatement("select copy_option(null,$1::int,$2::int,null)")
                     .setParameters(selectedOption.getPrimaryKey(), getEventId())
                     .setReturnGeneratedKeys(true)
                     .setDataSourceId(getDataSourceId())
