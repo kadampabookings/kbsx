@@ -112,7 +112,7 @@ final class FeesActivity extends BookingProcessActivity {
     private void loadAndDisplayFeesGroups() {
         lastLoadedEventOptions = null;
         onEventFeesGroups()
-                .onFailure(Console::log)
+                .onFailure(Console::error)
                 .onSuccess(this::displayFeesGroupsAndRefreshAvailabilities);
     }
 

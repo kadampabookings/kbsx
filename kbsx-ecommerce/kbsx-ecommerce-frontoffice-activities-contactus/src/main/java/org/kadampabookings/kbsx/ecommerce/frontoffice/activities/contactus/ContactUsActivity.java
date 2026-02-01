@@ -70,7 +70,7 @@ final class ContactUsActivity extends ViewDomainActivityBase
         // Loading the document in order to prepare
         EntityStore loadStore = EntityStore.create(getDataSourceModel());
         loadStore.<Document>executeQuery(DOCUMENT_LOAD_QUERY, documentId)
-                .onFailure(Console::log)
+                .onFailure(Console::error)
                 .onSuccess(documents -> {
                     document = documents.get(0);
                     applyEventCssBackgroundIfProvided();
@@ -117,7 +117,7 @@ final class ContactUsActivity extends ViewDomainActivityBase
         history.setUsername("online");
         history.setComment("Sent '" + subjectTextField.getText() + "'");
         updateStore.submitChanges()
-                .onFailure(Console::log)
+                .onFailure(Console::error)
                 .onSuccess(submitResultBatch -> {
                     // Going back (probably to booking cart)
                     new RouteBackwardRequest(getHistory()).execute();

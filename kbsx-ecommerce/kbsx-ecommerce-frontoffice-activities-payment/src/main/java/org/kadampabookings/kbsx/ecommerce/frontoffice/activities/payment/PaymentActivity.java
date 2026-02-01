@@ -243,7 +243,7 @@ final class PaymentActivity extends CartBasedActivity {
             }
         }
         updateStore.submitChanges()
-            .onFailure(cause -> Console.log("Error submitting payment", cause))
+            .onFailure(cause -> Console.error("Error submitting payment", cause))
             .onSuccess(result -> {
                 cartAggregate().unload();
                 Object paymentId = result.getGeneratedKey();
@@ -251,7 +251,7 @@ final class PaymentActivity extends CartBasedActivity {
                         new EntityStoreQuery("select <frontoffice_loadEvent> from GatewayParameter gp where exists(select MoneyTransfer mt where mt=$1 and (gp.account=mt.toMoneyAccount or gp.account=null and gp.company=mt.toMoneyAccount.gatewayCompany)) order by company", paymentId),
                         new EntityStoreQuery("select <frontoffice_cart> from MoneyTransfer where id=$1", paymentId)
                     )
-                    .onFailure(cause -> Console.log("Error submitting payment", cause))
+                    .onFailure(cause -> Console.error("Error submitting payment", cause))
                     .inUiThread()
                     .onSuccess(entityLists -> {
                         EntityList<GatewayParameter> gatewayParameters = entityLists[0];

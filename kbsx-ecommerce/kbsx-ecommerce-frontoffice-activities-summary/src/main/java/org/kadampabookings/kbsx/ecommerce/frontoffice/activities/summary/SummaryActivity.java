@@ -133,7 +133,7 @@ final class SummaryActivity extends BookingProcessActivity {
     protected void onNextButtonPressed(ActionEvent event) {
         if (validationSupport.isValid())
             WorkingDocumentSubmitter.submit(getEventActiveWorkingDocument(), commentTextArea.getText())
-                    .onFailure(cause -> Console.log("Error submitting booking", cause))
+                    .onFailure(cause -> Console.error("Error submitting booking", cause))
                     .onSuccess(document -> {
                         Cart cart = document.getCart();
                         if (cart == null) {

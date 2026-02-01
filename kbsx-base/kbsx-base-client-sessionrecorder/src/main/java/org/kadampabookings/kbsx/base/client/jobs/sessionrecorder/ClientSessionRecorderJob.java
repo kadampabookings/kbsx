@@ -211,7 +211,7 @@ public final class ClientSessionRecorderJob implements ApplicationJob {
                         clearSessionInfo();
                         onConnectionOpened();
                     } else
-                        Console.log("Client Session Recorder error", cause);
+                        Console.error("Client Session Recorder error", cause);
                 });
     }
 
