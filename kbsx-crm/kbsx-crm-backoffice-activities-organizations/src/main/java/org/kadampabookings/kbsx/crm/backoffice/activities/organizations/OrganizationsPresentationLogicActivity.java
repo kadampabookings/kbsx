@@ -27,10 +27,10 @@ final class OrganizationsPresentationLogicActivity
                 .always( // language=JSON5
                     "{class: 'Organization', alias: 'o', where: '!closed and name!=`ISC`', orderBy: 'name'}")
                 // Search box condition
-                .ifTrimNotEmpty(pm.searchTextProperty(), s -> where("lower(name) like ?", "%" + s.toLowerCase() + "%"))
+                .ifTrimNotEmpty(pm.searchTextProperty(), s -> where("lower(name) like $1", "%" + s.toLowerCase() + "%"))
                 .ifTrue(pm.withEventsProperty(), "{where: 'exists(select Event where organization=o)', orderBy: 'id'}")
                 // Limit condition
-                .ifPositive(pm.limitProperty(), l -> limit("?", l))
+                .ifPositive(pm.limitProperty(), l -> limit("$1", l))
                 .setEntityColumns( // language=JSON5
                     """
                         [

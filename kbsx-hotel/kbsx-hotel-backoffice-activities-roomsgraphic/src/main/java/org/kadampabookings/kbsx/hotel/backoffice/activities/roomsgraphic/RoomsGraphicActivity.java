@@ -73,7 +73,7 @@ final class RoomsGraphicActivity extends EventDependentViewDomainActivity implem
                 .always( // language=JSON5
                     "{class: 'Site', alias: 's', fields: 'icon,name', where: 'exists(select ResourceConfiguration where resource.site=s and item.family.code=`acco`)', orderBy: 'ord,id'}")
                 // Applying the event condition
-                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("event=?", eventId))
+                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("event=$1", eventId))
                 .setIndividualEntityToObjectMapperFactory(IndividualSiteToTabMapper::new)
                 .storeMappedObjectsInto(sitesTabPane.getTabs())
                 .start();
@@ -112,7 +112,7 @@ final class RoomsGraphicActivity extends EventDependentViewDomainActivity implem
             siteItemsToTabsMapper = ReactiveObjectsMapper.<Entity, Tab>createPushReactiveChain(RoomsGraphicActivity.this)
                     .always( // language=JSON5
                         "{class: 'ResourceConfiguration', fields: 'item.icon,item.name,resource.site', groupBy: 'item', orderBy: 'item.ord,item.id'}")
-                    .ifNotNullOtherwiseEmpty(siteProperty, s -> where("resource.site=? and item.family.code=?", s, ITEM_FAMILY_CODE))
+                    .ifNotNullOtherwiseEmpty(siteProperty, s -> where("resource.site=$1 and item.family.code=$2", s, ITEM_FAMILY_CODE))
                     .setActiveParent(sitesToTabsMapper)
                     .bindActivePropertyTo(siteTab.selectedProperty())
                     .setIndividualEntityToObjectMapperFactory(IndividualSiteItemToTabMapper::new)
@@ -155,7 +155,7 @@ final class RoomsGraphicActivity extends EventDependentViewDomainActivity implem
                         .setActiveParent(siteItemsToTabsMapper)
                         .always( // language=JSON5
                             "{class: 'ResourceConfiguration', fields: 'name,online,max,comment', orderBy: 'name'}")
-                        .ifNotNullOtherwiseEmpty(siteItemProperty, rc -> where("resource.site=? and item=?", rc.evaluate("resource.site"), rc.evaluate("item")))
+                        .ifNotNullOtherwiseEmpty(siteItemProperty, rc -> where("resource.site=$1 and item=$2", rc.evaluate("resource.site"), rc.evaluate("item")))
                         .bindActivePropertyTo(siteItemTab.selectedProperty())
                         .setIndividualEntityToObjectMapperFactory(IndividualSiteItemResourceConfigurationToBoxMapper::new)
                         .storeMappedObjectsInto(boxesContainer.getChildren())
@@ -206,7 +206,7 @@ final class RoomsGraphicActivity extends EventDependentViewDomainActivity implem
                             .setActiveParent(siteItemResourceConfigurationsToBoxesMapper)
                             .always( // language=JSON5
                                 "{class: 'DocumentLine', columns: 'document.<ident>', where: '!cancelled', orderBy: 'id'}")
-                            .ifNotNullOtherwiseEmpty(siteItemResourceConfigurationProperty, rc -> where("resourceConfiguration=?", rc))
+                            .ifNotNullOtherwiseEmpty(siteItemResourceConfigurationProperty, rc -> where("resourceConfiguration=$1", rc))
                             // Setting the aggregate scope TODO Can this be automatically set by the Dql query push interceptor (or QueryInfo.getQueryScope())?
                             .setAggregateScope(siteItemResourceConfigurationProperty, rc -> AggregateScope.builder().addAggregate("ResourceConfiguration", rc.getPrimaryKey()).build())
                             .unbindActiveProperty() // always active (under parent), no need for additional (and costly) active calls

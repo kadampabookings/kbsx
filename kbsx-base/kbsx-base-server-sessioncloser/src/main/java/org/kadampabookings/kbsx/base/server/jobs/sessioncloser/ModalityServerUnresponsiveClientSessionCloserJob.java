@@ -20,11 +20,11 @@ public final class ModalityServerUnresponsiveClientSessionCloserJob implements A
         PushServerService.addUnresponsivePushClientListener(disconnectListener = clientRunId ->
                 SubmitService.executeSubmit(SubmitArgument.builder()
                         .setLanguage("DQL")
-                        .setStatement("update SessionConnection set end=now() where process=?")
+                        .setStatement("update SessionConnection set end=now() where process=$1")
                         .setParameters(clientRunId)
                         .setDataSourceId(DataSourceModelService.getDefaultDataSourceId())
                         .build())
-                        .onFailure(cause -> Console.log("Error while closing session for clientRunId=" + clientRunId, cause))
+                        .onFailure(cause -> Console.error("Error while closing session for clientRunId=" + clientRunId, cause))
                         .onSuccess(result -> Console.log("Closed session for clientRunId=" + clientRunId)));
     }
 

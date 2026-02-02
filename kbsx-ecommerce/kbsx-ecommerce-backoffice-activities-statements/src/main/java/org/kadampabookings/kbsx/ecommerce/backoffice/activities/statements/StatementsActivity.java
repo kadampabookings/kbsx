@@ -42,7 +42,7 @@ final class StatementsActivity extends EventDependentViewDomainActivity implemen
             .setAutoOpenOnMouseEntered(true)
             .setShowMode(ButtonSelector.ShowMode.DROP_DOWN)
             //.combineIfNotNullOtherwiseForceEmptyResult(pm.organizationIdProperty(), organizationId -> where("organization=?", organizationId))
-            .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("(event=? or event=null) and organization=(select organization from Event where id=?)", eventId, eventId));
+            .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("(event=$ or event=null) and organization=(select organization from Event where id=$1)", eventId));
         pm.selectedMoneyAccountProperty().bind(moneyAccountSelector.selectedItemProperty());
 
         CheckBox flatPaymentsCheckBox = newCheckBox("Flat payments");
@@ -79,9 +79,9 @@ final class StatementsActivity extends EventDependentViewDomainActivity implemen
             .always( // language=JSON5
                 "{class: 'MoneyTransfer', alias: 'mt', orderBy: 'date desc,parent nulls first,id'}")
             // Applying the money account condition
-            .ifNotNullOtherwiseEmpty(pm.selectedMoneyAccountProperty(), ma -> where("parent = null and (fromMoneyAccount=? or toMoneyAccount=?) or parent != null and (parent..fromMoneyAccount=? or parent..toMoneyAccount=?", ma, ma, ma, ma))
+            .ifNotNullOtherwiseEmpty(pm.selectedMoneyAccountProperty(), ma -> where("parent = null and (fromMoneyAccount=$1 or toMoneyAccount=$1) or parent != null and (parent?.fromMoneyAccount=$1 or parent?.toMoneyAccount=$1)", ma))
             .ifFalse(pm.flatPaymentsProperty(), where("parent=null"))
-            .ifFalse(pm.flatBatchesProperty(), where("transfer=null and (parent=null || parent..transfer=null)"))
+            .ifFalse(pm.flatBatchesProperty(), where("transfer=null and (parent=null || parent?.transfer=null)"))
             .start();
 
         // Setting up the master mapper that build the content displayed in the master view
@@ -91,15 +91,15 @@ final class StatementsActivity extends EventDependentViewDomainActivity implemen
             .always( // language=JSON5
                 "{columns: 'date,document.event,document,transactionRef,status,comment,amount,methodIcon,pending,successful'}")
             // Applying the money account condition
-            .ifNotNullOtherwiseEmpty(pm.selectedMoneyAccountProperty(), ma -> where("parent = null and (fromMoneyAccount=? or toMoneyAccount=?) or parent != null and (parent..fromMoneyAccount=? or parent..toMoneyAccount=?)", ma.getPrimaryKey(), ma.getPrimaryKey(), ma.getPrimaryKey(), ma.getPrimaryKey()))
+            .ifNotNullOtherwiseEmpty(pm.selectedMoneyAccountProperty(), ma -> where("parent = null and (fromMoneyAccount=$1 or toMoneyAccount=$1) or parent != null and (parent?.fromMoneyAccount=$1 or parent?.toMoneyAccount=$1)", ma))
             // Applying the flat modes
             .ifFalse(pm.flatPaymentsProperty(), where("parent=null"))
-            .ifFalse(pm.flatBatchesProperty(), where("transfer=null and (parent=null || parent..transfer=null)"))
+            .ifFalse(pm.flatBatchesProperty(), where("transfer=null and (parent=null || parent?.transfer=null)"))
             // Applying the user search
             .ifTrimNotEmpty(pm.searchTextProperty(), s ->
-                Character.isDigit(s.charAt(0)) ? where("document.ref=?", Integer.parseInt(s))
-                    : s.contains("@") ? where("lower(document.person_email) like ?", "%" + s.toLowerCase() + "%")
-                    : DqlStatement.where("document.person_abcNames like ?", AbcNames.evaluate(s, true)))
+                Character.isDigit(s.charAt(0)) ? where("document.ref=$1", Integer.parseInt(s))
+                    : s.contains("@") ? where("lower(document.person_email) like $1", "%" + s.toLowerCase() + "%")
+                    : DqlStatement.where("document.person_abcNames like $1", AbcNames.evaluate(s, true)))
             .applyDomainModelRowStyle() // Colorizing the rows
             .autoSelectSingleRow() // When the result is a singe row, automatically select it
             .start();
@@ -110,7 +110,7 @@ final class StatementsActivity extends EventDependentViewDomainActivity implemen
             .always( // language=JSON5
                 "{columns: 'date,document.event,document,transactionRef,status,comment,amount,methodIcon,pending,successful'}")
             // Applying the selection condition
-            .ifNotNullOtherwiseEmpty(pm.selectedPaymentProperty(), mt -> where("parent=? or transfer=? or parent..transfer=?", mt, mt, mt))
+            .ifNotNullOtherwiseEmpty(pm.selectedPaymentProperty(), mt -> where("parent=$1 or transfer=$1 or parent?.transfer=$1", mt))
             // Applying the flat modes
             .ifFalse(pm.flatPaymentsProperty(), where("parent=null"))
             .applyDomainModelRowStyle() // Colorizing the rows

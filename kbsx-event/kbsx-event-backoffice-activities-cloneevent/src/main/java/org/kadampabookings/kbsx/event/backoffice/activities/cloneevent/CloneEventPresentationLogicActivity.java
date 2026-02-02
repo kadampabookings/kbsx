@@ -34,7 +34,7 @@ public final class CloneEventPresentationLogicActivity extends EventDependentPre
         pm.setOnSubmit(event -> {
             LocalDate startDate = pm.getDate();
             SubmitService.executeSubmit(SubmitArgument.builder()
-                    .setStatement("select copy_event(?,?,?)")
+                    .setStatement("select copy_event($1,$2,$3)")
                     .setParameters(getEventId(), pm.getName(), startDate)
                     .setReturnGeneratedKeys(true)
                     .setDataSourceId(getDataSourceId())

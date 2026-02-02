@@ -62,7 +62,7 @@ final class ContactUsActivity extends ViewDomainActivityBase
         validationSupport.addRequiredInputs(subjectTextField, bodyTextArea);
     }
 
-    private final static String DOCUMENT_LOAD_QUERY = "select <frontoffice_cart>,event.(name,cssClass) from Document where id=?";
+    private final static String DOCUMENT_LOAD_QUERY = "select <frontoffice_cart>,event.(name,cssClass) from Document where id=$1";
     private Document document;
 
     @Override
@@ -70,7 +70,7 @@ final class ContactUsActivity extends ViewDomainActivityBase
         // Loading the document in order to prepare
         EntityStore loadStore = EntityStore.create(getDataSourceModel());
         loadStore.<Document>executeQuery(DOCUMENT_LOAD_QUERY, documentId)
-                .onFailure(Console::log)
+                .onFailure(Console::error)
                 .onSuccess(documents -> {
                     document = documents.get(0);
                     applyEventCssBackgroundIfProvided();
@@ -117,7 +117,7 @@ final class ContactUsActivity extends ViewDomainActivityBase
         history.setUsername("online");
         history.setComment("Sent '" + subjectTextField.getText() + "'");
         updateStore.submitChanges()
-                .onFailure(Console::log)
+                .onFailure(Console::error)
                 .onSuccess(submitResultBatch -> {
                     // Going back (probably to booking cart)
                     new RouteBackwardRequest(getHistory()).execute();

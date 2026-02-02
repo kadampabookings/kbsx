@@ -36,7 +36,7 @@ final class ProgramActivity extends BookingProcessActivity {
     @Override
     protected void startLogic() {
         onEventFeesGroups()
-                .onFailure(Console::log)
+                .onFailure(Console::error)
                 .onSuccess(result -> {
                     noAccommodationOptionsPreselection = findNoAccommodationOptionsPreselection(result);
                     showBookingCalendarIfReady();

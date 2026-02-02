@@ -79,9 +79,9 @@ final class StartBookingActivity extends BookingProcessActivity {
                 if (ar.succeeded()) {
                     Event event = ar.result();
                     Labels.translateLabel(eventTitle, Labels.bestLabelOrName(event));
-                    imageUrl = (String) event.evaluate("buddha.image.url");
+                    imageUrl = event.evaluate("buddha.image.url");
                 } else
-                    Console.log(ar.cause());
+                    Console.error(ar.cause());
                 if (imageUrl == null)
                     runFadeInAnimation();
                 else {

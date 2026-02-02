@@ -49,10 +49,10 @@ final class EventsActivity extends ViewDomainActivityBase
                 .always( // language=JSON5
                     "{class: 'Event', alias: 'e', fields2: '(select count(1) from Document where !cancelled and event=e) as bookingsCount', where: 'active', orderBy: 'startDate desc,id desc'}")
                 // Search box condition
-                .ifTrimNotEmpty(pm.searchTextProperty(), s -> where("lower(name) like ?", "%" + s.toLowerCase() + "%"))
-                .ifNotNull(pm.organizationIdProperty(), o -> where("organization=?", o))
+                .ifTrimNotEmpty(pm.searchTextProperty(), s -> where("lower(name) like $1", "%" + s.toLowerCase() + "%"))
+                .ifNotNull(pm.organizationIdProperty(), o -> where("organization=$1", o))
                 // Limit condition
-                .ifPositive(pm.limitProperty(), l -> limit("?", l))
+                .ifPositive(pm.limitProperty(), l -> limit("$1", l))
                 .setEntityColumns( // language=JSON5
                     """
                         [

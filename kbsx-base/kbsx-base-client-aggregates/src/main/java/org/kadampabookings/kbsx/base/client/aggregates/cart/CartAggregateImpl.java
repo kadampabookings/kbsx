@@ -22,9 +22,9 @@ import java.util.Map;
  */
 public final class CartAggregateImpl implements CartAggregate {
 
-    public final static String DOCUMENT_LINE_LOAD_QUERY = "select <frontend_cart>,document.<frontend_cart> from DocumentLine where site!=null and document=? order by document desc";
-    public final static String ATTENDANCE_LOAD_QUERY = "select documentLine.id,date from Attendance where documentLine.document=? order by date";
-    private final static String PAYMENT_LOAD_QUERY = "select <frontend_cart> from MoneyTransfer where document=? order by date desc";
+    public final static String DOCUMENT_LINE_LOAD_QUERY = "select <frontend_cart>,document.<frontend_cart> from DocumentLine where site!=null and document=$1 order by document desc";
+    public final static String ATTENDANCE_LOAD_QUERY = "select documentLine.id,date from Attendance where documentLine.document=$1 order by date";
+    private final static String PAYMENT_LOAD_QUERY = "select <frontend_cart> from MoneyTransfer where document=$1 order by date desc";
 
     private final static Map<Object, CartAggregate> aggregates = new HashMap<>();
 
@@ -127,12 +127,12 @@ public final class CartAggregateImpl implements CartAggregate {
         if (isLoaded())
             return Future.succeededFuture(cart);
         loading = true;
-        String documentCondition = "document.cart." + (id != null ? "id=?" : "uuid=?");
+        String documentCondition = "document.cart." + (id != null ? "id=$1" : "uuid=$1");
         Object[] parameter = new Object[]{id != null ? id : uuid};
         return store.executeQueryBatch(
-              new EntityStoreQuery(Strings.replaceAll(DOCUMENT_LINE_LOAD_QUERY, "document=?", documentCondition), parameter)
-            , new EntityStoreQuery(Strings.replaceAll(ATTENDANCE_LOAD_QUERY, "document=?", documentCondition), parameter)
-            , new EntityStoreQuery(Strings.replaceAll(PAYMENT_LOAD_QUERY, "document=?", documentCondition), parameter)
+              new EntityStoreQuery(Strings.replaceAll(DOCUMENT_LINE_LOAD_QUERY, "document=$1", documentCondition), parameter)
+            , new EntityStoreQuery(Strings.replaceAll(ATTENDANCE_LOAD_QUERY, "document=$1", documentCondition), parameter)
+            , new EntityStoreQuery(Strings.replaceAll(PAYMENT_LOAD_QUERY, "document=$1", documentCondition), parameter)
         ).compose(entityLists -> {
             cartDocuments = new ArrayList<>();
             cartDocumentLines = entityLists[0];

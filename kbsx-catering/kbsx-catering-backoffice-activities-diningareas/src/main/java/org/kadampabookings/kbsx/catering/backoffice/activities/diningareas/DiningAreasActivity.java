@@ -81,16 +81,16 @@ final class DiningAreasActivity extends EventDependentViewDomainActivity impleme
         // Setting up the group mapper that build the content displayed in the group view
         leftSittingVisualMapper = ReactiveVisualMapper.<DocumentLine>createReactiveChain(this)
                 .always( // language=JSON5
-                    "{class: 'DocumentLine', alias: 'dl', columns: 'resourceConfiguration,count(1)', where: '!cancelled and item.family.code=`meals`', groupBy: 'resourceConfiguration', orderBy: 'resourceConfiguration..name'}")
+                    "{class: 'DocumentLine', alias: 'dl', columns: 'resourceConfiguration,count(1)', where: '!cancelled and item.family.code=`meals`', groupBy: 'resourceConfiguration', orderBy: 'resourceConfiguration?.name'}")
                 // Applying the event condition
-                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=?", eventId))
+                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=$1", eventId))
         ;
 
         rightAttendanceVisualMapper = ReactiveVisualMapper.<Attendance>createReactiveChain(this)
                 .always( // language=JSON5
                     "{class: 'Attendance', alias: 'a', columns: 'documentLine.resourceConfiguration,date,count(1)', where: 'present and documentLine.(!cancelled and item.family.code=`meals`)', groupBy: 'documentLine.resourceConfiguration,date', orderBy: 'date'}")
                 // Applying the event condition
-                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("documentLine.document.event=?", eventId))
+                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("documentLine.document.event=$1", eventId))
         ;
 
         // Building the statistics final display result from the 2 above filters
@@ -100,7 +100,7 @@ final class DiningAreasActivity extends EventDependentViewDomainActivity impleme
                 .always( // language=JSON5
                     "{class: 'AllocationRule', alias: 'ar', columns: '<default>', orderBy: 'ord,id'}")
                 // Applying the event condition
-                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("event=?", eventId))
+                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("event=$1", eventId))
                 // Displaying the result into the rules table through the presentation model
                 .visualizeResultInto(pm.rulesVisualResultProperty())
                 .setVisualSelectionProperty(pm.rulesVisualSelectionProperty())

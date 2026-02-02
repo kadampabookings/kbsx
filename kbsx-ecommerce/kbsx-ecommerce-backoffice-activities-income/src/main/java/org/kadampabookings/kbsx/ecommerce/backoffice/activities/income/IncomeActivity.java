@@ -65,7 +65,7 @@ final class IncomeActivity extends EventDependentViewDomainActivity implements
                 .always( // language=JSON5
                     "{class: 'Document', alias: 'd'}")
                 // Applying the event condition
-                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("event=?", eventId))
+                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("event=$1", eventId))
                 .always("{columns: `null as Totals,sum(price_deposit) as Deposit,sum(price_net) as Invoiced,sum(price_minDeposit) as MinDeposit,sum(price_nonRefundable) as NonRefundable,sum(price_balance) as Balance,count(1) as Bookings,sum(price_balance!=0 ? 1 : 0) as Unreconciled`, groupBy: `event`}")
                 .visualizeResultInto(pm.genericVisualResultProperty())
                 .start();
@@ -74,7 +74,7 @@ final class IncomeActivity extends EventDependentViewDomainActivity implements
                 .always( // language=JSON5
                     "{class: 'DocumentLine', alias: 'dl'}")
                 // Applying the event condition
-                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=?", eventId))
+                .ifNotNullOtherwiseEmpty(pm.eventIdProperty(), eventId -> where("document.event=$1", eventId))
                 .start();
     }
 

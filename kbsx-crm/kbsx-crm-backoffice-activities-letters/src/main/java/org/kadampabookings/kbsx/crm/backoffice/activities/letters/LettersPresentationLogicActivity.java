@@ -23,11 +23,11 @@ final class LettersPresentationLogicActivity
                 .always( // language=JSON5
                     "{class: 'Letter', where: 'active', orderBy: 'id'}")
                 // Condition
-                .ifNotNull(pm.eventIdProperty(), eventId -> where("event=?", eventId))
+                .ifNotNull(pm.eventIdProperty(), eventId -> where("event=$1", eventId))
                 // Search box condition
-                .ifTrimNotEmpty(pm.searchTextProperty(), s -> where("lower(name) like ?", "%" + s.toLowerCase() + "%"))
+                .ifTrimNotEmpty(pm.searchTextProperty(), s -> where("lower(name) like $1", "%" + s.toLowerCase() + "%"))
                 // Limit condition
-                .ifPositive(pm.limitProperty(), l -> limit("?", l))
+                .ifPositive(pm.limitProperty(), l -> limit("$1", l))
                 .setEntityColumns( // language=JSON5
                     "['name','type']")
                 .applyDomainModelRowStyle()

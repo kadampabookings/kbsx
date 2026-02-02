@@ -39,18 +39,18 @@ public final class SystemMetricsRecorderJob implements ApplicationJob {
             SystemMetricsService.takeSystemMetricsSnapshot(store.insertEntity(SystemMetricsEntity.class));
             // Submitting this new record into the database
             store.submitChanges()
-                    .onFailure(cause -> Console.log("Inserting metrics in database failed!", cause));
+                    .onFailure(cause -> Console.error("Inserting metrics in database failed!", cause));
         });
 
         // Deleting old metrics records (older than 1 day) regularly (every 12h)
         metricsCleaningPeriodicTimer = Scheduler.schedulePeriodic(12 * 3600 * 1000, () ->
                 SubmitService.executeSubmit(SubmitArgument.builder()
                         .setLanguage("DQL")
-                        .setStatement("delete Metrics where LtTestSet is null and date < ?")
+                        .setStatement("delete Metrics where LtTestSet is null and date < $1")
                         .setParameters(Instant.now().minus(1, ChronoUnit.DAYS))
                         .setDataSourceId(dataSourceModel.getDataSourceId())
                         .build())
-                        .onFailure(cause -> Console.log("Deleting metrics in database failed!", cause))
+                        .onFailure(cause -> Console.error("Deleting metrics in database failed!", cause))
                         .onSuccess(submitResult -> Console.log(submitResult.getRowCount() + " metrics records have been deleted from the database")));
     }
 
