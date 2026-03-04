@@ -94,9 +94,7 @@ final class PaymentActivity extends CartBasedActivity {
         totalLabel.setText(formatCurrency(total));
     }
 
-    private String formatPrice(int amount) {
-        return PriceFormatter.formatWithoutCurrency(amount);
-    }
+
 
     private String formatCurrency(int amount) {
         return EventPriceFormatter.formatWithCurrency(amount, getEvent());
@@ -197,7 +195,7 @@ final class PaymentActivity extends CartBasedActivity {
                 amount = maxAmount;
             this.amount = amount;
             if (!amountTextField.isFocused())
-                amountTextField.setText(formatPrice(amount));
+                amountTextField.setText(EventPriceFormatter.formatWithCurrency(amount, getEvent()));
             slider.setValue((double) amount);
             radioGroup.selectToggle(amount == maxAmount ? maxRadioButton : amount == minAmount ? minRadioButton : amount == 0 ? zeroRadioButton : null);
             updating = false;
