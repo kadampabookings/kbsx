@@ -1,24 +1,6 @@
 /* @font-face rules listed first, otherwise they are ignored (OpenJFX bug) */
 
 @font-face {
-    font-family: 'Vollkorn SC';
-    font-weight: bold;
-    src: url('webfx-css:fonts/vollkornsc/VollkornSC-Bold.ttf');
-}
-
-@font-face {
-    font-family: 'Vollkorn SC';
-    font-style: normal;
-    src: url('webfx-css:fonts/vollkornsc/VollkornSC-Regular.ttf');
-}
-
-@font-face {
-    font-family: 'Vollkorn SC';
-    font-weight: 600; /* semi-bold */
-    src: url('webfx-css:fonts/vollkornsc/VollkornSC-SemiBold.ttf');
-}
-
-@font-face {
     font-family: 'Roboto';
     font-weight: bold;
     src: url('webfx-css:fonts/roboto/Roboto-Bold.ttf');
@@ -68,6 +50,24 @@
 }
 
 @font-face {
+    font-family: 'Vollkorn SC';
+    font-weight: bold;
+    src: url('webfx-css:fonts/vollkornsc/VollkornSC-Bold.ttf');
+}
+
+@font-face {
+    font-family: 'Vollkorn SC';
+    font-style: normal;
+    src: url('webfx-css:fonts/vollkornsc/VollkornSC-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Vollkorn SC';
+    font-weight: 600; /* semi-bold */
+    src: url('webfx-css:fonts/vollkornsc/VollkornSC-SemiBold.ttf');
+}
+
+@font-face {
     font-family: 'Poppins';
     font-style: normal;
     src: url('webfx-css:fonts/poppins/Poppins-Regular.ttf');
@@ -110,6 +110,16 @@
     src: url('webfx-css:fonts/poppins/Poppins-SemiBold.ttf');
 }
 
+
+/*===== webfx-extras-controls-javafx@main.css from webfx-extras-util-control =====*/
+
+.root {
+    -fx-spinner-color: -fx-theme-color;
+}
+
+.webfx-extras-spinner {
+    -fx-fill: -fx-spinner-color;
+}
 
 /*===== webfx-extras-material-javafx@main.css from webfx-extras-styles-materialdesign =====*/
 
@@ -173,16 +183,6 @@
      -webfx-material-label-fill: -webfx-material-invalid-fill;
      -webfx-material-line-fill: -webfx-material-invalid-fill;
      -webfx-material-focused-line-fill: -webfx-material-invalid-fill;
-}
-
-/*===== webfx-extras-controls-javafx@main.css from webfx-extras-util-control =====*/
-
-.root {
-    -fx-spinner-color: -fx-theme-color;
-}
-
-.webfx-extras-spinner {
-    -fx-fill: -fx-spinner-color;
 }
 
 /*===== webfx-extras-dropdown-button-javafx@main.css from webfx-extras-controlfactory =====*/
@@ -615,6 +615,10 @@ HtmlText, HtmlTextEditor {
     -brand-main-color: -brand-orange-color;
     -brand-main-background-color: -brand-orange-color;
 }
+/*===== modality-client-css-import-font-roboto-javafx@main.css from modality-base-client-css =====*/
+
+/*===== modality-client-css-import-font-monserrat-javafx@main.css from modality-base-client-css =====*/
+
 /*===== modality-client-css-import-font-vollkornsc-javafx@main.css from modality-base-client-css =====*/
 
 /*===== modality-client-css-javafx@main.css from modality-base-client-css =====*/
@@ -652,12 +656,53 @@ Text, Label, Button, TextField {
     -fx-font-weight: bolder;
 }
 
-/*===== modality-client-css-import-font-roboto-javafx@main.css from modality-base-client-css =====*/
-
-/*===== modality-client-css-import-font-monserrat-javafx@main.css from modality-base-client-css =====*/
-
 /*===== modality-client-css-import-font-poppins-javafx@main.css from modality-base-client-css =====*/
 
+/*===== modality-event-backoffice-activity-medias-plugin-javafx@main.css from modality-base-client-i18n =====*/
+
+.translation-button {
+    -fx-background-color: transparent;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 3;
+    -fx-padding: 2 6 2 6;
+}
+
+.translation-pane {
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 5;
+}
+
+.strikethrough LabeledText {
+    -fx-strikethrough: true;
+}
+
+
+/* Error message box styling */
+.error-message-box {
+    -fx-background-color: #fee;
+    -fx-border-color: #fcc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 10px 15px 10px 15px;
+    -fx-alignment: center-left;
+    -fx-spacing: 8px;
+    -fx-max-width: infinity;
+}
+
+/* Error message text styling */
+.error-message-text {
+    -fx-wrap-text: true;
+}
+
+/* Error icon styling */
+.error-icon {
+    -fx-font-size: 14px;
+    -fx-min-width: 20px;
+    -fx-pref-width: 20px;
+    -fx-max-width: 20px;
+    -fx-alignment: center-left;
+}
 /*===== modality-client-bootstrap-webfx@main.css from modality-base-client-bootstrap =====*/
 
 /* Bootstrap style */
@@ -1093,51 +1138,6 @@ Text, Label, Button, TextField {
 }
 
 
-/*===== modality-event-backoffice-activity-medias-plugin-javafx@main.css from modality-base-client-i18n =====*/
-
-.translation-button {
-    -fx-background-color: transparent;
-    -fx-border-color: #ccc;
-    -fx-border-radius: 3;
-    -fx-padding: 2 6 2 6;
-}
-
-.translation-pane {
-    -fx-background-color: #f0f0f0;
-    -fx-background-radius: 5;
-}
-
-.strikethrough LabeledText {
-    -fx-strikethrough: true;
-}
-
-
-/* Error message box styling */
-.error-message-box {
-    -fx-background-color: #fee;
-    -fx-border-color: #fcc;
-    -fx-border-width: 1px;
-    -fx-border-radius: 4px;
-    -fx-background-radius: 4px;
-    -fx-padding: 10px 15px 10px 15px;
-    -fx-alignment: center-left;
-    -fx-spacing: 8px;
-    -fx-max-width: infinity;
-}
-
-/* Error message text styling */
-.error-message-text {
-    -fx-wrap-text: true;
-}
-
-/* Error icon styling */
-.error-icon {
-    -fx-font-size: 14px;
-    -fx-min-width: 20px;
-    -fx-pref-width: 20px;
-    -fx-max-width: 20px;
-    -fx-alignment: center-left;
-}
 /*===== modality-frontoffice-bookingelements-javafx@main.css from modality-booking-frontoffice-bookingelements =====*/
 
 .booking-elements {
