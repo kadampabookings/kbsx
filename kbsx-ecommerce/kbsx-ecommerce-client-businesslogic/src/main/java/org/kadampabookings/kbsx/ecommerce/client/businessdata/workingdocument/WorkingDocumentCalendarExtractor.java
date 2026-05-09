@@ -67,7 +67,7 @@ public final class WorkingDocumentCalendarExtractor {
     }
 
     private static Paint getItemFamilyFillColor(HasItemFamilyType hasItemFamilyType) {
-        return getItemFamilyFillColor(hasItemFamilyType.getItemFamilyType());
+        return getItemFamilyFillColor(hasItemFamilyType.getKnownItemFamily());
     }
 
     private static Paint getItemFamilyFillColor(KnownItemFamily knownItemFamily) {
