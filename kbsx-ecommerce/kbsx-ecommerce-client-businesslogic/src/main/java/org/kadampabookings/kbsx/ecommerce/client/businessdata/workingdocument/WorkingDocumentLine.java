@@ -240,7 +240,7 @@ public final class WorkingDocumentLine implements HasItemFamilyType {
     }
 
     @Override
-    public KnownItemFamily getItemFamilyType() {
-        return (item != null ? item : option).getItemFamilyType();
+    public KnownItemFamily getKnownItemFamily() {
+        return (item != null ? item : option).getKnownItemFamily();
     }
 }

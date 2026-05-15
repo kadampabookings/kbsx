@@ -142,9 +142,9 @@ public interface Option extends Entity,
     }
 
     @Override
-    default KnownItemFamily getItemFamilyType() {
+    default KnownItemFamily getKnownItemFamily() {
         ItemFamily itemFamily = findItemFamily();
-        return itemFamily == null ? KnownItemFamily.UNKNOWN : itemFamily.getItemFamilyType();
+        return itemFamily == null ? KnownItemFamily.UNKNOWN : itemFamily.getKnownItemFamily();
     }
 
     default boolean isConcrete() {
