@@ -16,7 +16,6 @@ module kbsx.server.application.vertx {
     requires webfx.platform.scheduler.vertx;
     requires webfx.platform.shutdown.jre;
     requires webfx.stack.authn.login.server.portal;
-    requires webfx.stack.authn.oauth2.vertx;
     requires webfx.stack.authn.server.portal;
     requires webfx.stack.com.bus.json.vertx;
     requires webfx.stack.db.querypush.server;
